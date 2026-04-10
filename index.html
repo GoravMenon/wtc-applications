@@ -1,0 +1,2352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Wharton Tech Club — Join the Board</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #0a0e1a;
+    --navy-mid: #111827;
+    --navy-light: #1e2a3a;
+    --red: #c0392b;
+    --red-bright: #e74c3c;
+    --white: #f8f9fa;
+    --gray: #8892a4;
+    --gray-light: #d1d5db;
+    --border: rgba(255,255,255,0.07);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: #0a0e1a;
+    color: #f8f9fa;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 16px;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 48px;
+    background: rgba(10,14,26,0.9);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(255,255,255,0.07);
+  }
+
+  .nav-logo {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: 15px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #f8f9fa;
+    cursor: default;
+  }
+
+  .nav-logo span { color: #e74c3c; }
+
+  nav a.nav-cta {
+    font-family: 'Syne', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #f8f9fa;
+    text-decoration: none;
+    border: 1px solid #e74c3c;
+    padding: 8px 20px;
+    border-radius: 2px;
+    transition: background 0.2s;
+  }
+
+  nav a.nav-cta:hover { background: #e74c3c; }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    padding: 120px 80px 80px;
+    position: relative;
+    overflow: hidden;
+    background: #0a0e1a;
+    gap: 60px;
+  }
+
+  .hero-left { display: flex; flex-direction: column; justify-content: center; }
+  .hero-right {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 16px;
+    border-left: 1px solid rgba(255,255,255,0.07);
+    padding-left: 60px;
+  }
+
+  /* Stat card in right column */
+  .hero-right-stat {
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.07);
+    border-left: 3px solid #c0392b;
+    padding: 16px 20px;
+    border-radius: 2px;
+    transition: background 0.2s, border-left-color 0.2s;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+  .hero-right-stat:hover { background: rgba(255,255,255,0.05); border-left-color: #e74c3c; }
+  .hero-right-stat-num {
+    font-family: 'Syne', sans-serif;
+    font-size: 32px;
+    font-weight: 800;
+    color: #f8f9fa;
+    line-height: 1;
+    flex-shrink: 0;
+    min-width: 72px;
+  }
+  .hero-right-stat-label {
+    font-size: 13px;
+    color: #8892a4;
+    font-weight: 300;
+    line-height: 1.4;
+  }
+  .hero-right-cta {
+    margin-top: 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 60% 50% at 80% 50%, rgba(192,57,43,0.08) 0%, transparent 70%),
+      radial-gradient(ellipse 40% 60% at 10% 80%, rgba(192,57,43,0.04) 0%, transparent 60%);
+    pointer-events: none;
+  }
+
+  .hero-grid {
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(255,255,255,0.05) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.05) 1px, transparent 1px);
+    background-size: 60px 60px;
+    pointer-events: none;
+  }
+
+  /* Base for all patterned sections */
+  .section-grid { position: relative; overflow: hidden; }
+  .section-grid::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+  }
+  .section-grid > * { position: relative; z-index: 1; }
+
+  /* Reboot banner — diagonal lines */
+  .section-grid.pat-diag::before {
+    background-image: repeating-linear-gradient(
+      45deg,
+      rgba(255,255,255,0.08) 0px,
+      rgba(255,255,255,0.08) 1px,
+      transparent 1px,
+      transparent 20px
+    );
+  }
+
+  /* About — dots */
+  .section-grid.pat-dots::before {
+    background-image: radial-gradient(rgba(255,255,255,0.12) 1px, transparent 1px);
+    background-size: 28px 28px;
+  }
+
+  /* Commitment — horizontal lines */
+  .section-grid.pat-lines::before {
+    background-image: repeating-linear-gradient(
+      0deg,
+      rgba(255,255,255,0.06) 0px,
+      rgba(255,255,255,0.06) 1px,
+      transparent 1px,
+      transparent 32px
+    );
+  }
+
+  /* Presidents — cross/plus marks */
+  .section-grid.pat-cross::before {
+    background-image:
+      linear-gradient(rgba(255,255,255,0.07) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.07) 1px, transparent 1px);
+    background-size: 40px 40px;
+    background-position: 20px 20px;
+  }
+
+  /* Roles — zigzag */
+  .section-grid.pat-zig::before {
+    background-image: repeating-linear-gradient(
+      -45deg,
+      rgba(255,255,255,0.05) 0px,
+      rgba(255,255,255,0.05) 1px,
+      transparent 1px,
+      transparent 14px
+    ),
+    repeating-linear-gradient(
+      45deg,
+      rgba(255,255,255,0.05) 0px,
+      rgba(255,255,255,0.025) 1px,
+      transparent 1px,
+      transparent 14px
+    );
+  }
+
+  /* Value/Network — large concentric rings from corner */
+  .section-grid.pat-rings::before {
+    background-image:
+      radial-gradient(ellipse at 0% 100%, rgba(255,255,255,0.07) 1px, transparent 1px),
+      radial-gradient(ellipse at 0% 100%, rgba(255,255,255,0.055) 1px, transparent 1px);
+    background-size: 60px 60px, 30px 30px;
+  }
+
+  .hero-tag {
+    font-family: 'Syne', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: #e74c3c;
+    margin-bottom: 28px;
+    opacity: 0;
+    animation: fadeUp 0.6s ease forwards 0.1s;
+  }
+
+  .hero h1 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(64px, 10vw, 130px);
+    font-weight: 400;
+    line-height: 0.95;
+    letter-spacing: 0.02em;
+    max-width: 900px;
+    color: #f8f9fa;
+    opacity: 0;
+    animation: fadeUp 0.7s ease forwards 0.25s;
+  }
+
+  .hero h1 em { font-style: normal; color: #e74c3c; position: relative; display: inline-block; }
+
+  .hero-sub {
+    margin-top: 28px;
+    font-size: 18px;
+    font-weight: 300;
+    color: #d1d5db;
+    max-width: 580px;
+    line-height: 1.7;
+    opacity: 0;
+    animation: fadeUp 0.7s ease forwards 0.4s;
+  }
+
+  .hero-stats {
+    margin-top: 48px;
+    display: flex;
+    gap: 48px;
+    opacity: 0;
+    animation: fadeUp 0.7s ease forwards 0.5s;
+  }
+
+  .hero-stat {
+    border-left: 2px solid #c0392b;
+    padding-left: 20px;
+  }
+
+  .hero-stat-num {
+    font-family: 'Syne', sans-serif;
+    font-size: 32px;
+    font-weight: 800;
+    color: #f8f9fa;
+    line-height: 1;
+  }
+
+  .hero-stat-label {
+    font-size: 12px;
+    color: #8892a4;
+    font-weight: 300;
+    margin-top: 4px;
+    letter-spacing: 0.05em;
+  }
+
+  .hero-actions {
+    margin-top: 52px;
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    opacity: 0;
+    animation: fadeUp 0.7s ease forwards 0.6s;
+  }
+
+  .btn-primary {
+    font-family: 'Syne', sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #f8f9fa;
+    background: #c0392b;
+    text-decoration: none;
+    padding: 16px 40px;
+    border-radius: 2px;
+    transition: background 0.2s, transform 0.15s;
+    display: inline-block;
+  }
+
+  .btn-primary:hover { background: #e74c3c; transform: translateY(-1px); }
+
+  .hero-deadline {
+    font-size: 13px;
+    color: #8892a4;
+    font-weight: 300;
+  }
+
+  .hero-deadline strong { color: #d1d5db; font-weight: 500; }
+
+  /* REBOOT BANNER */
+  .reboot-banner {
+    background: #c0392b;
+    padding: 20px 48px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .reboot-banner-label {
+    font-family: 'Syne', sans-serif;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.7);
+    white-space: nowrap;
+  }
+
+  .reboot-banner-text {
+    font-family: 'Syne', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    color: #f8f9fa;
+  }
+
+  /* DIVIDER */
+  .divider {
+    width: 100%;
+    height: 1px;
+    background: rgba(255,255,255,0.07);
+  }
+
+  /* SECTIONS */
+  .section-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 100px 48px;
+    background: #0a0e1a;
+  }
+
+  .section-label {
+    font-family: 'Syne', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: #e74c3c;
+    margin-bottom: 16px;
+  }
+
+  .section-title {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(28px, 4vw, 44px);
+    font-weight: 800;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    margin-bottom: 20px;
+    color: #f8f9fa;
+  }
+
+  .section-body {
+    font-size: 17px;
+    font-weight: 300;
+    color: #d1d5db;
+    max-width: 640px;
+    line-height: 1.8;
+  }
+
+  /* COMMITMENT CARDS */
+  .commitment-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: rgba(255,255,255,0.07);
+    border: 1px solid rgba(255,255,255,0.07);
+    margin-top: 52px;
+    overflow: hidden;
+    align-items: stretch;
+  }
+
+  .commitment-card {
+    background: #0a0e1a;
+    padding: 36px;
+    cursor: default;
+    transition: background 0.25s ease, transform 0.25s ease, border-color 0.25s ease;
+    border-left: 2px solid transparent;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
+
+  .commitment-card::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, #e74c3c, #378ADD);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.35s ease;
+  }
+
+  .commitment-card:hover, .commitment-card.tapped {
+    background: #111827;
+    transform: translateY(-3px);
+    border-left-color: #e74c3c;
+  }
+
+  .commitment-card:hover::after, .commitment-card.tapped::after {
+    transform: scaleX(1);
+  }
+
+  .commitment-card:hover .commitment-num, .commitment-card.tapped .commitment-num {
+    transform: scale(1.08);
+    display: inline-block;
+  }
+
+  .commitment-num {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(28px, 4vw, 48px);
+    font-weight: 800;
+    color: #e74c3c;
+    line-height: 1;
+    margin-bottom: 12px;
+    transition: transform 0.25s ease;
+    display: inline-block;
+    white-space: nowrap;
+  }
+
+  .commitment-title {
+    font-family: 'Syne', sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    margin-bottom: 10px;
+    color: #f8f9fa;
+  }
+
+  .commitment-body {
+    font-size: 14px;
+    color: #8892a4;
+    font-weight: 300;
+    line-height: 1.65;
+  }
+
+  /* ROLES GRID */
+  .roles-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+    gap: 1px;
+    background: rgba(255,255,255,0.07);
+    border: 1px solid rgba(255,255,255,0.07);
+    margin-top: 52px;
+  }
+
+  .role-card {
+    background: #0a0e1a;
+    padding: 36px;
+    transition: background 0.2s;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .role-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: #c0392b;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s ease;
+  }
+
+  .role-card:hover { background: #1e2a3a; }
+  .role-card:hover::before { transform: scaleX(1); }
+
+  .role-card-tag {
+    font-family: 'Syne', sans-serif;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: #8892a4;
+    margin-bottom: 10px;
+  }
+
+  .role-card h3 {
+    font-family: 'Syne', sans-serif;
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 6px;
+    line-height: 1.2;
+    color: #f8f9fa;
+  }
+
+  .role-card-reports {
+    font-size: 12px;
+    color: #e74c3c;
+    font-weight: 400;
+    margin-bottom: 16px;
+    font-family: 'Syne', sans-serif;
+    letter-spacing: 0.05em;
+  }
+
+  .role-card-desc {
+    font-size: 14px;
+    color: #d1d5db;
+    font-weight: 300;
+    line-height: 1.65;
+    margin-bottom: 20px;
+  }
+
+  .role-card ul { list-style: none; padding: 0; }
+
+  .role-card ul li {
+    font-size: 13px;
+    color: #8892a4;
+    font-weight: 300;
+    padding: 7px 0 7px 16px;
+    border-top: 1px solid rgba(255,255,255,0.07);
+    position: relative;
+    line-height: 1.5;
+  }
+
+  .role-card ul li::before {
+    content: '→';
+    position: absolute;
+    left: 0;
+    color: #c0392b;
+    font-size: 11px;
+  }
+
+  /* APPLICATION */
+  .apply-section {
+    background: #111827;
+    border-top: 1px solid rgba(255,255,255,0.07);
+    border-bottom: 1px solid rgba(255,255,255,0.07);
+  }
+  .apply-section .section-inner { text-align: center; }
+  .apply-section .section-inner .fade-in:first-child { max-width: 680px; margin: 0 auto; text-align: center; }
+
+  .form-wrap { margin-top: 52px; max-width: 680px; margin-left: auto; margin-right: auto; }
+
+  .form-group { margin-bottom: 32px; }
+
+  label {
+    display: block;
+    font-family: 'Syne', sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #d1d5db;
+    margin-bottom: 10px;
+  }
+
+  .field-note {
+    font-size: 13px;
+    color: #8892a4;
+    font-weight: 300;
+    margin-bottom: 12px;
+    line-height: 1.5;
+  }
+
+  input[type="text"],
+  input[type="email"],
+  textarea {
+    width: 100%;
+    background: #0a0e1a;
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 2px;
+    padding: 14px 18px;
+    color: #f8f9fa;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 15px;
+    font-weight: 300;
+    outline: none;
+    transition: border-color 0.2s;
+  }
+
+  input:focus, textarea:focus { border-color: #e74c3c; }
+  textarea { min-height: 180px; resize: vertical; line-height: 1.6; }
+
+  /* Resume upload */
+  .resume-upload {
+    position: relative;
+  }
+
+  .resume-drop {
+    border: 1px dashed rgba(255,255,255,0.2);
+    border-radius: 2px;
+    padding: 36px;
+    text-align: center;
+    cursor: pointer;
+    transition: border-color 0.2s, background 0.2s;
+  }
+
+  .resume-drop:hover, .resume-drop.drag-active {
+    border-color: #e74c3c;
+    background: rgba(231,76,60,0.05);
+  }
+
+  .resume-drop-icon {
+    font-size: 28px;
+    margin-bottom: 12px;
+    display: block;
+  }
+
+  .resume-drop-text {
+    font-size: 14px;
+    color: #d1d5db;
+    font-weight: 300;
+    margin-bottom: 6px;
+  }
+
+  .resume-drop-sub {
+    font-size: 12px;
+    color: #8892a4;
+    font-weight: 300;
+  }
+
+  .resume-drop input[type="file"] {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    cursor: pointer;
+    width: 100%;
+    height: 100%;
+  }
+
+  .resume-selected {
+    display: none;
+    align-items: center;
+    gap: 12px;
+    background: rgba(231,76,60,0.08);
+    border: 1px solid rgba(231,76,60,0.3);
+    border-radius: 2px;
+    padding: 14px 18px;
+    margin-top: 10px;
+  }
+
+  .resume-selected-name {
+    font-size: 14px;
+    color: #d1d5db;
+    flex: 1;
+  }
+
+  .resume-remove {
+    font-size: 12px;
+    color: #e74c3c;
+    cursor: pointer;
+    font-family: 'Syne', sans-serif;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    background: none;
+    border: none;
+    padding: 0;
+  }
+
+  /* Ranking */
+  .rank-options { display: flex; flex-direction: column; gap: 8px; }
+
+  .rank-row {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    background: #0a0e1a;
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 2px;
+    padding: 13px 16px;
+    cursor: grab;
+    transition: border-color 0.2s, background 0.2s;
+    user-select: none;
+  }
+
+  .rank-row:hover { border-color: rgba(231,76,60,0.4); background: #1e2a3a; }
+  .rank-row.dragging { opacity: 0.35; }
+  .rank-row.drag-over { border-color: #e74c3c; background: #1e2a3a; }
+  .rank-row.selected-for-move { border-color: #e74c3c; background: #1e2a3a; box-shadow: 0 0 0 2px rgba(231,76,60,0.3); }
+
+  .rank-move-btns {
+    display: none;
+    flex-direction: column;
+    gap: 2px;
+    margin-left: auto;
+    flex-shrink: 0;
+  }
+  .rank-move-btns button {
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 2px;
+    color: #8892a4;
+    font-size: 12px;
+    width: 28px;
+    height: 24px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    transition: background 0.15s, color 0.15s;
+  }
+  .rank-move-btns button:hover { background: #e74c3c; color: #fff; border-color: #e74c3c; }
+  .rank-move-btns button:disabled { opacity: 0.2; cursor: default; }
+
+  .rank-handle { color: #8892a4; font-size: 14px; flex-shrink: 0; }
+
+  @media (hover: none) and (pointer: coarse) {
+    .rank-row { cursor: default; }
+    .rank-handle { display: none; }
+    .rank-move-btns { display: flex; }
+  }
+
+  .rank-num {
+    font-family: 'Syne', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    color: #e74c3c;
+    width: 20px;
+    flex-shrink: 0;
+  }
+
+  .rank-name { font-size: 14px; font-weight: 400; flex: 1; }
+  .rank-handle { color: #8892a4; font-size: 14px; flex-shrink: 0; }
+
+  /* Submit */
+  .submit-row {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    margin-top: 44px;
+  }
+
+  button[type="submit"] {
+    font-family: 'Syne', sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #f8f9fa;
+    background: #c0392b;
+    border: none;
+    padding: 16px 44px;
+    border-radius: 2px;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.15s;
+  }
+
+  button[type="submit"]:hover { background: #e74c3c; transform: translateY(-1px); }
+  button[type="submit"]:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
+
+  .submit-note { font-size: 13px; color: #8892a4; font-weight: 300; }
+
+  /* States */
+  .submitting-msg, .success-msg, .error-msg { display: none; margin-top: 28px; border-radius: 2px; padding: 24px 28px; font-size: 15px; }
+  .submitting-msg { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.07); color: #d1d5db; }
+  .success-msg { background: rgba(192,57,43,0.08); border: 1px solid #c0392b; color: #d1d5db; }
+  .success-msg strong, .error-msg strong { color: #f8f9fa; font-weight: 500; }
+  .error-msg { background: rgba(231,76,60,0.08); border: 1px solid #e74c3c; color: #d1d5db; }
+
+  /* FOOTER */
+  footer {
+    padding: 48px;
+    text-align: center;
+    border-top: 1px solid rgba(255,255,255,0.07);
+  }
+
+  footer p { font-size: 13px; color: #8892a4; font-weight: 300; }
+  footer p + p { margin-top: 6px; }
+
+  /* ANIMATIONS */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .fade-in {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.65s ease, transform 0.65s ease;
+  }
+
+  .fade-in.visible { opacity: 1; transform: translateY(0); }
+
+  /* RESPONSIVE — TABLET */
+  @media (max-width: 1024px) {
+    .commitment-grid { grid-template-columns: 1fr; }
+    .roles-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+
+  /* RESPONSIVE — MOBILE */
+  @media (max-width: 768px) {
+    /* Nav */
+    nav { padding: 14px 20px; }
+    .nav-logo { font-size: 13px; }
+    nav a.nav-cta { font-size: 11px; padding: 7px 14px; }
+
+    /* Hero */
+    .hero { grid-template-columns: 1fr; padding: 96px 20px 60px; min-height: auto; gap: 40px; }
+    .hero-right { border-left: none; padding-left: 0; border-top: 1px solid rgba(255,255,255,0.07); padding-top: 32px; }
+    .hero-right-stat { padding: 12px 16px; }
+    .hero-right-stat-num { font-size: 24px; min-width: 56px; }
+    .hero-right-stat-label { font-size: 12px; }
+    .hero h1 { font-size: clamp(52px, 14vw, 80px); line-height: 0.92; }
+    .hero-tag { font-size: 10px; margin-bottom: 20px; }
+    .hero-sub { font-size: 15px; margin-top: 20px; }
+    .btn-primary { padding: 14px 32px; font-size: 13px; width: 100%; text-align: center; }
+
+    /* Reboot banner */
+    .reboot-banner { padding: 14px 20px; flex-direction: column; align-items: flex-start; gap: 6px; }
+    .reboot-banner-label { display: none; }
+    .reboot-banner-text { font-size: 13px; }
+
+    /* Sections */
+    .section-inner { padding: 52px 20px; }
+    .section-title { font-size: clamp(24px, 6vw, 36px); }
+    .section-body { font-size: 15px; }
+
+    /* Commitment */
+    .commitment-grid { grid-template-columns: 1fr; }
+    .commitment-num { font-size: 36px; }
+
+    /* Roles */
+    .roles-grid { grid-template-columns: 1fr; }
+    .role-card { padding: 24px; }
+
+    /* Presidents */
+    .presidents-grid { grid-template-columns: 1fr !important; }
+    .presidents-grid > div { padding: 28px 20px !important; border-left: none !important; border-right: none !important; border-top: 1px solid rgba(255,255,255,0.07); }
+
+    /* Value stats */
+    .value-grid { grid-template-columns: 1fr !important; }
+    .value-grid > div { padding: 24px 20px !important; }
+
+    /* Form */
+    .form-wrap { margin-top: 36px; }
+    .resume-drop { padding: 24px 16px; }
+    .submit-row { flex-direction: column; align-items: flex-start; gap: 12px; }
+    button[type="submit"] { width: 100%; }
+
+    /* Footer */
+    footer { padding: 36px 20px; }
+  }
+
+  /* RESPONSIVE — SMALL MOBILE */
+  @media (max-width: 420px) {
+    .hero h1 { font-size: 48px; }
+    .nav-cta { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <span class="nav-logo">Wharton <span>Tech</span> Club</span>
+  <a href="javascript:void(0)" class="nav-cta" onclick="document.getElementById('apply').scrollIntoView({behavior:'smooth'});">Apply Now</a>
+</nav>
+
+<!-- HERO -->
+<div class="hero" id="hero-anchor">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+
+  <!-- LEFT: headline + sub -->
+  <div class="hero-left">
+    <p class="hero-tag">2026–2027 Board Applications · This is a reboot</p>
+    <h1>Don't join<br>the board.<br><em>Rebuild it.</em></h1>
+    <p class="hero-sub">We're not looking for résumé line items. We're looking for people who want to fundamentally change what Wharton Tech Club is — and have the drive to make it happen.</p>
+  </div>
+
+  <!-- RIGHT: stats + CTA -->
+  <div class="hero-right">
+    <div class="hero-right-stat">
+      <div class="hero-right-stat-num">6</div>
+      <div class="hero-right-stat-label">VP roles open now — each owns a full domain</div>
+    </div>
+    <div class="hero-right-stat">
+      <div class="hero-right-stat-num">~20</div>
+      <div class="hero-right-stat-label">Total board members — small enough that everyone matters</div>
+    </div>
+    <div class="hero-right-stat">
+      <div class="hero-right-stat-num">400+</div>
+      <div class="hero-right-stat-label">Club members counting on this board to deliver</div>
+    </div>
+    <div class="hero-right-cta">
+      <a href="javascript:void(0)" class="btn-primary" onclick="document.getElementById('apply').scrollIntoView({behavior:'smooth'});">Apply Now</a>
+      <p class="hero-deadline">Due <strong>April 17th at 11:59PM</strong></p>
+    </div>
+  </div>
+</div>
+
+<!-- REBOOT BANNER -->
+<div class="reboot-banner section-grid pat-diag">
+  <span class="reboot-banner-label">Why this year is different</span>
+  <span class="reboot-banner-text">We've redesigned the board from scratch — leaner, more defined, higher stakes. Every VP owns a real domain. There's nowhere to hide and no room for passengers.</span>
+</div>
+
+<!-- ABOUT -->
+<div class="divider"></div>
+<div style="background:#0a0e1a;" class="section-grid pat-dots">
+<div class="section-inner fade-in">
+  <div id="about-anchor"></div>
+  <p class="section-label">About the Board</p>
+  <h2 class="section-title">A platform, not a title.</h2>
+  <p class="section-body">The Wharton Tech Club is one of the largest professional clubs on campus — 400+ members, a flagship annual conference, a podcast, and a network that reaches across the industry. This year we're rebuilding the board to be leaner and more impactful: ~10 second-year VPs who own the strategy, and ~10 first-year members recruited in the fall who execute alongside them. If you're joining, you're not filling a seat — you're co-authoring what this club becomes.</p>
+
+  <div style="margin-top:36px; border:1px solid rgba(55,138,221,0.25); border-left:3px solid #378ADD; background:rgba(55,138,221,0.05); border-radius:2px; padding:20px 24px;">
+    <p style="font-family:'Syne',sans-serif; font-size:10px; font-weight:700; letter-spacing:0.15em; text-transform:uppercase; color:#378ADD; margin-bottom:8px;">How we'll work together</p>
+    <p style="font-size:15px; color:#d1d5db; line-height:1.7; margin:0;">Before the year starts, we'll sit down with every VP and <strong style="color:#f8f9fa;">co-write a plan for the semester</strong> — event ideas, initiatives, rough timelines. These aren't mandates. They're starting points. You own the domain; we're here to help you think it through before you're in the thick of it.</p>
+  </div>
+</div>
+</div>
+
+<!-- COMMITMENT -->
+<div class="divider"></div>
+<div style="background:#0a0e1a;" class="section-grid pat-lines">
+<div class="section-inner fade-in">
+  <div id="commitment-anchor"></div>
+  <p class="section-label">What we expect</p>
+  <h2 class="section-title">High commitment.<br>Real ownership.</h2>
+  <p class="section-body">This year's board requires more than previous years. We're being honest about that upfront. Here's what that looks like:</p>
+  <div class="commitment-grid">
+    <div class="commitment-card">
+      <div class="commitment-num">Own</div>
+      <div class="commitment-title">Your domain, end to end</div>
+      <p class="commitment-body">Every VP owns a committee fully — strategy, execution, and outcomes. There's no one else to hand it off to. You set the bar and you meet it.</p>
+    </div>
+    <div class="commitment-card">
+      <div class="commitment-num">Lead</div>
+      <div class="commitment-title">A team of 1Y members</div>
+      <p class="commitment-body">In the fall you'll recruit and lead first-year members on your committee. You're not just doing the work — you're building the next generation of the club.</p>
+    </div>
+    <div class="commitment-card">
+      <div class="commitment-num">Change</div>
+      <div class="commitment-title">Something that lasts</div>
+      <p class="commitment-body">We want people who will look back at this year and point to something real they built — a Substack, a conference, a recruiting pipeline, a community. Leave a mark.</p>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- PRESIDENTS -->
+<div class="divider"></div>
+<div style="background:#111827;" class="section-grid pat-cross">
+  <div class="section-inner fade-in">
+    <div id="presidents-anchor"></div>
+    <p class="section-label">Leadership</p>
+    <h2 class="section-title">Meet your<br>Co-Presidents.</h2>
+    <p class="section-body">Three operators with real industry experience, building the club they wish had existed when they arrived at Wharton.</p>
+
+    <style>
+      .pres-card {
+        background: #0a0e1a;
+        padding: 40px 36px;
+        transition: background 0.25s ease, transform 0.25s ease;
+        cursor: default;
+        position: relative;
+        overflow: hidden;
+      }
+      .pres-card::before {
+        content: '';
+        position: absolute;
+        top: 0; left: 0; right: 0;
+        height: 2px;
+        background: linear-gradient(90deg, #e74c3c, #378ADD);
+        transform: scaleX(0);
+        transform-origin: left;
+        transition: transform 0.4s ease;
+      }
+      .pres-card:hover, .pres-card.tapped {
+        background: #111827;
+        transform: translateY(-4px);
+      }
+      .pres-card:hover::before, .pres-card.tapped::before {
+        transform: scaleX(1);
+      }
+      .pres-avatar {
+        width: 80px; height: 80px; border-radius: 50%;
+        display: flex; align-items: center; justify-content: center;
+        margin-bottom: 24px;
+        font-family: 'Syne', sans-serif; font-size: 28px; font-weight: 800; color: white;
+        flex-shrink: 0;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+      .pres-card:hover .pres-avatar, .pres-card.tapped .pres-avatar {
+        transform: scale(1.08);
+        box-shadow: 0 0 0 3px rgba(231,76,60,0.35);
+      }
+      .pres-linkedin {
+        display: inline-block; margin-top: 24px;
+        font-family: 'Syne', sans-serif; font-size: 11px; font-weight: 600;
+        letter-spacing: 0.1em; text-transform: uppercase;
+        color: #e74c3c; text-decoration: none;
+        border-bottom: 1px solid rgba(231,76,60,0.3); padding-bottom: 2px;
+        transition: color 0.2s, border-color 0.2s, letter-spacing 0.2s;
+      }
+      .pres-linkedin:hover { color: #f8f9fa; border-color: #f8f9fa; letter-spacing: 0.15em; }
+    </style>
+
+    <div class="presidents-grid" style="display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:rgba(255,255,255,0.07); border:1px solid rgba(255,255,255,0.07); margin-top:52px;">
+
+      <!-- Gorav -->
+      <div class="pres-card">
+        <div class="pres-avatar" style="background:#c0392b;">G</div>
+        <div style="font-family:'Syne',sans-serif; font-size:20px; font-weight:700; margin-bottom:4px; color:#f8f9fa;">Gorav Menon</div>
+        <div style="font-size:12px; color:#e74c3c; font-family:'Syne',sans-serif; font-weight:600; letter-spacing:0.08em; text-transform:uppercase; margin-bottom:20px;">Co-President</div>
+        <div style="font-size:14px; color:#d1d5db; font-weight:300; line-height:1.7; margin-bottom:20px;">Ads strategy and storytelling across consumer tech. Built Netflix's ads business from scratch, led SMB strategy at Snapchat. Podcast co-host with 85+ episodes and guests from NYT to Marvel Games.</div>
+        <div style="display:flex; flex-direction:column; gap:6px;">
+          <div style="font-size:12px; color:#8892a4; font-weight:300;">📺 Ads Business Operations & Strategy · Netflix</div>
+          <div style="font-size:12px; color:#8892a4; font-weight:300;">👻 Revenue Strategy & Operations · Snap</div>
+          <div style="font-size:12px; color:#8892a4; font-weight:300;">🎓 UCLA · Wharton MBA '27</div>
+        </div>
+        <a href="https://www.linkedin.com/in/goravmenon/" target="_blank" class="pres-linkedin">LinkedIn →</a>
+      </div>
+
+      <!-- Melody -->
+      <div class="pres-card" style="border-left:1px solid rgba(255,255,255,0.07); border-right:1px solid rgba(255,255,255,0.07);">
+        <div class="pres-avatar" style="background:#1e2a3a; border:1px solid rgba(255,255,255,0.07);">M</div>
+        <div style="font-family:'Syne',sans-serif; font-size:20px; font-weight:700; margin-bottom:4px; color:#f8f9fa;">Melody Zhang</div>
+        <div style="font-size:12px; color:#e74c3c; font-family:'Syne',sans-serif; font-weight:600; letter-spacing:0.08em; text-transform:uppercase; margin-bottom:20px;">Co-President</div>
+        <div style="font-size:14px; color:#d1d5db; font-weight:300; line-height:1.7; margin-bottom:20px;">AI, Product and Platform Strategy. Deep experience in analytics and technical leadership across some of the most data-driven companies in tech.</div>
+        <div style="display:flex; flex-direction:column; gap:6px;">
+          <div style="font-size:12px; color:#8892a4; font-weight:300;">🤖 AI, Product and Platform Strategy · Analysis Group</div>
+          <div style="font-size:12px; color:#8892a4; font-weight:300;">🔍 Cases & Projects · Amazon · Google</div>
+          <div style="font-size:12px; color:#8892a4; font-weight:300;">🎓 Wharton MBA '27</div>
+        </div>
+        <a href="https://www.linkedin.com/in/melody-mingfang-zhang/" target="_blank" class="pres-linkedin">LinkedIn →</a>
+      </div>
+
+      <!-- Logan -->
+      <div class="pres-card">
+        <div class="pres-avatar" style="background:#1e2a3a; border:1px solid rgba(255,255,255,0.07);">L</div>
+        <div style="font-family:'Syne',sans-serif; font-size:20px; font-weight:700; margin-bottom:4px; color:#f8f9fa;">Logan Hageman</div>
+        <div style="font-size:12px; color:#e74c3c; font-family:'Syne',sans-serif; font-weight:600; letter-spacing:0.08em; text-transform:uppercase; margin-bottom:20px;">Co-President</div>
+        <div style="font-size:14px; color:#d1d5db; font-weight:300; line-height:1.7; margin-bottom:20px;">Strategy and operations in Tech, Media & Telecom. Four years at Deloitte advising high-tech companies on complex global transformations — product management, GTM strategy, M&A integration, and more.</div>
+        <div style="display:flex; flex-direction:column; gap:6px;">
+          <div style="font-size:12px; color:#8892a4; font-weight:300;">📱 Senior Consultant, TMT · Deloitte</div>
+          <div style="font-size:12px; color:#8892a4; font-weight:300;">⚗️ Materials R&D · HP</div>
+          <div style="font-size:12px; color:#8892a4; font-weight:300;">🎓 UT Austin · Wharton MBA '27</div>
+        </div>
+        <a href="https://www.linkedin.com/in/hagemanlogan/" target="_blank" class="pres-linkedin">LinkedIn →</a>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- ROLES -->
+<div class="divider"></div>
+<div style="background:#0a0e1a;" class="section-grid pat-zig">
+  <div class="section-inner fade-in">
+    <div id="roles-anchor"></div>
+    <p class="section-label">Open Roles</p>
+    <h2 class="section-title">Six VP positions.<br>All consequential.</h2>
+    <p class="section-body">Read every role before you rank. The best applications come from people who chose their role deliberately, not by default. <strong style="color:#e74c3c;">Tap any card to flip it.</strong></p>
+
+    <style>
+      .flip-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+        grid-auto-rows: 1fr;
+        gap: 16px;
+        margin-top: 52px;
+        align-items: stretch;
+      }
+      .flip-card {
+        perspective: 1200px;
+        cursor: pointer;
+        /* height driven by grid row - all cells in same implicit grid share tallest */
+      }
+      .flip-card-inner {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        transition: transform 0.6s cubic-bezier(0.4,0.2,0.2,1);
+        transform-style: preserve-3d;
+      }
+      .flip-card.flipped .flip-card-inner {
+        transform: rotateY(180deg);
+      }
+      .flip-front, .flip-back {
+        position: absolute;
+        top: 0; left: 0; right: 0; bottom: 0;
+        backface-visibility: hidden;
+        -webkit-backface-visibility: hidden;
+        border-radius: 2px;
+        padding: 28px;
+        display: flex;
+        flex-direction: column;
+        box-sizing: border-box;
+      }
+      .flip-front {
+        background: #111827;
+        border: 1px solid rgba(255,255,255,0.07);
+        border-top: 2px solid #c0392b;
+        justify-content: flex-start;
+      }
+      .flip-back {
+        background: #1e2a3a;
+        border: 1px solid rgba(55,138,221,0.3);
+        border-top: 2px solid #378ADD;
+        transform: rotateY(180deg);
+      }
+      .flip-tag {
+        font-family: 'Syne', sans-serif;
+        font-size: 10px;
+        font-weight: 600;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        color: #8892a4;
+        margin-bottom: 10px;
+      }
+      .flip-title {
+        font-family: 'Syne', sans-serif;
+        font-size: 20px;
+        font-weight: 700;
+        color: #f8f9fa;
+        margin-bottom: 6px;
+        line-height: 1.2;
+      }
+      .flip-reports {
+        font-size: 12px;
+        color: #e74c3c;
+        font-family: 'Syne', sans-serif;
+        letter-spacing: 0.05em;
+        margin-bottom: 14px;
+      }
+      .flip-desc {
+        font-size: 14px;
+        color: #d1d5db;
+        font-weight: 300;
+        line-height: 1.65;
+        margin-bottom: 0;
+      }
+      .flip-stat-row {
+        display: flex;
+        gap: 8px;
+        flex: 1;
+        align-items: center;
+        padding: 16px 0;
+      }
+      .flip-stat {
+        flex: 1;
+        background: rgba(255,255,255,0.04);
+        border: 1px solid rgba(255,255,255,0.07);
+        border-radius: 2px;
+        padding: 0;
+        text-align: center;
+        min-height: 72px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 6px;
+      }
+      .flip-stat-num {
+        font-family: 'Syne', sans-serif;
+        font-size: 20px;
+        font-weight: 800;
+        color: #e74c3c;
+        line-height: 1;
+      }
+      .flip-stat-label {
+        font-size: 9px;
+        color: #8892a4;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        font-family: 'Syne', sans-serif;
+        font-weight: 600;
+        line-height: 1.3;
+      }
+      .flip-front ul { list-style: none; padding: 0; margin: 0; }
+      .flip-front ul li {
+        font-size: 13px;
+        color: #8892a4;
+        padding: 6px 0 6px 16px;
+        border-top: 1px solid rgba(255,255,255,0.05);
+        position: relative;
+        line-height: 1.5;
+      }
+      .flip-front ul li::before { content: '→'; position: absolute; left: 0; color: #c0392b; font-size: 11px; }
+      .flip-hint {
+        margin-top: 16px;
+        font-size: 11px;
+        color: #8892a4;
+        font-family: 'Syne', sans-serif;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        text-align: center;
+        border-top: 1px solid rgba(255,255,255,0.05);
+        padding-top: 12px;
+      }
+      .flip-hint span { color: #e74c3c; }
+
+      /* Back face styles */
+      .back-header {
+        font-family: 'Syne', sans-serif;
+        font-size: 10px;
+        font-weight: 700;
+        letter-spacing: 0.15em;
+        text-transform: uppercase;
+        color: #378ADD;
+        margin-bottom: 4px;
+      }
+      .back-title {
+        font-family: 'Syne', sans-serif;
+        font-size: 18px;
+        font-weight: 700;
+        color: #f8f9fa;
+        margin-bottom: 20px;
+        line-height: 1.2;
+      }
+      .back-row {
+        display: flex;
+        gap: 8px;
+        margin-bottom: 12px;
+        align-items: flex-start;
+      }
+      .back-icon { font-size: 16px; flex-shrink: 0; margin-top: 1px; }
+      .back-label {
+        font-family: 'Syne', sans-serif;
+        font-size: 10px;
+        font-weight: 600;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: #8892a4;
+        margin-bottom: 2px;
+      }
+      .back-value { font-size: 13px; color: #d1d5db; font-weight: 300; line-height: 1.5; }
+      .back-divider { height: 1px; background: rgba(255,255,255,0.07); margin: 14px 0; }
+      .dog-box {
+        background: rgba(55,138,221,0.08);
+        border: 1px solid rgba(55,138,221,0.2);
+        border-radius: 2px;
+        padding: 12px 14px;
+        margin-top: auto;
+      }
+      .dog-label {
+        font-family: 'Syne', sans-serif;
+        font-size: 10px;
+        font-weight: 700;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: #378ADD;
+        margin-bottom: 4px;
+      }
+      .dog-value { font-size: 13px; color: #d1d5db; line-height: 1.5; }
+      .back-close {
+        margin-top: 14px;
+        font-size: 11px;
+        color: #8892a4;
+        font-family: 'Syne', sans-serif;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        text-align: center;
+        border-top: 1px solid rgba(255,255,255,0.05);
+        padding-top: 12px;
+      }
+      .back-close span { color: #378ADD; }
+      @media (max-width: 768px) {
+        .flip-grid { grid-template-columns: 1fr; gap: 12px; }
+        .flip-front, .flip-back { padding: 22px 20px; }
+      }
+    </style>
+
+    <div class="flip-grid">
+
+      <!-- Content & Events -->
+      <div class="flip-card" >
+        <div class="flip-card-inner">
+          <div class="flip-front">
+            <p class="flip-tag">Content</p>
+            <h3 class="flip-title">VP of Content & Events</h3>
+            <p class="flip-reports">Reporting to Gorav</p>
+            <p class="flip-desc">Leads the club's most visible output — a podcast, a Substack, and events across SF, NYC, and Philly that position Wharton as a genuine voice in tech.</p>
+            <div class="flip-stat-row">
+              <div class="flip-stat"><div class="flip-stat-num">20+</div><div class="flip-stat-label">Podcast eps</div></div>
+              <div class="flip-stat"><div class="flip-stat-num">3</div><div class="flip-stat-label">Cities</div></div>
+              <div class="flip-stat"><div class="flip-stat-num">2</div><div class="flip-stat-label">1Y members</div></div>
+            </div>
+            <ul>
+              <li>Co-host Tech Toks episodes alongside the Co-President</li>
+              <li>Source and book speakers — founders, operators, investors</li>
+              <li>Build and run events in SF, NYC, and Philly (Semester in SF + Philly home base)</li>
+              <li>Coordinate the Substack research and writing team (non-board, project-based contributors rotated per piece)</li>
+              <li>Own the podcast and Substack publication schedule</li>
+            </ul>
+            <p class="flip-hint"><span>Tap</span> to flip for details</p>
+          </div>
+          <div class="flip-back">
+            <p class="back-header">Inside the role</p>
+            <p class="back-title">VP of Content & Events</p>
+            <div class="back-row">
+              <span class="back-icon">👥</span>
+              <div><p class="back-label">Team size</p><p class="back-value">You + 2 dedicated 1Y board members. Substack writers are <em style="font-style:normal;color:#e74c3c;">not</em> board members — they're project-based contributors you recruit and rotate per piece.</p></div>
+            </div>
+            <div class="back-row">
+              <span class="back-icon">🛠️</span>
+              <div><p class="back-label">Skills you'll use</p><p class="back-value">Storytelling, speaker relations, content strategy, editorial judgment, multi-city event ops</p></div>
+            </div>
+            <div class="back-row">
+              <span class="back-icon">🏆</span>
+              <div><p class="back-label">Win condition</p><p class="back-value">Tech Toks becomes the go-to MBA tech podcast. Substack hits 500+ subscribers. Events in all three cities feel like the place to be.</p></div>
+            </div>
+            <div class="back-divider"></div>
+            <div class="dog-box">
+              <p class="dog-label">🐶 If this role were a dog...</p>
+              <p class="dog-value">A <strong style="color:#f8f9fa;">Golden Retriever</strong> — endlessly social, always bringing people together, somehow on every podcast, and everyone's favorite at the party.</p>
+            </div>
+            <p class="back-close"><span>Tap</span> to flip back</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tech Conference -->
+      <div class="flip-card" >
+        <div class="flip-card-inner">
+          <div class="flip-front">
+            <p class="flip-tag">Flagship Event</p>
+            <h3 class="flip-title">VP of Tech Conference</h3>
+            <p class="flip-reports">Reporting to Gorav</p>
+            <p class="flip-desc">Leads the planning and execution of the club's flagship annual conference — a full-day event bringing together students, alumni, and industry leaders.</p>
+            <div class="flip-stat-row">
+              <div class="flip-stat"><div class="flip-stat-num">200+</div><div class="flip-stat-label">Attendees</div></div>
+              <div class="flip-stat"><div class="flip-stat-num">1 day</div><div class="flip-stat-label">All in</div></div>
+              <div class="flip-stat"><div class="flip-stat-num">2</div><div class="flip-stat-label">1Y members</div></div>
+            </div>
+            <ul>
+              <li>Develop the conference theme, agenda, and speaker lineup</li>
+              <li>Recruit and manage keynote speakers and panelists</li>
+              <li>Coordinate budget with VP Finance, sponsors with VP Careers</li>
+              <li>Manage all logistics — venue, AV, catering, run-of-show</li>
+              <li>Lead a team of 2 members from concept to day-of</li>
+            </ul>
+            <p class="flip-hint"><span>Tap</span> to flip for details</p>
+          </div>
+          <div class="flip-back">
+            <p class="back-header">Inside the role</p>
+            <p class="back-title">VP of Tech Conference</p>
+            <div class="back-row">
+              <span class="back-icon">👥</span>
+              <div><p class="back-label">Team size</p><p class="back-value">You + 2 dedicated 1Y members</p></div>
+            </div>
+            <div class="back-row">
+              <span class="back-icon">🛠️</span>
+              <div><p class="back-label">Skills you'll use</p><p class="back-value">Project management, speaker recruiting, budget tracking, vendor negotiation, logistics</p></div>
+            </div>
+            <div class="back-row">
+              <span class="back-icon">🏆</span>
+              <div><p class="back-label">Win condition</p><p class="back-value">200+ attendees, three keynotes people actually remember, zero day-of disasters.</p></div>
+            </div>
+            <div class="back-divider"></div>
+            <div class="dog-box">
+              <p class="dog-label">🐶 If this role were a dog...</p>
+              <p class="dog-value">A <strong style="color:#f8f9fa;">Border Collie</strong> — obsessively organized, herding everyone toward the goal, happiest when the whole operation runs perfectly.</p>
+            </div>
+            <p class="back-close"><span>Tap</span> to flip back</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Treks -->
+      <div class="flip-card" >
+        <div class="flip-card-inner">
+          <div class="flip-front">
+            <p class="flip-tag">Industry Access</p>
+            <h3 class="flip-title">VP of Treks</h3>
+            <p class="flip-reports">Reporting to Melody</p>
+            <p class="flip-desc">Organizes and leads in-person company visits, giving members direct access to top tech companies and the people building them.</p>
+            <div class="flip-stat-row">
+              <div class="flip-stat"><div class="flip-stat-num">2</div><div class="flip-stat-label">Treks/yr</div></div>
+              <div class="flip-stat"><div class="flip-stat-num">2</div><div class="flip-stat-label">Cities</div></div>
+              <div class="flip-stat"><div class="flip-stat-num">2</div><div class="flip-stat-label">1Y members</div></div>
+            </div>
+            <ul>
+              <li>Plan and lead two treks per year — Bay Area and NYC</li>
+              <li>Source and manage company and alumni contacts</li>
+              <li>Schedule office visits, panels, and networking sessions</li>
+              <li>Run the trek application process and attendee comms</li>
+              <li>Lead a team of 2 members through planning and execution</li>
+            </ul>
+            <p class="flip-hint"><span>Tap</span> to flip for details</p>
+          </div>
+          <div class="flip-back">
+            <p class="back-header">Inside the role</p>
+            <p class="back-title">VP of Treks</p>
+            <div class="back-row">
+              <span class="back-icon">👥</span>
+              <div><p class="back-label">Team size</p><p class="back-value">You + 2 dedicated 1Y members</p></div>
+            </div>
+            <div class="back-row">
+              <span class="back-icon">🛠️</span>
+              <div><p class="back-label">Skills you'll use</p><p class="back-value">Relationship management, itinerary planning, alumni outreach, logistics coordination</p></div>
+            </div>
+            <div class="back-row">
+              <span class="back-icon">🏆</span>
+              <div><p class="back-label">Win condition</p><p class="back-value">Two treks that feel like insider access, not a field trip. Members leave with real relationships.</p></div>
+            </div>
+            <div class="back-divider"></div>
+            <div class="dog-box">
+              <p class="dog-label">🐶 If this role were a dog...</p>
+              <p class="dog-value">A <strong style="color:#f8f9fa;">Siberian Husky</strong> — built to travel, thrives in new environments, and always leading the pack somewhere exciting.</p>
+            </div>
+            <p class="back-close"><span>Tap</span> to flip back</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Careers & Sponsorships -->
+      <div class="flip-card" >
+        <div class="flip-card-inner">
+          <div class="flip-front">
+            <p class="flip-tag">Careers & Partnerships</p>
+            <h3 class="flip-title">VP of Careers & Sponsorships</h3>
+            <p class="flip-reports">Reporting to Melody</p>
+            <p class="flip-desc">Connects members with opportunities in tech while building the corporate relationships that fund the club's programming.</p>
+            <div class="flip-stat-row">
+              <div class="flip-stat"><div class="flip-stat-num">2+</div><div class="flip-stat-label">Sponsors/yr</div></div>
+              <div class="flip-stat"><div class="flip-stat-num">All</div><div class="flip-stat-label">Members</div></div>
+              <div class="flip-stat"><div class="flip-stat-num">1</div><div class="flip-stat-label">1Y member</div></div>
+            </div>
+            <ul>
+              <li>Organize recruiting prep — workshops, mock interviews, resume reviews</li>
+              <li>Partner with MBACM to surface job opportunities</li>
+              <li>Identify, pitch, and secure corporate sponsors</li>
+              <li>Maintain relationships with existing sponsor companies</li>
+              <li>Host alumni and company panels on career readiness</li>
+            </ul>
+            <p class="flip-hint"><span>Tap</span> to flip for details</p>
+          </div>
+          <div class="flip-back">
+            <p class="back-header">Inside the role</p>
+            <p class="back-title">VP of Careers & Sponsorships</p>
+            <div class="back-row">
+              <span class="back-icon">👥</span>
+              <div><p class="back-label">Team size</p><p class="back-value">You + 1 dedicated 1Y member</p></div>
+            </div>
+            <div class="back-row">
+              <span class="back-icon">🛠️</span>
+              <div><p class="back-label">Skills you'll use</p><p class="back-value">Sales, relationship management, career coaching, sponsorship pitching, networking</p></div>
+            </div>
+            <div class="back-row">
+              <span class="back-icon">🏆</span>
+              <div><p class="back-label">Win condition</p><p class="back-value">Two new sponsors signed. Members feel meaningfully more prepared to recruit in tech.</p></div>
+            </div>
+            <div class="back-divider"></div>
+            <div class="dog-box">
+              <p class="dog-label">🐶 If this role were a dog...</p>
+              <p class="dog-value">A <strong style="color:#f8f9fa;">Labrador Retriever</strong> — everyone wants one, brings things back reliably, and somehow has a connection with every single person in the room.</p>
+            </div>
+            <p class="back-close"><span>Tap</span> to flip back</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Community & Marketing -->
+      <div class="flip-card" >
+        <div class="flip-card-inner">
+          <div class="flip-front">
+            <p class="flip-tag">Community</p>
+            <h3 class="flip-title">VP of Community & Marketing</h3>
+            <p class="flip-reports">Reporting to Logan</p>
+            <p class="flip-desc">Owns the club's campus presence, member community, and the Wharton Tech Alumni Network — keeping everyone connected well beyond graduation.</p>
+            <div class="flip-stat-row">
+              <div class="flip-stat"><div class="flip-stat-num">~1/wk</div><div class="flip-stat-label">Newsletter</div></div>
+              <div class="flip-stat"><div class="flip-stat-num">Growing</div><div class="flip-stat-label">Alumni net</div></div>
+              <div class="flip-stat"><div class="flip-stat-num">2</div><div class="flip-stat-label">1Y members</div></div>
+            </div>
+            <ul>
+              <li>Build, maintain, and leverage the Wharton Tech Alumni Network</li>
+              <li>Plan and execute happy hours, community dinners, board bonding</li>
+              <li>Own the weekly club newsletter — curate, write, distribute</li>
+              <li>Manage the club's social media and create marketing assets</li>
+              <li>Partner with each VP to ensure events are well-promoted</li>
+            </ul>
+            <p class="flip-hint"><span>Tap</span> to flip for details</p>
+          </div>
+          <div class="flip-back">
+            <p class="back-header">Inside the role</p>
+            <p class="back-title">VP of Community & Marketing</p>
+            <div class="back-row">
+              <span class="back-icon">👥</span>
+              <div><p class="back-label">Team size</p><p class="back-value">You + 2 dedicated 1Y members</p></div>
+            </div>
+            <div class="back-row">
+              <span class="back-icon">🛠️</span>
+              <div><p class="back-label">Skills you'll use</p><p class="back-value">Community building, alumni relations, copywriting, Canva/design, newsletter curation, event planning</p></div>
+            </div>
+            <div class="back-row">
+              <span class="back-icon">🏆</span>
+              <div><p class="back-label">Win condition</p><p class="back-value">People look forward to the newsletter. The alumni network is active and reachable. The board actually likes each other.</p></div>
+            </div>
+            <div class="back-divider"></div>
+            <div class="dog-box">
+              <p class="dog-label">🐶 If this role were a dog...</p>
+              <p class="dog-value">A <strong style="color:#f8f9fa;">Cavalier King Charles Spaniel</strong> — warm, makes everyone feel included, somehow always looks great in photos, and the glue that holds the whole group together.</p>
+            </div>
+            <p class="back-close"><span>Tap</span> to flip back</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Finance -->
+      <div class="flip-card" >
+        <div class="flip-card-inner">
+          <div class="flip-front">
+            <p class="flip-tag">Finance</p>
+            <h3 class="flip-title">VP of Finance</h3>
+            <p class="flip-reports">Reporting to Logan</p>
+            <p class="flip-desc">Responsible for the financial health of the entire club — the connective tissue between all programming and the budget. Not a back-office role.</p>
+            <div class="flip-stat-row">
+              <div class="flip-stat"><div class="flip-stat-num">6</div><div class="flip-stat-label">Committees</div></div>
+              <div class="flip-stat"><div class="flip-stat-num">$0</div><div class="flip-stat-label">Drama</div></div>
+              <div class="flip-stat"><div class="flip-stat-num">2</div><div class="flip-stat-label">1Y members</div></div>
+            </div>
+            <ul>
+              <li>Own the club's annual budget — build it and maintain it all year</li>
+              <li>Process all reimbursements across every committee</li>
+              <li>Track sponsorship revenue and report on financial position</li>
+              <li>Provide monthly financial updates to the Co-Presidents</li>
+              <li>Flag budget risks proactively and recommend adjustments</li>
+            </ul>
+            <p class="flip-hint"><span>Tap</span> to flip for details</p>
+          </div>
+          <div class="flip-back">
+            <p class="back-header">Inside the role</p>
+            <p class="back-title">VP of Finance</p>
+            <div class="back-row">
+              <span class="back-icon">👥</span>
+              <div><p class="back-label">Team size</p><p class="back-value">You + 2 dedicated 1Y members</p></div>
+            </div>
+            <div class="back-row">
+              <span class="back-icon">🛠️</span>
+              <div><p class="back-label">Skills you'll use</p><p class="back-value">Budgeting, financial reporting, Excel/Sheets, cross-functional coordination, attention to detail</p></div>
+            </div>
+            <div class="back-row">
+              <span class="back-icon">🏆</span>
+              <div><p class="back-label">Win condition</p><p class="back-value">Zero reimbursement drama. Every VP trusts the numbers. Club ends the year in the black.</p></div>
+            </div>
+            <div class="back-divider"></div>
+            <div class="dog-box">
+              <p class="dog-label">🐶 If this role were a dog...</p>
+              <p class="dog-value">A <strong style="color:#f8f9fa;">German Shepherd</strong> — disciplined, dependable, quietly running the whole operation, and mildly terrifying when something's off budget.</p>
+            </div>
+            <p class="back-close"><span>Tap</span> to flip back</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- VALUE -->
+<div class="divider"></div>
+<div style="background:#0a0e1a;" class="section-grid pat-rings">
+  <div class="section-inner fade-in">
+    <div id="value-anchor"></div>
+    <p class="section-label">Why it matters</p>
+    <h2 class="section-title">The network you build<br>here is permanent.</h2>
+    <p class="section-body">The Wharton brand opens doors. The Tech Club board blows them off the hinges. You're not just attending events — you're the person who brought the speaker, planned the trek, and built the relationship.</p>
+
+    <style>
+      .val-card {
+        background: #0a0e1a;
+        padding: 36px;
+        position: relative;
+        overflow: hidden;
+        transition: background 0.25s ease, transform 0.25s ease;
+        cursor: default;
+      }
+      .val-card::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(135deg, rgba(231,76,60,0.06) 0%, rgba(55,138,221,0.06) 100%);
+        opacity: 0;
+        transition: opacity 0.3s ease;
+      }
+      .val-card:hover, .val-card.tapped {
+        background: #111827;
+        transform: translateY(-4px);
+      }
+      .val-card:hover::before, .val-card.tapped::before {
+        opacity: 1;
+      }
+      .val-num {
+        font-family: 'Syne', sans-serif;
+        font-size: 42px;
+        font-weight: 800;
+        color: #e74c3c;
+        line-height: 1;
+        margin-bottom: 12px;
+        transition: color 0.3s ease, transform 0.3s ease;
+        display: inline-block;
+        position: relative;
+        z-index: 1;
+      }
+      .val-card:hover .val-num, .val-card.tapped .val-num {
+        color: #378ADD;
+        transform: scale(1.12);
+      }
+      .val-title {
+        font-family: 'Syne', sans-serif;
+        font-size: 15px;
+        font-weight: 700;
+        margin-bottom: 10px;
+        color: #f8f9fa;
+        position: relative;
+        z-index: 1;
+        transition: color 0.25s ease;
+      }
+      .val-card:hover .val-title, .val-card.tapped .val-title {
+        color: #f8f9fa;
+      }
+      .val-body {
+        font-size: 14px;
+        color: #8892a4;
+        font-weight: 300;
+        line-height: 1.65;
+        position: relative;
+        z-index: 1;
+        transition: color 0.25s ease;
+      }
+      .val-card:hover .val-body, .val-card.tapped .val-body {
+        color: #d1d5db;
+      }
+    </style>
+
+    <div class="value-grid" style="display:grid; grid-template-columns: repeat(3,1fr); gap:1px; background:rgba(255,255,255,0.07); border:1px solid rgba(255,255,255,0.07); margin-top:52px;">
+
+      <div class="val-card">
+        <div class="val-num">400+</div>
+        <div class="val-title">Members in your corner</div>
+        <p class="val-body">As a VP you're not a member of the club — you're the person members come to. Every event, trek, and talk you run deepens your presence in the Wharton tech community.</p>
+      </div>
+
+      <div class="val-card">
+        <div class="val-num">1:1</div>
+        <div class="val-title">Access to industry leaders</div>
+        <p class="val-body">Booking a speaker, leading a trek, running a sponsor call — these aren't networking events. They're direct relationships you build by being the person in the room with a reason to be there.</p>
+      </div>
+
+      <div class="val-card">
+        <div class="val-num">19</div>
+        <div class="val-title">People who have your back</div>
+        <p class="val-body">A board this size means everyone knows each other. The relationships you build with your co-board members — across industries, backgrounds, and career paths — will outlast Wharton by decades.</p>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- APPLICATION -->
+<div class="divider"></div>
+<div class="apply-section" id="apply">
+  <div class="section-inner">
+    <div class="fade-in">
+      <p class="section-label">Apply</p>
+      <h2 class="section-title">Make your case.</h2>
+      <p class="section-body">This is a <strong style="color:#e74c3c;">~20 person board</strong> — ~10 second-year VPs and ~10 first-year members recruited in the fall. <strong style="color:#f8f9fa;">Spots are limited. The bar is high.</strong><br><br>Rank your top 3 roles, upload your resume, and answer two questions. Due <strong style="color:#e74c3c;">April 17th at 11:59PM.</strong></p>
+
+      <!-- Callout box -->
+      <div style="margin-top:32px; border:1px solid #e74c3c; border-left:4px solid #e74c3c; background:rgba(231,76,60,0.06); border-radius:2px; padding:20px 24px; display:flex; gap:16px; align-items:flex-start;">
+        <span style="font-size:20px; flex-shrink:0;">⚡</span>
+        <p style="font-size:14px; color:#d1d5db; line-height:1.65; margin:0;"><strong style="color:#f8f9fa;">Read every role description before you rank.</strong> The best applications come from people who chose their role because they genuinely want to own it — not because it sounded good. Your #1 should be the role you'd be most excited to build.</p>
+      </div>
+    </div>
+
+    <div class="form-wrap fade-in">
+      <form id="appForm">
+
+        <!-- STEP 1 -->
+        <div style="margin-bottom:40px;">
+          <div style="display:flex; align-items:center; gap:12px; margin-bottom:24px;">
+            <span style="font-family:'Syne',sans-serif; font-size:11px; font-weight:700; letter-spacing:0.15em; color:#e74c3c; text-transform:uppercase;">Step 01</span>
+            <div style="flex:1; height:1px; background:rgba(255,255,255,0.07);"></div>
+            <span style="font-family:'Syne',sans-serif; font-size:11px; color:#8892a4; letter-spacing:0.1em; text-transform:uppercase;">The basics</span>
+          </div>
+
+          <div class="form-group">
+            <label for="name">Full Name</label>
+            <input type="text" id="name" placeholder="Your name" required>
+          </div>
+
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" placeholder="your@wharton.upenn.edu" required>
+          </div>
+        </div>
+
+        <!-- STEP 2 -->
+        <div style="margin-bottom:40px;">
+          <div style="display:flex; align-items:center; gap:12px; margin-bottom:24px;">
+            <span style="font-family:'Syne',sans-serif; font-size:11px; font-weight:700; letter-spacing:0.15em; color:#e74c3c; text-transform:uppercase;">Step 02</span>
+            <div style="flex:1; height:1px; background:rgba(255,255,255,0.07);"></div>
+            <span style="font-family:'Syne',sans-serif; font-size:11px; color:#8892a4; letter-spacing:0.1em; text-transform:uppercase;">Rank your roles</span>
+          </div>
+
+          <div class="form-group">
+            <label>Role Preference Ranking</label>
+            <p class="field-note">Drag to rank all 6. We'll use your <strong style="color:#d1d5db;">top 3</strong>. On mobile, use the ▲▼ buttons. Your #1 should be the role you'd fight for.</p>
+            <div class="rank-options" id="rankList">
+              <div class="rank-row" draggable="true" data-role="VP of Content & Events"><span class="rank-num">1</span><span class="rank-name">VP of Content & Events</span><span class="rank-handle">⠿</span><div class="rank-move-btns"><button type="button" class="rank-up" aria-label="Move up">▲</button><button type="button" class="rank-dn" aria-label="Move down">▼</button></div></div>
+              <div class="rank-row" draggable="true" data-role="VP of Tech Conference"><span class="rank-num">2</span><span class="rank-name">VP of Tech Conference</span><span class="rank-handle">⠿</span><div class="rank-move-btns"><button type="button" class="rank-up" aria-label="Move up">▲</button><button type="button" class="rank-dn" aria-label="Move down">▼</button></div></div>
+              <div class="rank-row" draggable="true" data-role="VP of Treks"><span class="rank-num">3</span><span class="rank-name">VP of Treks</span><span class="rank-handle">⠿</span><div class="rank-move-btns"><button type="button" class="rank-up" aria-label="Move up">▲</button><button type="button" class="rank-dn" aria-label="Move down">▼</button></div></div>
+              <div class="rank-row" draggable="true" data-role="VP of Careers & Sponsorships"><span class="rank-num">4</span><span class="rank-name">VP of Careers & Sponsorships</span><span class="rank-handle">⠿</span><div class="rank-move-btns"><button type="button" class="rank-up" aria-label="Move up">▲</button><button type="button" class="rank-dn" aria-label="Move down">▼</button></div></div>
+              <div class="rank-row" draggable="true" data-role="VP of Community & Marketing"><span class="rank-num">5</span><span class="rank-name">VP of Community & Marketing</span><span class="rank-handle">⠿</span><div class="rank-move-btns"><button type="button" class="rank-up" aria-label="Move up">▲</button><button type="button" class="rank-dn" aria-label="Move down">▼</button></div></div>
+              <div class="rank-row" draggable="true" data-role="VP of Finance"><span class="rank-num">6</span><span class="rank-name">VP of Finance</span><span class="rank-handle">⠿</span><div class="rank-move-btns"><button type="button" class="rank-up" aria-label="Move up">▲</button><button type="button" class="rank-dn" aria-label="Move down">▼</button></div></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- STEP 3 -->
+        <div style="margin-bottom:40px;">
+          <div style="display:flex; align-items:center; gap:12px; margin-bottom:24px;">
+            <span style="font-family:'Syne',sans-serif; font-size:11px; font-weight:700; letter-spacing:0.15em; color:#e74c3c; text-transform:uppercase;">Step 03</span>
+            <div style="flex:1; height:1px; background:rgba(255,255,255,0.07);"></div>
+            <span style="font-family:'Syne',sans-serif; font-size:11px; color:#8892a4; letter-spacing:0.1em; text-transform:uppercase;">Upload resume</span>
+          </div>
+
+          <div class="form-group">
+            <label>Resume</label>
+            <p class="field-note">Required · PDF or Word · Max 5MB</p>
+            <div class="resume-upload">
+              <div class="resume-drop" id="resumeDrop">
+                <input type="file" id="resumeFile" accept=".pdf,.doc,.docx" required>
+                <span class="resume-drop-icon">📄</span>
+                <p class="resume-drop-text">Drop here or tap to browse</p>
+                <p class="resume-drop-sub">PDF or Word · Max 5MB</p>
+              </div>
+              <div class="resume-selected" id="resumeSelected">
+                <span class="resume-selected-name" id="resumeName"></span>
+                <button type="button" class="resume-remove" id="resumeRemove">Remove</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- STEP 4 -->
+        <div style="margin-bottom:40px;">
+          <div style="display:flex; align-items:center; gap:12px; margin-bottom:24px;">
+            <span style="font-family:'Syne',sans-serif; font-size:11px; font-weight:700; letter-spacing:0.15em; color:#e74c3c; text-transform:uppercase;">Step 04</span>
+            <div style="flex:1; height:1px; background:rgba(255,255,255,0.07);"></div>
+            <span style="font-family:'Syne',sans-serif; font-size:11px; color:#8892a4; letter-spacing:0.1em; text-transform:uppercase;">Two questions</span>
+          </div>
+
+          <!-- Q1 callout -->
+          <div style="border:1px solid rgba(255,255,255,0.1); border-left:3px solid #378ADD; background:rgba(55,138,221,0.05); border-radius:2px; padding:16px 20px; margin-bottom:16px;">
+            <p style="font-family:'Syne',sans-serif; font-size:10px; font-weight:700; letter-spacing:0.15em; text-transform:uppercase; color:#378ADD; margin-bottom:6px;">Question 01</p>
+            <p style="font-size:15px; font-weight:500; color:#f8f9fa; line-height:1.5; margin:0;">What do you want your <em style="font-style:normal; color:#e74c3c;">legacy</em> to be, and how are you going to change things in this role?</p>
+            <p style="font-size:12px; color:#8892a4; margin-top:8px; margin-bottom:0;">Be specific. We want to know what you'll build — not just that you're excited about tech.</p>
+          </div>
+          <div class="form-group">
+            <textarea id="legacy" placeholder="Write your answer here..." required></textarea>
+          </div>
+
+          <!-- Q2 callout -->
+          <div style="border:1px solid rgba(255,255,255,0.1); border-left:3px solid #378ADD; background:rgba(55,138,221,0.05); border-radius:2px; padding:16px 20px; margin-bottom:16px; margin-top:8px;">
+            <p style="font-family:'Syne',sans-serif; font-size:10px; font-weight:700; letter-spacing:0.15em; text-transform:uppercase; color:#378ADD; margin-bottom:6px;">Question 02</p>
+            <p style="font-size:15px; font-weight:500; color:#f8f9fa; line-height:1.5; margin:0;">What have you <em style="font-style:normal; color:#e74c3c;">delivered</em> in the past that's relevant to your top 3 roles?</p>
+            <p style="font-size:12px; color:#8892a4; margin-top:8px; margin-bottom:0;">Work, other clubs, personal projects — we want to see skills and competencies, not just résumé lines. People probably won't update their resume for this app, so tell us directly.</p>
+          </div>
+          <div class="form-group">
+            <textarea id="experience" placeholder="Tell us what you've built, run, or shipped that makes you right for your top 3 roles..." required></textarea>
+          </div>
+        </div>
+
+        <!-- STEP 5 -->
+        <div style="margin-bottom:40px;">
+          <div style="display:flex; align-items:center; gap:12px; margin-bottom:24px;">
+            <span style="font-family:'Syne',sans-serif; font-size:11px; font-weight:700; letter-spacing:0.15em; color:#e74c3c; text-transform:uppercase;">Step 05</span>
+            <div style="flex:1; height:1px; background:rgba(255,255,255,0.07);"></div>
+            <span style="font-family:'Syne',sans-serif; font-size:11px; color:#8892a4; letter-spacing:0.1em; text-transform:uppercase;">Final details</span>
+          </div>
+
+          <!-- Board last year callout -->
+          <div style="border:1px solid rgba(255,255,255,0.1); border-left:3px solid #e74c3c; background:rgba(231,76,60,0.04); border-radius:2px; padding:16px 20px; margin-bottom:20px;">
+            <p style="font-family:'Syne',sans-serif; font-size:10px; font-weight:700; letter-spacing:0.15em; text-transform:uppercase; color:#e74c3c; margin-bottom:10px;">Were you on the board last year?</p>
+            <label style="display:flex; align-items:center; gap:12px; cursor:pointer; margin:0;">
+              <input type="checkbox" id="boardLastYear" style="width:18px; height:18px; accent-color:#e74c3c; flex-shrink:0; cursor:pointer;">
+              <span style="font-size:14px; color:#d1d5db; font-weight:400; line-height:1.5;">Yes — I was on the Wharton Tech Club board in 2025-26</span>
+            </label>
+            <p style="font-size:12px; color:#8892a4; margin-top:10px; margin-bottom:0;">We ask because returning board members bring context. It doesn't help or hurt your application — we just want to know.</p>
+          </div>
+
+          <!-- Anything else -->
+          <div style="border:1px solid rgba(255,255,255,0.1); border-left:3px solid #8892a4; background:rgba(136,146,164,0.04); border-radius:2px; padding:16px 20px; margin-bottom:12px;">
+            <p style="font-family:'Syne',sans-serif; font-size:10px; font-weight:700; letter-spacing:0.15em; text-transform:uppercase; color:#8892a4; margin-bottom:6px;">Anything else? <span style="font-weight:400; color:#8892a4; letter-spacing:0;">(optional)</span></p>
+            <p style="font-size:15px; font-weight:500; color:#f8f9fa; line-height:1.5; margin:0;">Is there something about you we'd never see from a resume or application?</p>
+            <p style="font-size:12px; color:#8892a4; margin-top:8px; margin-bottom:0;">A side project, a weird obsession, a story. Not required — but if something is burning to be said, say it here.</p>
+          </div>
+          <div class="form-group" style="margin-bottom:32px;">
+            <textarea id="anything" placeholder="Optional..." style="min-height:100px;"></textarea>
+          </div>
+
+          <!-- Fun question -->
+          <div style="border:1px solid rgba(255,255,255,0.1); border-left:3px solid #e74c3c; background:rgba(231,76,60,0.04); border-radius:2px; padding:16px 20px; margin-bottom:12px;">
+            <p style="font-family:'Syne',sans-serif; font-size:10px; font-weight:700; letter-spacing:0.15em; text-transform:uppercase; color:#e74c3c; margin-bottom:6px;">One last thing 🎉</p>
+            <p id="funQuestionText" style="font-size:15px; font-weight:500; color:#f8f9fa; line-height:1.5; margin:0;"></p>
+            <p style="font-size:12px; color:#8892a4; margin-top:6px; margin-bottom:0;">This doesn't affect your application. We're just curious.</p>
+          </div>
+          <div class="form-group">
+            <textarea id="funAnswer" placeholder="Your answer..." style="min-height:80px;"></textarea>
+          </div>
+
+        </div>
+
+        <!-- SUBMIT -->
+        <div style="border-top:1px solid rgba(255,255,255,0.07); padding-top:32px;">
+          <p style="font-size:13px; color:#8892a4; margin-bottom:20px; line-height:1.6;">By submitting, you confirm this is your own work and you're genuinely interested in joining the board. <strong style="color:#d1d5db;">Deadline: April 17th at 11:59PM.</strong></p>
+          <div class="submit-row">
+            <button type="submit" id="submitBtn">Submit Application →</button>
+          </div>
+        </div>
+
+      </form>
+
+      <div class="submitting-msg" id="submittingMsg">⚡ Submitting your application...</div>
+      <div class="error-msg" id="errorMsg"><strong>Something went wrong.</strong> Please try again or email the Co-Presidents directly.</div>
+    </div>
+  </div>
+</div>
+
+<!-- CELEBRATION OVERLAY -->
+<div id="celebrationOverlay" style="display:none; position:fixed; inset:0; background:#0a0e1a; z-index:9999; flex-direction:column; align-items:center; justify-content:center; text-align:center; padding:40px;">
+  <canvas id="confettiCanvas" style="position:absolute; inset:0; pointer-events:none;"></canvas>
+  <div style="position:relative; z-index:1; max-width:560px;">
+    <div id="celebTerminal" style="font-family:'DM Sans',monospace; font-size:13px; color:#378ADD; background:rgba(55,138,221,0.06); border:1px solid rgba(55,138,221,0.2); border-radius:4px; padding:20px 24px; margin-bottom:36px; text-align:left; min-height:80px;"></div>
+    <h2 style="font-family:'Bebas Neue',sans-serif; font-size:clamp(52px,10vw,96px); color:#f8f9fa; line-height:0.95; margin-bottom:16px;">You're<br><span style="color:#e74c3c;">in the mix.</span></h2>
+    <p style="font-size:17px; color:#d1d5db; font-weight:300; line-height:1.7; margin-bottom:8px;">Application received. We'll review every submission after <strong style="color:#f8f9fa;">April 17th at 11:59PM</strong> and be in touch with next steps.</p>
+    <p style="font-size:14px; color:#8892a4; margin-bottom:40px;">In the meantime — watch an episode of Tech Toks. Follow us on Instagram. Get excited.</p>
+    <div style="display:flex; gap:16px; justify-content:center; flex-wrap:wrap;">
+      <a href="https://www.youtube.com/watch?v=p2w8N-HcjZA&t=2849s" target="_blank" style="font-family:'Syne',sans-serif; font-size:12px; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; color:#e74c3c; text-decoration:none; border:1px solid rgba(231,76,60,0.4); padding:12px 24px; border-radius:2px; transition:background 0.2s;" onmouseover="this.style.background='rgba(231,76,60,0.1)'" onmouseout="this.style.background='transparent'">▶ Watch Tech Toks</a>
+      <a href="https://www.instagram.com/whartontech/" target="_blank" style="font-family:'Syne',sans-serif; font-size:12px; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; color:#8892a4; text-decoration:none; border:1px solid rgba(255,255,255,0.1); padding:12px 24px; border-radius:2px; transition:background 0.2s;" onmouseover="this.style.background='rgba(255,255,255,0.05)'" onmouseout="this.style.background='transparent'">Instagram →</a>
+      <a href="https://www.linkedin.com/company/wharton-tech-club/" target="_blank" style="font-family:'Syne',sans-serif; font-size:12px; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; color:#8892a4; text-decoration:none; border:1px solid rgba(255,255,255,0.1); padding:12px 24px; border-radius:2px; transition:background 0.2s;" onmouseover="this.style.background='rgba(255,255,255,0.05)'" onmouseout="this.style.background='transparent'">LinkedIn →</a>
+    </div>
+  </div>
+</div>
+
+<!-- FLOATING APPLY BTN -->
+<div id="floatingApply" style="position:fixed; bottom:28px; right:28px; z-index:500; opacity:0; transform:translateY(12px); transition:opacity 0.3s,transform 0.3s; pointer-events:none;">
+  <button onclick="document.getElementById('apply').scrollIntoView({behavior:'smooth'})" style="font-family:'Syne',sans-serif; font-size:13px; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; color:#f8f9fa; background:#c0392b; border:none; padding:14px 28px; border-radius:2px; cursor:pointer; box-shadow:0 4px 24px rgba(192,57,43,0.45); transition:background 0.2s,transform 0.15s;" onmouseover="this.style.background='#e74c3c';this.style.transform='translateY(-2px)'" onmouseout="this.style.background='#c0392b';this.style.transform='translateY(0)'">Apply Now ↑</button>
+</div>
+
+<!-- SECTION NAV (desktop only) -->
+<div id="sectionNav" style="position:fixed; left:20px; top:50%; transform:translateY(-50%); z-index:400; display:flex; flex-direction:column; gap:10px; opacity:0; transition:opacity 0.4s;">
+  <style>
+    .snav-dot { width:8px; height:8px; border-radius:50%; background:rgba(255,255,255,0.2); cursor:pointer; transition:background 0.2s,transform 0.2s; position:relative; }
+    .snav-dot:hover, .snav-dot.active { background:#e74c3c; transform:scale(1.4); }
+    .snav-dot::after { content:attr(data-label); position:absolute; left:18px; top:50%; transform:translateY(-50%); white-space:nowrap; font-family:'Syne',sans-serif; font-size:10px; font-weight:600; letter-spacing:0.1em; text-transform:uppercase; color:#8892a4; opacity:0; transition:opacity 0.2s; pointer-events:none; }
+    .snav-dot:hover::after { opacity:1; color:#f8f9fa; }
+    @media(max-width:1100px){ #sectionNav { display:none !important; } }
+  </style>
+  <div class="snav-dot" data-target="hero-anchor" data-label="Home"></div>
+  <div class="snav-dot" data-target="about-anchor" data-label="About"></div>
+  <div class="snav-dot" data-target="commitment-anchor" data-label="Commitment"></div>
+  <div class="snav-dot" data-target="presidents-anchor" data-label="Presidents"></div>
+  <div class="snav-dot" data-target="roles-anchor" data-label="Roles"></div>
+  <div class="snav-dot" data-target="value-anchor" data-label="Network"></div>
+  <div class="snav-dot" data-target="apply" data-label="Apply"></div>
+</div>
+
+<script>
+  // Fun random questions — wholesome and personality-revealing
+  const funQuestions = [
+    "What's a skill you have that would genuinely surprise most people?",
+    "What's the best piece of advice you've ever received, and who gave it to you?",
+    "You're stranded on a deserted island and can only bring three things. What are they?",
+    "What's a book, show, or movie that completely changed how you think about something?",
+    "If you could have dinner with anyone — living or dead, real or fictional — who and why?",
+    "What's something you were terrible at when you started but got really good at through practice?",
+    "What's your go-to order at a coffee shop, and what does it say about you?",
+    "What's the most random rabbit hole you've gone down recently?",
+    "If your college self could see you now, what would surprise them most?",
+    "What's a small, underrated thing that consistently makes your day better?",
+    "You have one free Saturday with no obligations. What does the perfect version look like?",
+    "What's something you believe that most people around you disagree with?",
+    "What's the best meal you've ever eaten, and where was it?",
+    "If you had to teach a class on anything — literally anything — what would it be?",
+    "What's a place you've been to that genuinely changed something in you?",
+    "What's a hobby or interest you've picked up in the last two years?",
+    "What's the most useful thing you learned that you didn't expect to need?",
+    "Morning person or night owl — and has that ever gotten you into trouble?",
+    "What's a podcast, newsletter, or corner of the internet you think is genuinely underrated?",
+    "What's one thing about Wharton that's exceeded your expectations?",
+  ];
+  const q = funQuestions[Math.floor(Math.random() * funQuestions.length)];
+  document.getElementById('funQuestionText').textContent = q;
+</script>
+
+<!-- FOOTER -->
+<footer>
+  <p>Wharton Tech Club · 2026-27 Board Applications</p>
+  <p>Questions? Reach out to Gorav, Melody, or Logan.</p>
+</footer>
+
+<script>
+  // ⚠️ PASTE YOUR APPS SCRIPT WEB APP URL HERE after deploying
+  const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbw_1O6jPJU8QpqPTaj0qHQctcdieDRAZEJfG5_QP_dczSc-dARVb1YSaq5bbpjTXdYNYA/exec";
+
+  // Mobile tap animations for commitment, president, and value cards
+  document.querySelectorAll('.commitment-card, .pres-card, .val-card').forEach(card => {
+    card.addEventListener('click', () => {
+      card.classList.toggle('tapped');
+      setTimeout(() => card.classList.remove('tapped'), 600);
+    });
+  });
+
+  // Flip card height equalisation - simple and reliable
+  // Temporarily stack all faces as block elements, measure, set explicit heights
+  function initFlipCards() {
+    const cards = Array.from(document.querySelectorAll('.flip-card'));
+    if (!cards.length) return;
+
+    // Step 1: reset all explicit heights
+    cards.forEach(card => {
+      card.style.height = '';
+      card.querySelector('.flip-card-inner').style.height = '';
+      card.querySelector('.flip-front').style.position = 'static';
+      card.querySelector('.flip-front').style.visibility = 'visible';
+      card.querySelector('.flip-back').style.position = 'static';
+      card.querySelector('.flip-back').style.transform = 'none';
+      card.querySelector('.flip-back').style.visibility = 'visible';
+    });
+
+    // Step 2: measure all faces in-place (both now in document flow)
+    let tallest = 0;
+    cards.forEach(card => {
+      const fH = card.querySelector('.flip-front').offsetHeight;
+      const bH = card.querySelector('.flip-back').offsetHeight;
+      const h = Math.max(fH, bH);
+      if (h > tallest) tallest = h;
+    });
+
+    // Step 3: restore absolute positioning and set uniform height
+    cards.forEach(card => {
+      const front = card.querySelector('.flip-front');
+      const back = card.querySelector('.flip-back');
+      front.style.position = '';
+      front.style.visibility = '';
+      back.style.position = '';
+      back.style.transform = '';
+      back.style.visibility = '';
+      card.style.height = tallest + 'px';
+      card.querySelector('.flip-card-inner').style.height = tallest + 'px';
+    });
+  }
+
+  // Flip card click toggle
+  document.querySelectorAll('.flip-card').forEach(card => {
+    card.addEventListener('click', () => card.classList.toggle('flipped'));
+  });
+
+  // Run after fonts load - use FontFaceObserver pattern via document.fonts
+  const runInit = () => {
+    initFlipCards();
+    let resizeTimer;
+    window.addEventListener('resize', () => {
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(initFlipCards, 100);
+    });
+  };
+
+  if (document.fonts && document.fonts.ready) {
+    document.fonts.ready.then(runInit);
+  } else {
+    window.addEventListener('load', runInit);
+  }
+
+  // ---- "Rebuild it." animated text ----
+  (function() {
+    const em = document.querySelector('.hero h1 em');
+    if (!em) return;
+
+    const text = 'Rebuild it.';
+    // Each char gets its own span with staggered delay
+    em.innerHTML = text.split('').map((ch, i) =>
+      `<span class="rb-char" style="animation-delay:${0.6 + 0.07 * i}s">${ch === ' ' ? '&nbsp;' : ch}</span>`
+    ).join('');
+
+    const style = document.createElement('style');
+    style.textContent = `
+      /* Each character animates in from below with a flicker */
+      .rb-char {
+        display: inline-block;
+        opacity: 0;
+        transform: translateY(40px) skewX(-8deg);
+        animation: rbCharIn 0.45s cubic-bezier(0.22,1,0.36,1) forwards;
+        color: #e74c3c;
+      }
+      @keyframes rbCharIn {
+        0%   { opacity: 0; transform: translateY(40px) skewX(-8deg); filter: blur(6px); }
+        60%  { opacity: 1; filter: blur(0); }
+        80%  { transform: translateY(-6px) skewX(2deg); }
+        100% { opacity: 1; transform: translateY(0) skewX(0); filter: blur(0); }
+      }
+
+      /* After all chars in, the whole word does a repeating glitch */
+      .hero h1 em {
+        animation: rebuildGlitch 4s 2.5s infinite;
+        position: relative;
+      }
+      @keyframes rebuildGlitch {
+        0%,82%,100%  { text-shadow: none; color: #e74c3c; letter-spacing: inherit; }
+        83%  {
+          text-shadow: -4px 0 #378ADD, 4px 0 rgba(231,76,60,0.8);
+          color: #ffffff;
+          letter-spacing: 0.04em;
+        }
+        84%  {
+          text-shadow: 4px 0 #e74c3c, -3px 0 #378ADD;
+          color: #e74c3c;
+          letter-spacing: -0.02em;
+        }
+        85%  { text-shadow: none; color: #f8f9fa; letter-spacing: inherit; }
+        86%  {
+          text-shadow: -6px 0 #378ADD, 5px 0 #e74c3c;
+          color: #e74c3c;
+          letter-spacing: 0.06em;
+        }
+        87%,100% { text-shadow: none; color: #e74c3c; letter-spacing: inherit; }
+      }
+
+      /* Scanline sweep across the em text on each glitch */
+      .hero h1 em::after {
+        content: '';
+        position: absolute;
+        left: -4px; right: -4px;
+        height: 3px;
+        background: rgba(55,138,221,0.7);
+        top: 50%;
+        opacity: 0;
+        animation: scanSweep 4s 2.5s infinite;
+        pointer-events: none;
+      }
+      @keyframes scanSweep {
+        0%,82%,88%,100% { opacity: 0; top: 50%; }
+        83% { opacity: 1; top: 0%; }
+        86% { opacity: 0.6; top: 100%; }
+        87% { opacity: 0; }
+      }
+    `;
+    document.head.appendChild(style);
+  })();
+
+  // Scroll fade-in
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.08 });
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+  // Drag to rank (desktop)
+  const list = document.getElementById('rankList');
+  let dragged = null;
+
+  list.querySelectorAll('.rank-row').forEach(row => {
+    row.addEventListener('dragstart', () => { dragged = row; setTimeout(() => row.classList.add('dragging'), 0); });
+    row.addEventListener('dragend', () => { row.classList.remove('dragging'); updateNums(); });
+    row.addEventListener('dragover', e => { e.preventDefault(); row.classList.add('drag-over'); });
+    row.addEventListener('dragleave', () => row.classList.remove('drag-over'));
+    row.addEventListener('drop', e => {
+      e.preventDefault();
+      row.classList.remove('drag-over');
+      if (dragged !== row) list.insertBefore(dragged, row);
+    });
+  });
+
+  function updateNums() {
+    const rows = list.querySelectorAll('.rank-row');
+    rows.forEach((row, i) => {
+      row.querySelector('.rank-num').textContent = i + 1;
+      const up = row.querySelector('.rank-up');
+      const dn = row.querySelector('.rank-dn');
+      if (up) up.disabled = i === 0;
+      if (dn) dn.disabled = i === rows.length - 1;
+    });
+  }
+
+  // Mobile up/down buttons
+  list.addEventListener('click', e => {
+    const btn = e.target.closest('.rank-up, .rank-dn');
+    if (!btn) return;
+    const row = btn.closest('.rank-row');
+    if (btn.classList.contains('rank-up')) {
+      const prev = row.previousElementSibling;
+      if (prev) list.insertBefore(row, prev);
+    } else {
+      const next = row.nextElementSibling;
+      if (next) list.insertBefore(next, row);
+    }
+    updateNums();
+  });
+
+  updateNums();
+
+  // Resume file handling
+  const fileInput = document.getElementById('resumeFile');
+  const resumeDrop = document.getElementById('resumeDrop');
+  const resumeSelected = document.getElementById('resumeSelected');
+  const resumeName = document.getElementById('resumeName');
+  const resumeRemove = document.getElementById('resumeRemove');
+  let resumeFile = null;
+
+  fileInput.addEventListener('change', () => handleFile(fileInput.files[0]));
+
+  resumeDrop.addEventListener('dragover', e => { e.preventDefault(); resumeDrop.classList.add('drag-active'); });
+  resumeDrop.addEventListener('dragleave', () => resumeDrop.classList.remove('drag-active'));
+  resumeDrop.addEventListener('drop', e => {
+    e.preventDefault();
+    resumeDrop.classList.remove('drag-active');
+    if (e.dataTransfer.files[0]) handleFile(e.dataTransfer.files[0]);
+  });
+
+  function handleFile(file) {
+    if (!file) return;
+    if (file.size > 5 * 1024 * 1024) { alert('File is too large. Max 5MB.'); return; }
+    resumeFile = file;
+    resumeName.textContent = file.name;
+    resumeDrop.style.display = 'none';
+    resumeSelected.style.display = 'flex';
+  }
+
+  resumeRemove.addEventListener('click', () => {
+    resumeFile = null;
+    fileInput.value = '';
+    resumeDrop.style.display = 'block';
+    resumeSelected.style.display = 'none';
+  });
+
+  // Form submit
+  document.getElementById('appForm').addEventListener('submit', async function(e) {
+    e.preventDefault();
+
+    if (!resumeFile) { alert('Please upload your resume.'); return; }
+
+    const submitBtn = document.getElementById('submitBtn');
+    submitBtn.disabled = true;
+    document.getElementById('submittingMsg').style.display = 'block';
+    document.getElementById('submittingMsg').innerHTML = '⚡ Submitting your application...';
+
+    // Get rankings
+    const ranks = [...list.querySelectorAll('.rank-row')].map(r => r.dataset.role);
+
+    // Convert file to base64
+    const base64 = await fileToBase64(resumeFile);
+
+    const payload = {
+      name: document.getElementById('name').value,
+      email: document.getElementById('email').value,
+      ranks: ranks,
+      legacy: document.getElementById('legacy').value,
+      experience: document.getElementById('experience').value,
+      boardLastYear: document.getElementById('boardLastYear').checked,
+      anything: document.getElementById('anything').value,
+      funQuestion: document.getElementById('funQuestionText').textContent,
+      funAnswer: document.getElementById('funAnswer').value,
+      resume: {
+        name: resumeFile.name,
+        mimeType: resumeFile.type,
+        data: base64
+      }
+    };
+
+    try {
+      const res = await fetch(SCRIPT_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'text/plain' },
+        body: JSON.stringify(payload),
+        redirect: 'follow'
+      });
+      document.getElementById('submittingMsg').style.display = 'none';
+      // Apps Script may return non-JSON on redirect — treat any 2xx as success
+      let ok = res.ok;
+      try {
+        const json = await res.json();
+        ok = json.success !== false;
+      } catch(_) { ok = true; }
+      if (ok) {
+        showCelebration(document.getElementById('name').value);
+      } else {
+        throw new Error('Server returned failure');
+      }
+    } catch (err) {
+      document.getElementById('submittingMsg').style.display = 'none';
+      document.getElementById('errorMsg').style.display = 'block';
+      document.getElementById('errorMsg').innerHTML = '<strong>Something went wrong.</strong> Please try again or email the Co-Presidents directly.<br><small style="color:#8892a4;margin-top:6px;display:block;">Error: ' + err.message + '</small>';
+      submitBtn.disabled = false;
+    }
+  });
+
+  function fileToBase64(file) {
+    return new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.onload = () => resolve(reader.result.split(',')[1]);
+      reader.onerror = reject;
+      reader.readAsDataURL(file);
+    });
+  }
+
+  // ── FLOATING APPLY BUTTON ──────────────────────────────
+  const floatingApply = document.getElementById('floatingApply');
+  const applySection  = document.getElementById('apply');
+  const heroApplyBtn  = document.querySelector('.hero-actions .btn-primary');
+
+  const applyObserver = new IntersectionObserver(entries => {
+    // Show when hero Apply Now is out of view AND apply section not visible
+    const heroVisible  = heroApplyBtn && heroApplyBtn.getBoundingClientRect().top > 0 && heroApplyBtn.getBoundingClientRect().top < window.innerHeight;
+    const applyVisible = applySection  && applySection.getBoundingClientRect().top < window.innerHeight && applySection.getBoundingClientRect().bottom > 0;
+    const show = !heroVisible && !applyVisible;
+    floatingApply.style.opacity        = show ? '1' : '0';
+    floatingApply.style.transform      = show ? 'translateY(0)' : 'translateY(12px)';
+    floatingApply.style.pointerEvents  = show ? 'auto' : 'none';
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.hero-actions, #apply').forEach(el => applyObserver.observe(el));
+
+  // ── SECTION NAV DOTS ──────────────────────────────────
+  const sectionNav  = document.getElementById('sectionNav');
+  const navDots     = Array.from(document.querySelectorAll('.snav-dot'));
+  const navTargets  = navDots.map(d => document.getElementById(d.dataset.target)).filter(Boolean);
+
+  // Show nav after scrolling past hero
+  window.addEventListener('scroll', () => {
+    const scrolled = window.scrollY > 300;
+    sectionNav.style.opacity = scrolled ? '1' : '0';
+
+    // Highlight active dot
+    let activeIdx = 0;
+    navTargets.forEach((el, i) => {
+      if (el && el.getBoundingClientRect().top <= window.innerHeight * 0.5) activeIdx = i;
+    });
+    navDots.forEach((d, i) => d.classList.toggle('active', i === activeIdx));
+  }, { passive: true });
+
+  navDots.forEach((dot, i) => {
+    dot.addEventListener('click', () => {
+      const target = document.getElementById(dot.dataset.target);
+      if (target) target.scrollIntoView({ behavior: 'smooth' });
+    });
+  });
+
+  // ── CONFETTI ──────────────────────────────────────────
+  function launchConfetti() {
+    const canvas = document.getElementById('confettiCanvas');
+    const ctx    = canvas.getContext('2d');
+    canvas.width  = window.innerWidth;
+    canvas.height = window.innerHeight;
+
+    const colors  = ['#e74c3c','#378ADD','#f8f9fa','#c0392b','#d1d5db'];
+    const pieces  = Array.from({ length: 120 }, () => ({
+      x: Math.random() * canvas.width,
+      y: Math.random() * -canvas.height,
+      w: Math.random() * 10 + 5,
+      h: Math.random() * 5 + 3,
+      color: colors[Math.floor(Math.random() * colors.length)],
+      rot: Math.random() * 360,
+      vx: (Math.random() - 0.5) * 3,
+      vy: Math.random() * 4 + 2,
+      vr: (Math.random() - 0.5) * 6,
+    }));
+
+    let frame;
+    function draw() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      pieces.forEach(p => {
+        p.x  += p.vx; p.y += p.vy; p.rot += p.vr;
+        if (p.y > canvas.height) { p.y = -20; p.x = Math.random() * canvas.width; }
+        ctx.save();
+        ctx.translate(p.x + p.w / 2, p.y + p.h / 2);
+        ctx.rotate(p.rot * Math.PI / 180);
+        ctx.fillStyle = p.color;
+        ctx.globalAlpha = 0.85;
+        ctx.fillRect(-p.w / 2, -p.h / 2, p.w, p.h);
+        ctx.restore();
+      });
+      frame = requestAnimationFrame(draw);
+    }
+    draw();
+    setTimeout(() => cancelAnimationFrame(frame), 5000);
+  }
+
+  // ── TERMINAL TYPEWRITER ───────────────────────────────
+  function typeTerminal(lines, el, cb) {
+    el.textContent = '';
+    let li = 0, ci = 0;
+    function tick() {
+      if (li >= lines.length) { if (cb) cb(); return; }
+      const line = lines[li];
+      if (ci === 0 && li > 0) el.textContent += '\n';
+      el.textContent += line[ci];
+      ci++;
+      if (ci >= line.length) { li++; ci = 0; setTimeout(tick, 300); }
+      else setTimeout(tick, line[ci - 1] === ' ' ? 40 : 28);
+    }
+    tick();
+  }
+
+  // ── CELEBRATION TRIGGER ───────────────────────────────
+  function showCelebration(name) {
+    const overlay  = document.getElementById('celebrationOverlay');
+    const terminal = document.getElementById('celebTerminal');
+    overlay.style.display = 'flex';
+    document.body.style.overflow = 'hidden';
+    launchConfetti();
+    const firstName = (name || 'Applicant').split(' ')[0];
+    typeTerminal([
+      `> application.submit("${firstName}")`,
+      `> status: 200 OK`,
+      `> payload: received ✓`,
+      `> next_step: "We'll be in touch."`,
+    ], terminal);
+  }
+
+  // Patch success handler — find it and override
+  const _origSuccess = window._onAppSuccess;
+  window._onAppSuccess = function(name) {
+    showCelebration(name);
+  };
+
+</script>
+</body>
+</html>
