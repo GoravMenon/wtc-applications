@@ -362,6 +362,7 @@
     margin: 0 auto;
     padding: 100px 48px;
     background: #0a0e1a;
+    transition: padding 0.4s cubic-bezier(0.4,0,0.2,1);
   }
 
   .section-label {
@@ -875,6 +876,61 @@
     .hero h1 { font-size: 48px; }
     .nav-cta { display: none; }
   }
+
+  /* COLLAPSIBLE SECTIONS */
+  .section-collapse-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    cursor: pointer;
+    padding-bottom: 20px;
+    border-bottom: 1px solid rgba(255,255,255,0.07);
+    margin-bottom: 36px;
+    user-select: none;
+  }
+  .section-collapse-header:hover .collapse-toggle { color: #f8f9fa; }
+  .section-collapse-left { display: flex; flex-direction: column; gap: 4px; }
+  .collapse-toggle {
+    font-family: 'Syne', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #8892a4;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-shrink: 0;
+    transition: color 0.2s;
+  }
+  .collapse-icon {
+    display: inline-block;
+    transition: transform 0.35s cubic-bezier(0.4,0,0.2,1);
+    font-style: normal;
+    font-size: 14px;
+    line-height: 1;
+  }
+  .section-collapsible.collapsed .collapse-icon { transform: rotate(-90deg); }
+  .section-collapse-body {
+    overflow: hidden;
+    transition: max-height 0.45s cubic-bezier(0.4,0,0.2,1), opacity 0.35s ease;
+    max-height: 4000px;
+    opacity: 1;
+  }
+  .section-collapsible.collapsed .section-collapse-body {
+    max-height: 0;
+    opacity: 0;
+  }
+  /* Shrink the section padding when collapsed */
+  .section-collapsible.collapsed {
+    padding-top: 24px;
+    padding-bottom: 24px;
+  }
+  .section-collapsible.collapsed .section-collapse-header {
+    padding-bottom: 0;
+    border-bottom: none;
+    margin-bottom: 0;
+  }
 </style>
 </head>
 <body>
@@ -927,15 +983,22 @@
 <!-- ABOUT -->
 <div class="divider"></div>
 <div style="background:#0a0e1a;" class="section-grid pat-dots">
-<div class="section-inner fade-in">
+<div class="section-inner fade-in section-collapsible" id="about-section">
   <div id="about-anchor"></div>
-  <p class="section-label">About the Board</p>
-  <h2 class="section-title">A platform, not a title.</h2>
+  <div class="section-collapse-header" onclick="toggleSection('about-section')">
+    <div class="section-collapse-left">
+      <p class="section-label" style="margin:0;">About the Board</p>
+      <h2 class="section-title" style="margin:0;">A platform, not a title.</h2>
+    </div>
+    <span class="collapse-toggle"><em class="collapse-icon">▾</em> Collapse</span>
+  </div>
+  <div class="section-collapse-body">
   <p class="section-body">The Wharton Tech Club is one of the largest professional clubs on campus — 400+ members, a flagship annual conference, a podcast, and a network that reaches across the industry. This year we're rebuilding the board to be leaner and more impactful: ~10 second-year VPs who own the strategy, and ~10 first-year members recruited in the fall who execute alongside them. If you're joining, you're not filling a seat — you're co-authoring what this club becomes.</p>
 
   <div style="margin-top:36px; border:1px solid rgba(55,138,221,0.25); border-left:3px solid #378ADD; background:rgba(55,138,221,0.05); border-radius:2px; padding:20px 24px;">
     <p style="font-family:'Syne',sans-serif; font-size:10px; font-weight:700; letter-spacing:0.15em; text-transform:uppercase; color:#378ADD; margin-bottom:8px;">How we'll work together</p>
     <p style="font-size:15px; color:#d1d5db; line-height:1.7; margin:0;">Before the year starts, we'll sit down with every VP and <strong style="color:#f8f9fa;">co-write a plan for the semester</strong> — event ideas, initiatives, rough timelines. These aren't mandates. They're starting points. You own the domain; we're here to help you think it through before you're in the thick of it.</p>
+  </div>
   </div>
 </div>
 </div>
@@ -943,10 +1006,16 @@
 <!-- COMMITMENT -->
 <div class="divider"></div>
 <div style="background:#0a0e1a;" class="section-grid pat-lines">
-<div class="section-inner fade-in">
+<div class="section-inner fade-in section-collapsible" id="commitment-section">
   <div id="commitment-anchor"></div>
-  <p class="section-label">What we expect</p>
-  <h2 class="section-title">High commitment.<br>Real ownership.</h2>
+  <div class="section-collapse-header" onclick="toggleSection('commitment-section')">
+    <div class="section-collapse-left">
+      <p class="section-label" style="margin:0;">What we expect</p>
+      <h2 class="section-title" style="margin:0;">High commitment.<br>Real ownership.</h2>
+    </div>
+    <span class="collapse-toggle"><em class="collapse-icon">▾</em> Collapse</span>
+  </div>
+  <div class="section-collapse-body">
   <p class="section-body">This year's board requires more than previous years. We're being honest about that upfront. Here's what that looks like:</p>
   <div class="commitment-grid">
     <div class="commitment-card">
@@ -965,16 +1034,23 @@
       <p class="commitment-body">We want people who will look back at this year and point to something real they built — a Substack, a conference, a recruiting pipeline, a community. Leave a mark.</p>
     </div>
   </div>
+  </div><!-- end collapse body -->
 </div>
 </div>
 
 <!-- PRESIDENTS -->
 <div class="divider"></div>
 <div style="background:#111827;" class="section-grid pat-cross">
-  <div class="section-inner fade-in">
+  <div class="section-inner fade-in section-collapsible" id="presidents-section">
     <div id="presidents-anchor"></div>
-    <p class="section-label">Leadership</p>
-    <h2 class="section-title">Meet your<br>Co-Presidents.</h2>
+    <div class="section-collapse-header" onclick="toggleSection('presidents-section')">
+      <div class="section-collapse-left">
+        <p class="section-label" style="margin:0;">Leadership</p>
+        <h2 class="section-title" style="margin:0;">Meet your Co-Presidents.</h2>
+      </div>
+      <span class="collapse-toggle"><em class="collapse-icon">▾</em> Collapse</span>
+    </div>
+    <div class="section-collapse-body">
     <p class="section-body">Three operators with real industry experience, building the club they wish had existed when they arrived at Wharton.</p>
 
     <style>
@@ -1049,8 +1125,8 @@
         <div style="font-size:12px; color:#e74c3c; font-family:'Syne',sans-serif; font-weight:600; letter-spacing:0.08em; text-transform:uppercase; margin-bottom:20px;">Co-President</div>
         <div style="font-size:14px; color:#d1d5db; font-weight:300; line-height:1.7; margin-bottom:20px;">AI, Product and Platform Strategy. Deep experience in analytics and technical leadership across some of the most data-driven companies in tech.</div>
         <div style="display:flex; flex-direction:column; gap:6px;">
-          <div style="font-size:12px; color:#8892a4; font-weight:300;">🤖 AI, Product and Platform Strategy · Analysis Group</div>
-          <div style="font-size:12px; color:#8892a4; font-weight:300;">🔍 Cases & Projects · Amazon · Google</div>
+          <div style="font-size:12px; color:#8892a4; font-weight:300;">📊 Senior Analyst · Analysis Group</div>
+          <div style="font-size:12px; color:#8892a4; font-weight:300;">🤖 AI, Product and Platform Strategy</div>
           <div style="font-size:12px; color:#8892a4; font-weight:300;">🎓 Wharton MBA '27</div>
         </div>
         <a href="https://www.linkedin.com/in/melody-mingfang-zhang/" target="_blank" class="pres-linkedin">LinkedIn →</a>
@@ -1071,16 +1147,23 @@
       </div>
 
     </div>
+    </div><!-- end collapse body -->
   </div>
 </div>
 
 <!-- ROLES -->
 <div class="divider"></div>
 <div style="background:#0a0e1a;" class="section-grid pat-zig">
-  <div class="section-inner fade-in">
+  <div class="section-inner fade-in section-collapsible" id="roles-section">
     <div id="roles-anchor"></div>
-    <p class="section-label">Open Roles</p>
-    <h2 class="section-title">Six VP positions.<br>All consequential.</h2>
+    <div class="section-collapse-header" onclick="toggleSection('roles-section')">
+      <div class="section-collapse-left">
+        <p class="section-label" style="margin:0;">Open Roles</p>
+        <h2 class="section-title" style="margin:0;">Six VP positions.<br>All consequential.</h2>
+      </div>
+      <span class="collapse-toggle"><em class="collapse-icon">▾</em> Collapse</span>
+    </div>
+    <div class="section-collapse-body">
     <p class="section-body">Read every role before you rank. The best applications come from people who chose their role deliberately, not by default. <strong style="color:#e74c3c;">Tap any card to flip it.</strong></p>
 
     <style>
@@ -1577,16 +1660,23 @@
       </div>
 
     </div>
+    </div><!-- end collapse body -->
   </div>
 </div>
 
 <!-- VALUE -->
 <div class="divider"></div>
 <div style="background:#0a0e1a;" class="section-grid pat-rings">
-  <div class="section-inner fade-in">
+  <div class="section-inner fade-in section-collapsible" id="value-section">
     <div id="value-anchor"></div>
-    <p class="section-label">Why it matters</p>
-    <h2 class="section-title">The network you build<br>here is permanent.</h2>
+    <div class="section-collapse-header" onclick="toggleSection('value-section')">
+      <div class="section-collapse-left">
+        <p class="section-label" style="margin:0;">Why it matters</p>
+        <h2 class="section-title" style="margin:0;">The network you build<br>here is permanent.</h2>
+      </div>
+      <span class="collapse-toggle"><em class="collapse-icon">▾</em> Collapse</span>
+    </div>
+    <div class="section-collapse-body">
     <p class="section-body">The Wharton brand opens doors. The Tech Club board blows them off the hinges. You're not just attending events — you're the person who brought the speaker, planned the trek, and built the relationship.</p>
 
     <style>
@@ -1678,6 +1768,7 @@
 
     </div>
   </div>
+  </div><!-- end collapse body -->
 </div>
 
 <!-- APPLICATION -->
@@ -2225,6 +2316,17 @@
       reader.onerror = reject;
       reader.readAsDataURL(file);
     });
+  }
+
+  // ── COLLAPSIBLE SECTIONS ──────────────────────────────
+  function toggleSection(id) {
+    const section = document.getElementById(id);
+    if (!section) return;
+    const isCollapsed = section.classList.toggle('collapsed');
+    const toggle = section.querySelector('.collapse-toggle');
+    if (toggle) toggle.innerHTML = isCollapsed
+      ? '<em class="collapse-icon" style="transform:rotate(-90deg)">▾</em> Expand'
+      : '<em class="collapse-icon">▾</em> Collapse';
   }
 
   // ── FLOATING APPLY BUTTON ──────────────────────────────
