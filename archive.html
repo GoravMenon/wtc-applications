@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Wharton Tech Club: Join the Board</title>
+<title>Wharton Tech Club — Join the Board</title>
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
 <style>
   :root {
@@ -160,7 +160,7 @@
   }
   .section-grid > * { position: relative; z-index: 1; }
 
-  /* Reboot banner: diagonal lines */
+  /* Reboot banner — diagonal lines */
   .section-grid.pat-diag::before {
     background-image: repeating-linear-gradient(
       45deg,
@@ -171,13 +171,13 @@
     );
   }
 
-  /* About: dots */
+  /* About — dots */
   .section-grid.pat-dots::before {
     background-image: radial-gradient(rgba(255,255,255,0.12) 1px, transparent 1px);
     background-size: 28px 28px;
   }
 
-  /* Commitment: horizontal lines */
+  /* Commitment — horizontal lines */
   .section-grid.pat-lines::before {
     background-image: repeating-linear-gradient(
       0deg,
@@ -188,7 +188,7 @@
     );
   }
 
-  /* Presidents: cross/plus marks */
+  /* Presidents — cross/plus marks */
   .section-grid.pat-cross::before {
     background-image:
       linear-gradient(rgba(255,255,255,0.07) 1px, transparent 1px),
@@ -197,7 +197,7 @@
     background-position: 20px 20px;
   }
 
-  /* Roles: zigzag */
+  /* Roles — zigzag */
   .section-grid.pat-zig::before {
     background-image: repeating-linear-gradient(
       -45deg,
@@ -215,7 +215,7 @@
     );
   }
 
-  /* Value/Network: large concentric rings from corner */
+  /* Value/Network — large concentric rings from corner */
   .section-grid.pat-rings::before {
     background-image:
       radial-gradient(ellipse at 0% 100%, rgba(255,255,255,0.07) 1px, transparent 1px),
@@ -811,13 +811,13 @@
 
   .fade-in.visible { opacity: 1; transform: translateY(0); }
 
-  /* RESPONSIVE: TABLET */
+  /* RESPONSIVE — TABLET */
   @media (max-width: 1024px) {
     .commitment-grid { grid-template-columns: 1fr; }
     .roles-grid { grid-template-columns: repeat(2, 1fr); }
   }
 
-  /* RESPONSIVE: MOBILE */
+  /* RESPONSIVE — MOBILE */
   @media (max-width: 768px) {
     /* Nav */
     nav { padding: 14px 20px; }
@@ -857,6 +857,10 @@
     .presidents-grid { grid-template-columns: 1fr !important; }
     .presidents-grid > div { padding: 28px 20px !important; border-left: none !important; border-right: none !important; border-top: 1px solid rgba(255,255,255,0.07); }
 
+    /* Value stats */
+    .value-grid { grid-template-columns: 1fr !important; }
+    .value-grid > div { padding: 24px 20px !important; }
+
     /* Form */
     .form-wrap { margin-top: 36px; }
     .resume-drop { padding: 24px 16px; }
@@ -867,7 +871,7 @@
     footer { padding: 36px 20px; }
   }
 
-  /* RESPONSIVE: SMALL MOBILE */
+  /* RESPONSIVE — SMALL MOBILE */
   @media (max-width: 420px) {
     .hero h1 { font-size: 48px; }
     .nav-cta { display: none; }
@@ -944,68 +948,90 @@
 
   <!-- LEFT: headline + sub -->
   <div class="hero-left">
-    <p class="hero-tag">2026–2027 Director Applications · Your time to lead</p>
-    <h1>Don't just<br>show up.<br><em>Build it.</em></h1>
-    <p class="hero-sub">Wharton Tech Club is the umbrella tech organization at Wharton. Every part of tech runs through us.</p>
-    <p class="hero-sub" style="margin-top:14px;">We're not looking for people who want to attend. We're looking for Directors who want real responsibility on the org that sits at the center of it all.</p>
+    <p class="hero-tag">2026–2027 Board Applications · This is a reboot</p>
+    <h1>Don't join<br>the board.<br><em>Rebuild it.</em></h1>
+    <p class="hero-sub">We're not looking for résumé line items. We're looking for people who want to fundamentally change what Wharton Tech Club is — and have the drive to make it happen.</p>
   </div>
 
   <!-- RIGHT: stats + CTA -->
   <div class="hero-right">
     <div class="hero-right-stat">
-      <div class="hero-right-stat-num">#1</div>
-      <div class="hero-right-stat-label">The largest, most central tech organization at Wharton</div>
+      <div class="hero-right-stat-num">6</div>
+      <div class="hero-right-stat-label">VP roles open now — each owns a full domain</div>
     </div>
     <div class="hero-right-stat">
-      <div class="hero-right-stat-num">12</div>
-      <div class="hero-right-stat-label">Director seats across 6 roles</div>
+      <div class="hero-right-stat-num">~20</div>
+      <div class="hero-right-stat-label">Total board members — small enough that everyone matters</div>
     </div>
     <div class="hero-right-stat">
       <div class="hero-right-stat-num">400+</div>
-      <div class="hero-right-stat-label">Club members whose tech experience you help shape</div>
+      <div class="hero-right-stat-label">Club members counting on this board to deliver</div>
     </div>
     <div class="hero-right-cta">
       <a href="javascript:void(0)" class="btn-primary" onclick="document.getElementById('apply').scrollIntoView({behavior:'smooth'});">Apply Now</a>
-      <p class="hero-deadline">Due <strong>September 2nd at 11:59PM EST</strong></p>
+      <p class="hero-deadline">Due <strong>April 17th at 11:59PM</strong></p>
     </div>
   </div>
 </div>
 
 <!-- REBOOT BANNER -->
 <div class="reboot-banner section-grid pat-diag">
-  <span class="reboot-banner-label">Why this matters</span>
-  <span class="reboot-banner-text">If tech touches where you want to go, this is where you build the access, the network, and the experience to get there. We're the organization everyone else in tech at Wharton eventually finds their way to.</span>
+  <span class="reboot-banner-label">Why this year is different</span>
+  <span class="reboot-banner-text">We've redesigned the board from scratch — leaner, more defined, higher stakes. Every VP owns a real domain. There's nowhere to hide and no room for passengers.</span>
+</div>
+
+<!-- ABOUT -->
+<div class="divider"></div>
+<div style="background:#0a0e1a;" class="section-grid pat-dots">
+<div class="section-inner fade-in section-collapsible" id="about-section">
+  <div id="about-anchor"></div>
+  <div class="section-collapse-header" onclick="toggleSection('about-section')">
+    <div class="section-collapse-left">
+      <p class="section-label" style="margin:0;">About the Board</p>
+      <h2 class="section-title" style="margin:0;">A platform, not a title.</h2>
+    </div>
+    <span class="collapse-toggle"><em class="collapse-icon">▾</em> Collapse</span>
+  </div>
+  <div class="section-collapse-body">
+  <p class="section-body">The Wharton Tech Club is one of the largest professional clubs on campus — 400+ members, a flagship annual conference, a podcast, and a network that reaches across the industry. This year we're rebuilding the board to be leaner and more impactful: ~10 second-year VPs who own the strategy, and ~10 first-year members recruited in the fall who execute alongside them. If you're joining, you're not filling a seat — you're co-authoring what this club becomes.</p>
+
+  <div style="margin-top:36px; border:1px solid rgba(55,138,221,0.25); border-left:3px solid #378ADD; background:rgba(55,138,221,0.05); border-radius:2px; padding:20px 24px;">
+    <p style="font-family:'Syne',sans-serif; font-size:10px; font-weight:700; letter-spacing:0.15em; text-transform:uppercase; color:#378ADD; margin-bottom:8px;">How we'll work together</p>
+    <p style="font-size:15px; color:#d1d5db; line-height:1.7; margin:0;">Before the year starts, we'll sit down with every VP and <strong style="color:#f8f9fa;">co-write a plan for the semester</strong> — event ideas, initiatives, rough timelines. These aren't mandates. They're starting points. You own the domain; we're here to help you think it through before you're in the thick of it.</p>
+  </div>
+  </div>
+</div>
 </div>
 
 <!-- COMMITMENT -->
 <div class="divider"></div>
 <div style="background:#0a0e1a;" class="section-grid pat-lines">
-<div class="section-inner fade-in section-collapsible collapsed" id="commitment-section">
+<div class="section-inner fade-in section-collapsible" id="commitment-section">
   <div id="commitment-anchor"></div>
   <div class="section-collapse-header" onclick="toggleSection('commitment-section')">
     <div class="section-collapse-left">
       <p class="section-label" style="margin:0;">What we expect</p>
-      <h2 class="section-title" style="margin:0;">Real work.<br>Real stakes.</h2>
+      <h2 class="section-title" style="margin:0;">High commitment.<br>Real ownership.</h2>
     </div>
-    <span class="collapse-toggle"><em class="collapse-icon" style="transform:rotate(-90deg)">▾</em> Expand</span>
+    <span class="collapse-toggle"><em class="collapse-icon">▾</em> Collapse</span>
   </div>
   <div class="section-collapse-body">
-  <p class="section-body">This isn't a passive role. You're a Director from day one, with a real team that's yours to run. Here's what that means:</p>
+  <p class="section-body">This year's board requires more than previous years. We're being honest about that upfront. Here's what that looks like:</p>
   <div class="commitment-grid">
     <div class="commitment-card">
       <div class="commitment-num">Own</div>
-      <div class="commitment-title">Lead your team</div>
-      <p class="commitment-body">Every Director reports to a VP and leads their own team below them. You're running people, not just executing tasks, on things that actually ship this year.</p>
+      <div class="commitment-title">Your domain, end to end</div>
+      <p class="commitment-body">Every VP owns a committee fully — strategy, execution, and outcomes. There's no one else to hand it off to. You set the bar and you meet it.</p>
     </div>
     <div class="commitment-card">
-      <div class="commitment-num">Do</div>
-      <div class="commitment-title">Real deliverables, real deadlines</div>
-      <p class="commitment-body">Speaker outreach, event ops, trek logistics, content, finance, sponsorships. The club runs on work Directors actually did.</p>
+      <div class="commitment-num">Lead</div>
+      <div class="commitment-title">A team of 1Y members</div>
+      <p class="commitment-body">In the fall you'll recruit and lead first-year members on your committee. You're not just doing the work — you're building the next generation of the club.</p>
     </div>
     <div class="commitment-card">
-      <div class="commitment-num">Build</div>
-      <div class="commitment-title">Build your portfolio</div>
-      <p class="commitment-body">Whether you're going into consulting, VC, product, or starting something of your own, a year of actually running things in tech is the kind of experience that shows up in every room you walk into.</p>
+      <div class="commitment-num">Change</div>
+      <div class="commitment-title">Something that lasts</div>
+      <p class="commitment-body">We want people who will look back at this year and point to something real they built — a Substack, a conference, a recruiting pipeline, a community. Leave a mark.</p>
     </div>
   </div>
   </div><!-- end collapse body -->
@@ -1015,14 +1041,14 @@
 <!-- PRESIDENTS -->
 <div class="divider"></div>
 <div style="background:#111827;" class="section-grid pat-cross">
-  <div class="section-inner fade-in section-collapsible collapsed" id="presidents-section">
+  <div class="section-inner fade-in section-collapsible" id="presidents-section">
     <div id="presidents-anchor"></div>
     <div class="section-collapse-header" onclick="toggleSection('presidents-section')">
       <div class="section-collapse-left">
         <p class="section-label" style="margin:0;">Leadership</p>
         <h2 class="section-title" style="margin:0;">Meet your Co-Presidents.</h2>
       </div>
-      <span class="collapse-toggle"><em class="collapse-icon" style="transform:rotate(-90deg)">▾</em> Expand</span>
+      <span class="collapse-toggle"><em class="collapse-icon">▾</em> Collapse</span>
     </div>
     <div class="section-collapse-body">
     <p class="section-body">Three operators with real industry experience, building the club they wish had existed when they arrived at Wharton.</p>
@@ -1030,7 +1056,7 @@
     <style>
       .pres-card {
         background: #0a0e1a;
-        padding: 32px 30px;
+        padding: 40px 36px;
         transition: background 0.25s ease, transform 0.25s ease;
         cursor: default;
         position: relative;
@@ -1054,10 +1080,10 @@
         transform: scaleX(1);
       }
       .pres-avatar {
-        width: 64px; height: 64px; border-radius: 50%;
+        width: 80px; height: 80px; border-radius: 50%;
         display: flex; align-items: center; justify-content: center;
-        margin-bottom: 20px;
-        font-family: 'Syne', sans-serif; font-size: 22px; font-weight: 800; color: white;
+        margin-bottom: 24px;
+        font-family: 'Syne', sans-serif; font-size: 28px; font-weight: 800; color: white;
         flex-shrink: 0;
         transition: transform 0.3s ease, box-shadow 0.3s ease;
       }
@@ -1097,7 +1123,7 @@
         <div class="pres-avatar" style="background:#1e2a3a; border:1px solid rgba(255,255,255,0.07);">M</div>
         <div style="font-family:'Syne',sans-serif; font-size:20px; font-weight:700; margin-bottom:4px; color:#f8f9fa;">Melody Zhang</div>
         <div style="font-size:12px; color:#e74c3c; font-family:'Syne',sans-serif; font-weight:600; letter-spacing:0.08em; text-transform:uppercase; margin-bottom:20px;">Co-President</div>
-        <div style="font-size:14px; color:#d1d5db; font-weight:300; line-height:1.7; margin-bottom:20px;">Senior Analyst at Analysis Group. AI, Product and Platform Strategy. Deep experience in analytics and technical leadership across some of the most data-driven companies in tech.</div>
+        <div style="font-size:14px; color:#d1d5db; font-weight:300; line-height:1.7; margin-bottom:20px;">AI, Product and Platform Strategy. Deep experience in analytics and technical leadership across some of the most data-driven companies in tech.</div>
         <div style="display:flex; flex-direction:column; gap:6px;">
           <div style="font-size:12px; color:#8892a4; font-weight:300;">📊 Senior Analyst · Analysis Group</div>
           <div style="font-size:12px; color:#8892a4; font-weight:300;">🤖 AI, Product and Platform Strategy</div>
@@ -1111,7 +1137,7 @@
         <div class="pres-avatar" style="background:#1e2a3a; border:1px solid rgba(255,255,255,0.07);">L</div>
         <div style="font-family:'Syne',sans-serif; font-size:20px; font-weight:700; margin-bottom:4px; color:#f8f9fa;">Logan Hageman</div>
         <div style="font-size:12px; color:#e74c3c; font-family:'Syne',sans-serif; font-weight:600; letter-spacing:0.08em; text-transform:uppercase; margin-bottom:20px;">Co-President</div>
-        <div style="font-size:14px; color:#d1d5db; font-weight:300; line-height:1.7; margin-bottom:20px;">Strategy and operations in Tech, Media & Telecom. Four years at Deloitte advising high-tech companies on complex global transformations: product management, GTM strategy, M&A integration, and more.</div>
+        <div style="font-size:14px; color:#d1d5db; font-weight:300; line-height:1.7; margin-bottom:20px;">Strategy and operations in Tech, Media & Telecom. Four years at Deloitte advising high-tech companies on complex global transformations — product management, GTM strategy, M&A integration, and more.</div>
         <div style="display:flex; flex-direction:column; gap:6px;">
           <div style="font-size:12px; color:#8892a4; font-weight:300;">📱 Senior Consultant, TMT · Deloitte</div>
           <div style="font-size:12px; color:#8892a4; font-weight:300;">⚗️ Materials R&D · HP</div>
@@ -1121,623 +1147,628 @@
       </div>
 
     </div>
-
-    <!-- VP GRID -->
-    <p style="font-family:'Syne',sans-serif; font-size:11px; font-weight:700; letter-spacing:0.15em; text-transform:uppercase; color:#8892a4; margin-top:52px; margin-bottom:20px;">The VPs you'll report to</p>
-    <style>
-      .vp-mini-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-        gap: 12px;
-      }
-      .vp-mini-card {
-        background: #0a0e1a;
-        border: 1px solid rgba(255,255,255,0.07);
-        border-radius: 2px;
-        padding: 24px 22px;
-        display: flex;
-        align-items: center;
-        gap: 14px;
-        transition: background 0.25s ease, transform 0.25s ease, border-color 0.25s ease;
-        position: relative;
-        overflow: hidden;
-      }
-      .vp-mini-card::before {
-        content: '';
-        position: absolute;
-        top: 0; left: 0; right: 0;
-        height: 2px;
-        background: linear-gradient(90deg, #e74c3c, #378ADD);
-        transform: scaleX(0);
-        transform-origin: left;
-        transition: transform 0.4s ease;
-      }
-      .vp-mini-card:hover, .vp-mini-card.tapped {
-        background: #111827;
-        border-color: rgba(255,255,255,0.14);
-        transform: translateY(-3px);
-      }
-      .vp-mini-card:hover::before, .vp-mini-card.tapped::before {
-        transform: scaleX(1);
-      }
-      .vp-mini-avatar {
-        width: 52px; height: 52px; border-radius: 50%;
-        background: #1e2a3a; border: 1px solid rgba(255,255,255,0.1);
-        display: flex; align-items: center; justify-content: center;
-        font-family: 'Syne', sans-serif; font-size: 17px; font-weight: 800; color: #f8f9fa;
-        flex-shrink: 0;
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
-      }
-      .vp-mini-card:hover .vp-mini-avatar, .vp-mini-card.tapped .vp-mini-avatar {
-        transform: scale(1.08);
-        box-shadow: 0 0 0 3px rgba(231,76,60,0.3);
-      }
-      .vp-mini-name { font-family: 'Syne', sans-serif; font-size: 15px; font-weight: 700; color: #f8f9fa; }
-      .vp-mini-role { font-size: 11.5px; color: #8892a4; margin-top: 3px; }
-      .vp-mini-linkedin {
-        display: inline-block; margin-top: 8px;
-        font-family: 'Syne', sans-serif; font-size: 10px; font-weight: 600;
-        letter-spacing: 0.08em; text-transform: uppercase;
-        color: #e74c3c; text-decoration: none;
-        border-bottom: 1px solid rgba(231,76,60,0.3); padding-bottom: 1px;
-        transition: color 0.2s, border-color 0.2s;
-      }
-      .vp-mini-linkedin:hover { color: #f8f9fa; border-color: #f8f9fa; }
-    </style>
-    <div class="vp-mini-grid">
-      <div class="vp-mini-card">
-        <div class="vp-mini-avatar">G</div>
-        <div>
-          <div class="vp-mini-name">Grace Li</div>
-          <div class="vp-mini-role">VP Content & Events</div>
-          <a href="https://www.linkedin.com/in/grace-li/" target="_blank" class="vp-mini-linkedin">LinkedIn →</a>
-        </div>
-      </div>
-      <div class="vp-mini-card">
-        <div class="vp-mini-avatar">H</div>
-        <div>
-          <div class="vp-mini-name">Hetvee Marviya</div>
-          <div class="vp-mini-role">VP Tech Conference</div>
-          <a href="https://www.linkedin.com/in/hetvee-marviya/" target="_blank" class="vp-mini-linkedin">LinkedIn →</a>
-        </div>
-      </div>
-      <div class="vp-mini-card">
-        <div class="vp-mini-avatar">M</div>
-        <div>
-          <div class="vp-mini-name">Michael Yedibalian</div>
-          <div class="vp-mini-role">VP Treks</div>
-          <a href="https://www.linkedin.com/in/michael-yedibalian-862562191/" target="_blank" class="vp-mini-linkedin">LinkedIn →</a>
-        </div>
-      </div>
-      <div class="vp-mini-card">
-        <div class="vp-mini-avatar">L</div>
-        <div>
-          <div class="vp-mini-name">Lu Lu</div>
-          <div class="vp-mini-role">Board Member, Treks</div>
-          <a href="https://www.linkedin.com/in/lulu1016/" target="_blank" class="vp-mini-linkedin">LinkedIn →</a>
-        </div>
-      </div>
-      <div class="vp-mini-card">
-        <div class="vp-mini-avatar">J</div>
-        <div>
-          <div class="vp-mini-name">Jasper Wang</div>
-          <div class="vp-mini-role">VP Careers & Sponsorship</div>
-        </div>
-      </div>
-      <div class="vp-mini-card">
-        <div class="vp-mini-avatar">M</div>
-        <div>
-          <div class="vp-mini-name">Matthew Simons</div>
-          <div class="vp-mini-role">VP Community & Marketing</div>
-          <a href="https://www.linkedin.com/in/matthew-isaac-simons/" target="_blank" class="vp-mini-linkedin">LinkedIn →</a>
-        </div>
-      </div>
-      <div class="vp-mini-card">
-        <div class="vp-mini-avatar">A</div>
-        <div>
-          <div class="vp-mini-name">Abdullah Noaman</div>
-          <div class="vp-mini-role">VP Finance</div>
-          <a href="https://www.linkedin.com/in/a-noaman/" target="_blank" class="vp-mini-linkedin">LinkedIn →</a>
-        </div>
-      </div>
-    </div>
-
     </div><!-- end collapse body -->
   </div>
 </div>
 
-<!-- PILLARS / ROLES -->
+<!-- ROLES -->
 <div class="divider"></div>
-<div style="background:#111827;" class="section-grid pat-diag">
-<div class="section-inner fade-in section-collapsible collapsed" id="roles-section">
-  <div id="pillars-anchor"></div>
-  <div id="roles-anchor"></div>
-  <div class="section-collapse-header" onclick="toggleSection('roles-section')">
-    <div class="section-collapse-left">
-      <p class="section-label" style="margin:0;">Scope & Roles</p>
-      <h2 class="section-title" style="margin:0;">Six pillars.<br>Six Directors.</h2>
+<div style="background:#0a0e1a;" class="section-grid pat-zig">
+  <div class="section-inner fade-in section-collapsible" id="roles-section">
+    <div id="roles-anchor"></div>
+    <div class="section-collapse-header" onclick="toggleSection('roles-section')">
+      <div class="section-collapse-left">
+        <p class="section-label" style="margin:0;">Open Roles</p>
+        <h2 class="section-title" style="margin:0;">Six VP positions.<br>All consequential.</h2>
+      </div>
+      <span class="collapse-toggle"><em class="collapse-icon">▾</em> Collapse</span>
     </div>
-    <span class="collapse-toggle"><em class="collapse-icon" style="transform:rotate(-90deg)">▾</em> Expand</span>
-  </div>
-  <div class="section-collapse-body">
-  <p class="section-body">Media, events, industry access, capital relationships, community, and the money that funds all of it. Each pillar is a real Director role. <strong style="color:#e74c3c;">Tap any card to see it.</strong></p>
+    <div class="section-collapse-body">
+    <p class="section-body">Read every role before you rank. The best applications come from people who chose their role deliberately, not by default. <strong style="color:#e74c3c;">Tap any card to flip it.</strong></p>
 
-  <style>
-    .flip-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-      grid-auto-rows: 1fr;
-      gap: 16px;
-      margin-top: 44px;
-      align-items: stretch;
-    }
-    .flip-card {
-      perspective: 1200px;
-      cursor: pointer;
-    }
-    .flip-card-inner {
-      position: relative;
-      width: 100%;
-      height: 100%;
-      transition: transform 0.6s cubic-bezier(0.4,0.2,0.2,1);
-      transform-style: preserve-3d;
-    }
-    .flip-card.flipped .flip-card-inner {
-      transform: rotateY(180deg);
-    }
-    .flip-front, .flip-back {
-      position: absolute;
-      top: 0; left: 0; right: 0; bottom: 0;
-      backface-visibility: hidden;
-      -webkit-backface-visibility: hidden;
-      border-radius: 2px;
-      padding: 28px;
-      display: flex;
-      flex-direction: column;
-      box-sizing: border-box;
-    }
-    .flip-front {
-      background: #0a0e1a;
-      border: 1px solid rgba(255,255,255,0.07);
-      border-top: 2px solid #c0392b;
-      justify-content: flex-start;
-    }
-    .flip-back {
-      background: #1e2a3a;
-      border: 1px solid rgba(55,138,221,0.3);
-      border-top: 2px solid #378ADD;
-      transform: rotateY(180deg);
-    }
-    .pillar-num {
-      font-family: 'Syne', sans-serif;
-      font-size: 11px;
-      font-weight: 700;
-      color: #8892a4;
-      letter-spacing: 0.1em;
-      margin-bottom: 12px;
-    }
-    .pillar-title {
-      font-family: 'Syne', sans-serif;
-      font-size: 19px;
-      font-weight: 700;
-      color: #f8f9fa;
-      margin-bottom: 10px;
-      line-height: 1.25;
-    }
-    .pillar-desc {
-      font-size: 13px;
-      color: #8892a4;
-      font-weight: 300;
-      line-height: 1.6;
-      margin-bottom: 16px;
-    }
-    .flip-stat-row {
-      display: flex;
-      gap: 8px;
-      margin-bottom: 16px;
-    }
-    .flip-stat {
-      flex: 1;
-      background: rgba(255,255,255,0.04);
-      border: 1px solid rgba(255,255,255,0.07);
-      border-radius: 2px;
-      padding: 0;
-      text-align: center;
-      min-height: 60px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 4px;
-    }
-    .flip-stat-num {
-      font-family: 'Syne', sans-serif;
-      font-size: 17px;
-      font-weight: 800;
-      color: #e74c3c;
-      line-height: 1;
-    }
-    .flip-stat-label {
-      font-size: 8.5px;
-      color: #8892a4;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-      font-family: 'Syne', sans-serif;
-      font-weight: 600;
-      line-height: 1.3;
-    }
-    .pillar-row {
-      display: flex;
-      gap: 8px;
-      margin-bottom: 8px;
-      align-items: flex-start;
-    }
-    .pillar-row-label {
-      font-family: 'Syne', sans-serif;
-      font-size: 9px;
-      font-weight: 700;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      flex-shrink: 0;
-      width: 58px;
-      margin-top: 1px;
-    }
-    .pillar-row-benefit .pillar-row-label { color: #378ADD; }
-    .pillar-row-duty .pillar-row-label { color: #e74c3c; }
-    .pillar-row-text {
-      font-size: 12px;
-      color: #d1d5db;
-      font-weight: 300;
-      line-height: 1.5;
-    }
-    .flip-hint {
-      margin-top: auto;
-      padding-top: 16px;
-      font-size: 11px;
-      color: #8892a4;
-      font-family: 'Syne', sans-serif;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      text-align: center;
-      border-top: 1px solid rgba(255,255,255,0.05);
-    }
-    .flip-hint span { color: #e74c3c; }
+    <style>
+      .flip-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+        grid-auto-rows: 1fr;
+        gap: 16px;
+        margin-top: 52px;
+        align-items: stretch;
+      }
+      .flip-card {
+        perspective: 1200px;
+        cursor: pointer;
+        /* height driven by grid row - all cells in same implicit grid share tallest */
+      }
+      .flip-card-inner {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        transition: transform 0.6s cubic-bezier(0.4,0.2,0.2,1);
+        transform-style: preserve-3d;
+      }
+      .flip-card.flipped .flip-card-inner {
+        transform: rotateY(180deg);
+      }
+      .flip-front, .flip-back {
+        position: absolute;
+        top: 0; left: 0; right: 0; bottom: 0;
+        backface-visibility: hidden;
+        -webkit-backface-visibility: hidden;
+        border-radius: 2px;
+        padding: 28px;
+        display: flex;
+        flex-direction: column;
+        box-sizing: border-box;
+      }
+      .flip-front {
+        background: #111827;
+        border: 1px solid rgba(255,255,255,0.07);
+        border-top: 2px solid #c0392b;
+        justify-content: flex-start;
+      }
+      .flip-back {
+        background: #1e2a3a;
+        border: 1px solid rgba(55,138,221,0.3);
+        border-top: 2px solid #378ADD;
+        transform: rotateY(180deg);
+      }
+      .flip-tag {
+        font-family: 'Syne', sans-serif;
+        font-size: 10px;
+        font-weight: 600;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        color: #8892a4;
+        margin-bottom: 10px;
+      }
+      .flip-title {
+        font-family: 'Syne', sans-serif;
+        font-size: 20px;
+        font-weight: 700;
+        color: #f8f9fa;
+        margin-bottom: 6px;
+        line-height: 1.2;
+      }
+      .flip-reports {
+        font-size: 12px;
+        color: #e74c3c;
+        font-family: 'Syne', sans-serif;
+        letter-spacing: 0.05em;
+        margin-bottom: 14px;
+      }
+      .flip-desc {
+        font-size: 14px;
+        color: #d1d5db;
+        font-weight: 300;
+        line-height: 1.65;
+        margin-bottom: 0;
+      }
+      .flip-stat-row {
+        display: flex;
+        gap: 8px;
+        flex: 1;
+        align-items: center;
+        padding: 16px 0;
+      }
+      .flip-stat {
+        flex: 1;
+        background: rgba(255,255,255,0.04);
+        border: 1px solid rgba(255,255,255,0.07);
+        border-radius: 2px;
+        padding: 0;
+        text-align: center;
+        min-height: 72px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 6px;
+      }
+      .flip-stat-num {
+        font-family: 'Syne', sans-serif;
+        font-size: 20px;
+        font-weight: 800;
+        color: #e74c3c;
+        line-height: 1;
+      }
+      .flip-stat-label {
+        font-size: 9px;
+        color: #8892a4;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        font-family: 'Syne', sans-serif;
+        font-weight: 600;
+        line-height: 1.3;
+      }
+      .flip-front ul { list-style: none; padding: 0; margin: 0; }
+      .flip-front ul li {
+        font-size: 13px;
+        color: #8892a4;
+        padding: 6px 0 6px 16px;
+        border-top: 1px solid rgba(255,255,255,0.05);
+        position: relative;
+        line-height: 1.5;
+      }
+      .flip-front ul li::before { content: '→'; position: absolute; left: 0; color: #c0392b; font-size: 11px; }
+      .flip-hint {
+        margin-top: 16px;
+        font-size: 11px;
+        color: #8892a4;
+        font-family: 'Syne', sans-serif;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        text-align: center;
+        border-top: 1px solid rgba(255,255,255,0.05);
+        padding-top: 12px;
+      }
+      .flip-hint span { color: #e74c3c; }
 
-    /* Back face */
-    .back-header {
-      font-family: 'Syne', sans-serif;
-      font-size: 10px;
-      font-weight: 700;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      color: #378ADD;
-      margin-bottom: 4px;
-    }
-    .back-title {
-      font-family: 'Syne', sans-serif;
-      font-size: 18px;
-      font-weight: 700;
-      color: #f8f9fa;
-      margin-bottom: 4px;
-      line-height: 1.2;
-    }
-    .back-reports {
-      font-size: 12px;
-      color: #e74c3c;
-      font-family: 'Syne', sans-serif;
-      letter-spacing: 0.05em;
-      margin-bottom: 16px;
-    }
-    .flip-card ul { list-style: none; padding: 0; margin: 0 0 12px; }
-    .flip-card ul li {
-      font-size: 12.5px;
-      color: #8892a4;
-      padding: 5px 0 5px 16px;
-      border-top: 1px solid rgba(255,255,255,0.05);
-      position: relative;
-      line-height: 1.45;
-    }
-    .flip-card ul li::before { content: '→'; position: absolute; left: 0; color: #378ADD; font-size: 11px; }
-    .back-row {
-      display: flex;
-      gap: 8px;
-      margin-bottom: 10px;
-      align-items: flex-start;
-    }
-    .back-icon { font-size: 15px; flex-shrink: 0; margin-top: 1px; }
-    .back-label {
-      font-family: 'Syne', sans-serif;
-      font-size: 10px;
-      font-weight: 600;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: #8892a4;
-      margin-bottom: 2px;
-    }
-    .back-value { font-size: 12.5px; color: #d1d5db; font-weight: 300; line-height: 1.5; }
-    .back-divider { height: 1px; background: rgba(255,255,255,0.07); margin: 10px 0; }
-    .dog-box {
-      background: rgba(231,76,60,0.08);
-      border: 1px solid rgba(231,76,60,0.2);
-      border-radius: 2px;
-      padding: 12px 14px;
-      margin-top: auto;
-    }
-    .dog-label {
-      font-family: 'Syne', sans-serif;
-      font-size: 10px;
-      font-weight: 700;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: #e74c3c;
-      margin-bottom: 4px;
-    }
-    .dog-value { font-size: 12.5px; color: #d1d5db; line-height: 1.5; }
-    .back-close {
-      margin-top: 12px;
-      font-size: 11px;
-      color: #8892a4;
-      font-family: 'Syne', sans-serif;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      text-align: center;
-      border-top: 1px solid rgba(255,255,255,0.05);
-      padding-top: 10px;
-    }
-    .back-close span { color: #378ADD; }
-    @media (max-width: 768px) {
-      .flip-grid { grid-template-columns: 1fr; gap: 12px; }
-      .flip-front, .flip-back { padding: 22px 20px; }
-    }
-  </style>
+      /* Back face styles */
+      .back-header {
+        font-family: 'Syne', sans-serif;
+        font-size: 10px;
+        font-weight: 700;
+        letter-spacing: 0.15em;
+        text-transform: uppercase;
+        color: #378ADD;
+        margin-bottom: 4px;
+      }
+      .back-title {
+        font-family: 'Syne', sans-serif;
+        font-size: 18px;
+        font-weight: 700;
+        color: #f8f9fa;
+        margin-bottom: 20px;
+        line-height: 1.2;
+      }
+      .back-row {
+        display: flex;
+        gap: 8px;
+        margin-bottom: 12px;
+        align-items: flex-start;
+      }
+      .back-icon { font-size: 16px; flex-shrink: 0; margin-top: 1px; }
+      .back-label {
+        font-family: 'Syne', sans-serif;
+        font-size: 10px;
+        font-weight: 600;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: #8892a4;
+        margin-bottom: 2px;
+      }
+      .back-value { font-size: 13px; color: #d1d5db; font-weight: 300; line-height: 1.5; }
+      .back-divider { height: 1px; background: rgba(255,255,255,0.07); margin: 14px 0; }
+      .dog-box {
+        background: rgba(55,138,221,0.08);
+        border: 1px solid rgba(55,138,221,0.2);
+        border-radius: 2px;
+        padding: 12px 14px;
+        margin-top: auto;
+      }
+      .dog-label {
+        font-family: 'Syne', sans-serif;
+        font-size: 10px;
+        font-weight: 700;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: #378ADD;
+        margin-bottom: 4px;
+      }
+      .dog-value { font-size: 13px; color: #d1d5db; line-height: 1.5; }
+      .back-close {
+        margin-top: 14px;
+        font-size: 11px;
+        color: #8892a4;
+        font-family: 'Syne', sans-serif;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        text-align: center;
+        border-top: 1px solid rgba(255,255,255,0.05);
+        padding-top: 12px;
+      }
+      .back-close span { color: #378ADD; }
+      @media (max-width: 768px) {
+        .flip-grid { grid-template-columns: 1fr; gap: 12px; }
+        .flip-front, .flip-back { padding: 22px 20px; }
+      }
+    </style>
 
-  <div class="flip-grid">
+    <div class="flip-grid">
 
-    <!-- 01 Content & Storytelling -->
-    <div class="flip-card">
-      <div class="flip-card-inner">
-        <div class="flip-front">
-          <p class="pillar-num">01 · Media</p>
-          <p class="pillar-title">Content & Storytelling</p>
-          <p class="pillar-desc">A podcast, a Substack, and a media presence that reaches every corner of tech at Wharton and beyond.</p>
-          <div class="flip-stat-row">
-            <div class="flip-stat"><div class="flip-stat-num">20+</div><div class="flip-stat-label">Podcast eps</div></div>
-            <div class="flip-stat"><div class="flip-stat-num">3</div><div class="flip-stat-label">Cities</div></div>
+      <!-- Content & Events -->
+      <div class="flip-card" >
+        <div class="flip-card-inner">
+          <div class="flip-front">
+            <p class="flip-tag">Content</p>
+            <h3 class="flip-title">VP of Content & Events</h3>
+            <p class="flip-reports">Reporting to Gorav</p>
+            <p class="flip-desc">Leads the club's most visible output — a podcast, a Substack, and events across SF, NYC, and Philly that position Wharton as a genuine voice in tech.</p>
+            <div class="flip-stat-row">
+              <div class="flip-stat"><div class="flip-stat-num">20+</div><div class="flip-stat-label">Podcast eps</div></div>
+              <div class="flip-stat"><div class="flip-stat-num">3</div><div class="flip-stat-label">Cities</div></div>
+              <div class="flip-stat"><div class="flip-stat-num">2</div><div class="flip-stat-label">1Y members</div></div>
+            </div>
+            <ul>
+              <li>Co-host Tech Toks episodes alongside the Co-President</li>
+              <li>Source and book speakers — founders, operators, investors</li>
+              <li>Build and run events in SF, NYC, and Philly (Semester in SF + Philly home base)</li>
+              <li>Coordinate the Substack research and writing team (non-board, project-based contributors rotated per piece)</li>
+              <li>Own the podcast and Substack publication schedule</li>
+            </ul>
+            <p class="flip-hint"><span>Tap</span> to flip for details</p>
           </div>
-          <div class="pillar-row pillar-row-benefit"><span class="pillar-row-label">You get</span><span class="pillar-row-text">Direct access to founders, operators, and investors most students never talk to.</span></div>
-          <div class="pillar-row pillar-row-duty"><span class="pillar-row-label">You own</span><span class="pillar-row-text">Who gets a platform and what the club's voice sounds like.</span></div>
-          <p class="flip-hint"><span>Tap</span> to see the Director role</p>
-        </div>
-        <div class="flip-back">
-          <p class="back-header">The role</p>
-          <p class="back-title">Content & Events Director</p>
-          <p class="back-reports">Reports to VP Grace</p>
-          <ul>
-            <li>Co-host Tech Toks episodes alongside the Co-President</li>
-            <li>Source and book speakers: founders, operators, investors</li>
-            <li>Build and run events in SF, NYC, and Philly</li>
-            <li>Coordinate the Substack writing team (non-board contributors)</li>
-          </ul>
-          <div class="back-row">
-            <span class="back-icon">🏆</span>
-            <div><p class="back-label">Win condition</p><p class="back-value">Tech Toks becomes the go-to MBA tech podcast. Substack hits 500+ subscribers.</p></div>
+          <div class="flip-back">
+            <p class="back-header">Inside the role</p>
+            <p class="back-title">VP of Content & Events</p>
+            <div class="back-row">
+              <span class="back-icon">👥</span>
+              <div><p class="back-label">Team size</p><p class="back-value">You + 2 dedicated 1Y board members. Substack writers are <em style="font-style:normal;color:#e74c3c;">not</em> board members — they're project-based contributors you recruit and rotate per piece.</p></div>
+            </div>
+            <div class="back-row">
+              <span class="back-icon">🛠️</span>
+              <div><p class="back-label">Skills you'll use</p><p class="back-value">Storytelling, speaker relations, content strategy, editorial judgment, multi-city event ops</p></div>
+            </div>
+            <div class="back-row">
+              <span class="back-icon">🏆</span>
+              <div><p class="back-label">Win condition</p><p class="back-value">Tech Toks becomes the go-to MBA tech podcast. Substack hits 500+ subscribers. Events in all three cities feel like the place to be.</p></div>
+            </div>
+            <div class="back-divider"></div>
+            <div class="dog-box">
+              <p class="dog-label">🐶 If this role were a dog...</p>
+              <p class="dog-value">A <strong style="color:#f8f9fa;">Golden Retriever</strong> — endlessly social, always bringing people together, somehow on every podcast, and everyone's favorite at the party.</p>
+            </div>
+            <p class="back-close"><span>Tap</span> to flip back</p>
           </div>
-          <div class="back-divider"></div>
-          <div class="dog-box">
-            <p class="dog-label">🐶 If this role were a dog...</p>
-            <p class="dog-value">A <strong style="color:#f8f9fa;">Golden Retriever</strong>. Endlessly social, always bringing people together, everyone's favorite at the party.</p>
-          </div>
-          <p class="back-close"><span>Tap</span> to flip back</p>
         </div>
       </div>
-    </div>
 
-    <!-- 02 The Annual Conference -->
-    <div class="flip-card">
-      <div class="flip-card-inner">
-        <div class="flip-front">
-          <p class="pillar-num">02 · Flagship Event</p>
-          <p class="pillar-title">The Annual Conference</p>
-          <p class="pillar-desc">The single biggest tech event on campus, bringing real industry names to Wharton for a full day.</p>
-          <div class="flip-stat-row">
-            <div class="flip-stat"><div class="flip-stat-num">200+</div><div class="flip-stat-label">Attendees</div></div>
-            <div class="flip-stat"><div class="flip-stat-num">1 day</div><div class="flip-stat-label">All in</div></div>
+      <!-- Tech Conference -->
+      <div class="flip-card" >
+        <div class="flip-card-inner">
+          <div class="flip-front">
+            <p class="flip-tag">Flagship Event</p>
+            <h3 class="flip-title">VP of Tech Conference</h3>
+            <p class="flip-reports">Reporting to Gorav</p>
+            <p class="flip-desc">Leads the planning and execution of the club's flagship annual conference — a full-day event bringing together students, alumni, and industry leaders.</p>
+            <div class="flip-stat-row">
+              <div class="flip-stat"><div class="flip-stat-num">200+</div><div class="flip-stat-label">Attendees</div></div>
+              <div class="flip-stat"><div class="flip-stat-num">1 day</div><div class="flip-stat-label">All in</div></div>
+              <div class="flip-stat"><div class="flip-stat-num">2</div><div class="flip-stat-label">1Y members</div></div>
+            </div>
+            <ul>
+              <li>Develop the conference theme, agenda, and speaker lineup</li>
+              <li>Recruit and manage keynote speakers and panelists</li>
+              <li>Coordinate budget with VP Finance, sponsors with VP Careers</li>
+              <li>Manage all logistics — venue, AV, catering, run-of-show</li>
+              <li>Lead a team of 2 members from concept to day-of</li>
+            </ul>
+            <p class="flip-hint"><span>Tap</span> to flip for details</p>
           </div>
-          <div class="pillar-row pillar-row-benefit"><span class="pillar-row-label">You get</span><span class="pillar-row-text">A direct line to speakers other clubs only get a seat in the audience for.</span></div>
-          <div class="pillar-row pillar-row-duty"><span class="pillar-row-label">You own</span><span class="pillar-row-text">The stage, the content, and the reputation of the event.</span></div>
-          <p class="flip-hint"><span>Tap</span> to see the Director role</p>
-        </div>
-        <div class="flip-back">
-          <p class="back-header">The role</p>
-          <p class="back-title">Tech Conference Director</p>
-          <p class="back-reports">Reports to VP Hetvee</p>
-          <ul>
-            <li>Develop the conference theme, agenda, and speaker lineup</li>
-            <li>Recruit and manage keynote speakers and panelists</li>
-            <li>Coordinate budget and sponsors with other Directors</li>
-            <li>Manage logistics: venue, AV, catering, run-of-show</li>
-          </ul>
-          <div class="back-row">
-            <span class="back-icon">🏆</span>
-            <div><p class="back-label">Win condition</p><p class="back-value">200+ attendees, three keynotes people actually remember, zero day-of disasters.</p></div>
+          <div class="flip-back">
+            <p class="back-header">Inside the role</p>
+            <p class="back-title">VP of Tech Conference</p>
+            <div class="back-row">
+              <span class="back-icon">👥</span>
+              <div><p class="back-label">Team size</p><p class="back-value">You + 2 dedicated 1Y members</p></div>
+            </div>
+            <div class="back-row">
+              <span class="back-icon">🛠️</span>
+              <div><p class="back-label">Skills you'll use</p><p class="back-value">Project management, speaker recruiting, budget tracking, vendor negotiation, logistics</p></div>
+            </div>
+            <div class="back-row">
+              <span class="back-icon">🏆</span>
+              <div><p class="back-label">Win condition</p><p class="back-value">200+ attendees, three keynotes people actually remember, zero day-of disasters.</p></div>
+            </div>
+            <div class="back-divider"></div>
+            <div class="dog-box">
+              <p class="dog-label">🐶 If this role were a dog...</p>
+              <p class="dog-value">A <strong style="color:#f8f9fa;">Border Collie</strong> — obsessively organized, herding everyone toward the goal, happiest when the whole operation runs perfectly.</p>
+            </div>
+            <p class="back-close"><span>Tap</span> to flip back</p>
           </div>
-          <div class="back-divider"></div>
-          <div class="dog-box">
-            <p class="dog-label">🐶 If this role were a dog...</p>
-            <p class="dog-value">A <strong style="color:#f8f9fa;">Border Collie</strong>. Obsessively organized, herding everyone toward the goal, happiest when it all runs perfectly.</p>
-          </div>
-          <p class="back-close"><span>Tap</span> to flip back</p>
         </div>
       </div>
-    </div>
 
-    <!-- 03 Treks -->
-    <div class="flip-card">
-      <div class="flip-card-inner">
-        <div class="flip-front">
-          <p class="pillar-num">03 · Industry Access</p>
-          <p class="pillar-title">Treks</p>
-          <p class="pillar-desc">In-person company visits across the Bay Area and NYC that put members inside the rooms where tech actually happens.</p>
-          <div class="flip-stat-row">
-            <div class="flip-stat"><div class="flip-stat-num">2</div><div class="flip-stat-label">Treks/yr</div></div>
-            <div class="flip-stat"><div class="flip-stat-num">2</div><div class="flip-stat-label">Cities</div></div>
+      <!-- Treks -->
+      <div class="flip-card" >
+        <div class="flip-card-inner">
+          <div class="flip-front">
+            <p class="flip-tag">Industry Access</p>
+            <h3 class="flip-title">VP of Treks</h3>
+            <p class="flip-reports">Reporting to Melody</p>
+            <p class="flip-desc">Organizes and leads in-person company visits, giving members direct access to top tech companies and the people building them.</p>
+            <div class="flip-stat-row">
+              <div class="flip-stat"><div class="flip-stat-num">2</div><div class="flip-stat-label">Treks/yr</div></div>
+              <div class="flip-stat"><div class="flip-stat-num">2</div><div class="flip-stat-label">Cities</div></div>
+              <div class="flip-stat"><div class="flip-stat-num">2</div><div class="flip-stat-label">1Y members</div></div>
+            </div>
+            <ul>
+              <li>Plan and lead two treks per year — Bay Area and NYC</li>
+              <li>Source and manage company and alumni contacts</li>
+              <li>Schedule office visits, panels, and networking sessions</li>
+              <li>Run the trek application process and attendee comms</li>
+              <li>Lead a team of 2 members through planning and execution</li>
+            </ul>
+            <p class="flip-hint"><span>Tap</span> to flip for details</p>
           </div>
-          <div class="pillar-row pillar-row-benefit"><span class="pillar-row-label">You get</span><span class="pillar-row-text">Office visits and relationships most alumni took years to build.</span></div>
-          <div class="pillar-row pillar-row-duty"><span class="pillar-row-label">You own</span><span class="pillar-row-text">Getting people in the room, and making sure it was worth it.</span></div>
-          <p class="flip-hint"><span>Tap</span> to see the Director role</p>
-        </div>
-        <div class="flip-back">
-          <p class="back-header">The role</p>
-          <p class="back-title">Treks Director</p>
-          <p class="back-reports">Reports to VP Michael · works with Lu Lu</p>
-          <ul>
-            <li>Plan and lead two treks per year in the Bay Area and NYC</li>
-            <li>Source and manage company and alumni contacts</li>
-            <li>Schedule office visits, panels, and networking sessions</li>
-            <li>Run the trek application process and attendee comms</li>
-          </ul>
-          <div class="back-row">
-            <span class="back-icon">🏆</span>
-            <div><p class="back-label">Win condition</p><p class="back-value">Two treks that feel like insider access. Members leave with real relationships.</p></div>
+          <div class="flip-back">
+            <p class="back-header">Inside the role</p>
+            <p class="back-title">VP of Treks</p>
+            <div class="back-row">
+              <span class="back-icon">👥</span>
+              <div><p class="back-label">Team size</p><p class="back-value">You + 2 dedicated 1Y members</p></div>
+            </div>
+            <div class="back-row">
+              <span class="back-icon">🛠️</span>
+              <div><p class="back-label">Skills you'll use</p><p class="back-value">Relationship management, itinerary planning, alumni outreach, logistics coordination</p></div>
+            </div>
+            <div class="back-row">
+              <span class="back-icon">🏆</span>
+              <div><p class="back-label">Win condition</p><p class="back-value">Two treks that feel like insider access, not a field trip. Members leave with real relationships.</p></div>
+            </div>
+            <div class="back-divider"></div>
+            <div class="dog-box">
+              <p class="dog-label">🐶 If this role were a dog...</p>
+              <p class="dog-value">A <strong style="color:#f8f9fa;">Siberian Husky</strong> — built to travel, thrives in new environments, and always leading the pack somewhere exciting.</p>
+            </div>
+            <p class="back-close"><span>Tap</span> to flip back</p>
           </div>
-          <div class="back-divider"></div>
-          <div class="dog-box">
-            <p class="dog-label">🐶 If this role were a dog...</p>
-            <p class="dog-value">A <strong style="color:#f8f9fa;">Siberian Husky</strong>. Built to travel, thrives in new environments, always leading the pack somewhere exciting.</p>
-          </div>
-          <p class="back-close"><span>Tap</span> to flip back</p>
         </div>
       </div>
-    </div>
 
-    <!-- 04 Sponsorships & Recruiting -->
-    <div class="flip-card">
-      <div class="flip-card-inner">
-        <div class="flip-front">
-          <p class="pillar-num">04 · Capital & Careers</p>
-          <p class="pillar-title">Sponsorships & Recruiting</p>
-          <p class="pillar-desc">The corporate relationships that fund the club and open real recruiting doors for members.</p>
-          <div class="flip-stat-row">
-            <div class="flip-stat"><div class="flip-stat-num">2+</div><div class="flip-stat-label">Sponsors/yr</div></div>
-            <div class="flip-stat"><div class="flip-stat-num">All</div><div class="flip-stat-label">Members</div></div>
+      <!-- Careers & Sponsorships -->
+      <div class="flip-card" >
+        <div class="flip-card-inner">
+          <div class="flip-front">
+            <p class="flip-tag">Careers & Partnerships</p>
+            <h3 class="flip-title">VP of Careers & Sponsorships</h3>
+            <p class="flip-reports">Reporting to Melody</p>
+            <p class="flip-desc">Connects members with opportunities in tech while building the corporate relationships that fund the club's programming.</p>
+            <div class="flip-stat-row">
+              <div class="flip-stat"><div class="flip-stat-num">2+</div><div class="flip-stat-label">Sponsors/yr</div></div>
+              <div class="flip-stat"><div class="flip-stat-num">All</div><div class="flip-stat-label">Members</div></div>
+              <div class="flip-stat"><div class="flip-stat-num">1</div><div class="flip-stat-label">1Y member</div></div>
+            </div>
+            <ul>
+              <li>Organize recruiting prep — workshops, mock interviews, resume reviews</li>
+              <li>Partner with MBACM to surface job opportunities</li>
+              <li>Identify, pitch, and secure corporate sponsors</li>
+              <li>Maintain relationships with existing sponsor companies</li>
+              <li>Host alumni and company panels on career readiness</li>
+            </ul>
+            <p class="flip-hint"><span>Tap</span> to flip for details</p>
           </div>
-          <div class="pillar-row pillar-row-benefit"><span class="pillar-row-label">You get</span><span class="pillar-row-text">Direct relationships with sponsors and recruiters, not a cold application.</span></div>
-          <div class="pillar-row pillar-row-duty"><span class="pillar-row-label">You own</span><span class="pillar-row-text">Every dollar and every door depends on the trust you build.</span></div>
-          <p class="flip-hint"><span>Tap</span> to see the Director role</p>
-        </div>
-        <div class="flip-back">
-          <p class="back-header">The role</p>
-          <p class="back-title">Careers & Sponsorships Director</p>
-          <p class="back-reports">Reports to VP Jasper</p>
-          <ul>
-            <li>Organize recruiting prep: workshops, mock interviews, resume reviews</li>
-            <li>Identify, pitch, and secure corporate sponsors</li>
-            <li>Maintain relationships with existing sponsor companies</li>
-            <li>Host alumni and company panels on career readiness</li>
-          </ul>
-          <div class="back-row">
-            <span class="back-icon">🏆</span>
-            <div><p class="back-label">Win condition</p><p class="back-value">Two new sponsors signed. Members feel meaningfully more prepared to recruit in tech.</p></div>
+          <div class="flip-back">
+            <p class="back-header">Inside the role</p>
+            <p class="back-title">VP of Careers & Sponsorships</p>
+            <div class="back-row">
+              <span class="back-icon">👥</span>
+              <div><p class="back-label">Team size</p><p class="back-value">You + 1 dedicated 1Y member</p></div>
+            </div>
+            <div class="back-row">
+              <span class="back-icon">🛠️</span>
+              <div><p class="back-label">Skills you'll use</p><p class="back-value">Sales, relationship management, career coaching, sponsorship pitching, networking</p></div>
+            </div>
+            <div class="back-row">
+              <span class="back-icon">🏆</span>
+              <div><p class="back-label">Win condition</p><p class="back-value">Two new sponsors signed. Members feel meaningfully more prepared to recruit in tech.</p></div>
+            </div>
+            <div class="back-divider"></div>
+            <div class="dog-box">
+              <p class="dog-label">🐶 If this role were a dog...</p>
+              <p class="dog-value">A <strong style="color:#f8f9fa;">Labrador Retriever</strong> — everyone wants one, brings things back reliably, and somehow has a connection with every single person in the room.</p>
+            </div>
+            <p class="back-close"><span>Tap</span> to flip back</p>
           </div>
-          <div class="back-divider"></div>
-          <div class="dog-box">
-            <p class="dog-label">🐶 If this role were a dog...</p>
-            <p class="dog-value">A <strong style="color:#f8f9fa;">Labrador Retriever</strong>. Everyone wants one, brings things back reliably, connects with every person in the room.</p>
-          </div>
-          <p class="back-close"><span>Tap</span> to flip back</p>
-        </div>
-      </div>
-    </div>
-
-    <!-- 05 Community & Alumni -->
-    <div class="flip-card">
-      <div class="flip-card-inner">
-        <div class="flip-front">
-          <p class="pillar-num">05 · Network</p>
-          <p class="pillar-title">Community & Alumni</p>
-          <p class="pillar-desc">The Wharton Tech Alumni Network, spanning graduating classes and companies across the industry.</p>
-          <div class="flip-stat-row">
-            <div class="flip-stat"><div class="flip-stat-num">~1/wk</div><div class="flip-stat-label">Newsletter</div></div>
-            <div class="flip-stat"><div class="flip-stat-num">Growing</div><div class="flip-stat-label">Alumni net</div></div>
-          </div>
-          <div class="pillar-row pillar-row-benefit"><span class="pillar-row-label">You get</span><span class="pillar-row-text">A network that compounds for decades, not just for a semester.</span></div>
-          <div class="pillar-row pillar-row-duty"><span class="pillar-row-label">You own</span><span class="pillar-row-text">Keeping it alive and useful, not a static list nobody opens.</span></div>
-          <p class="flip-hint"><span>Tap</span> to see the Director role</p>
-        </div>
-        <div class="flip-back">
-          <p class="back-header">The role</p>
-          <p class="back-title">Community & Marketing Director</p>
-          <p class="back-reports">Reports to VP Matthew</p>
-          <ul>
-            <li>Build, maintain, and leverage the Wharton Tech Alumni Network</li>
-            <li>Plan and execute happy hours, community dinners, board bonding</li>
-            <li>Own the weekly club newsletter: curate, write, distribute</li>
-            <li>Manage the club's social media and marketing assets</li>
-          </ul>
-          <div class="back-row">
-            <span class="back-icon">🏆</span>
-            <div><p class="back-label">Win condition</p><p class="back-value">People look forward to the newsletter. The alumni network is active and reachable.</p></div>
-          </div>
-          <div class="back-divider"></div>
-          <div class="dog-box">
-            <p class="dog-label">🐶 If this role were a dog...</p>
-            <p class="dog-value">A <strong style="color:#f8f9fa;">Cavalier King Charles Spaniel</strong>. Warm, makes everyone feel included, the glue that holds the group together.</p>
-          </div>
-          <p class="back-close"><span>Tap</span> to flip back</p>
         </div>
       </div>
-    </div>
 
-    <!-- 06 Finance & Infrastructure -->
-    <div class="flip-card">
-      <div class="flip-card-inner">
-        <div class="flip-front">
-          <p class="pillar-num">06 · Operations</p>
-          <p class="pillar-title">Finance & Infrastructure</p>
-          <p class="pillar-desc">The financial backbone that keeps every other pillar funded, running, and accountable.</p>
-          <div class="flip-stat-row">
-            <div class="flip-stat"><div class="flip-stat-num">6</div><div class="flip-stat-label">Roles</div></div>
-            <div class="flip-stat"><div class="flip-stat-num">$0</div><div class="flip-stat-label">Drama</div></div>
+      <!-- Community & Marketing -->
+      <div class="flip-card" >
+        <div class="flip-card-inner">
+          <div class="flip-front">
+            <p class="flip-tag">Community</p>
+            <h3 class="flip-title">VP of Community & Marketing</h3>
+            <p class="flip-reports">Reporting to Logan</p>
+            <p class="flip-desc">Owns the club's campus presence, member community, and the Wharton Tech Alumni Network — keeping everyone connected well beyond graduation.</p>
+            <div class="flip-stat-row">
+              <div class="flip-stat"><div class="flip-stat-num">~1/wk</div><div class="flip-stat-label">Newsletter</div></div>
+              <div class="flip-stat"><div class="flip-stat-num">Growing</div><div class="flip-stat-label">Alumni net</div></div>
+              <div class="flip-stat"><div class="flip-stat-num">2</div><div class="flip-stat-label">1Y members</div></div>
+            </div>
+            <ul>
+              <li>Build, maintain, and leverage the Wharton Tech Alumni Network</li>
+              <li>Plan and execute happy hours, community dinners, board bonding</li>
+              <li>Own the weekly club newsletter — curate, write, distribute</li>
+              <li>Manage the club's social media and create marketing assets</li>
+              <li>Partner with each VP to ensure events are well-promoted</li>
+            </ul>
+            <p class="flip-hint"><span>Tap</span> to flip for details</p>
           </div>
-          <div class="pillar-row pillar-row-benefit"><span class="pillar-row-label">You get</span><span class="pillar-row-text">Real budget ownership experience most first-years never touch.</span></div>
-          <div class="pillar-row pillar-row-duty"><span class="pillar-row-label">You own</span><span class="pillar-row-text">Every other pillar depends on you getting this right.</span></div>
-          <p class="flip-hint"><span>Tap</span> to see the Director role</p>
-        </div>
-        <div class="flip-back">
-          <p class="back-header">The role</p>
-          <p class="back-title">Finance Director</p>
-          <p class="back-reports">Reports to VP Abdullah</p>
-          <ul>
-            <li>Own the club's annual budget: build it and maintain it all year</li>
-            <li>Process all reimbursements across every role</li>
-            <li>Track sponsorship revenue and report on financial position</li>
-            <li>Flag budget risks proactively and recommend adjustments</li>
-          </ul>
-          <div class="back-row">
-            <span class="back-icon">🏆</span>
-            <div><p class="back-label">Win condition</p><p class="back-value">Zero reimbursement drama. Every VP trusts the numbers. Club ends the year in the black.</p></div>
+          <div class="flip-back">
+            <p class="back-header">Inside the role</p>
+            <p class="back-title">VP of Community & Marketing</p>
+            <div class="back-row">
+              <span class="back-icon">👥</span>
+              <div><p class="back-label">Team size</p><p class="back-value">You + 2 dedicated 1Y members</p></div>
+            </div>
+            <div class="back-row">
+              <span class="back-icon">🛠️</span>
+              <div><p class="back-label">Skills you'll use</p><p class="back-value">Community building, alumni relations, copywriting, Canva/design, newsletter curation, event planning</p></div>
+            </div>
+            <div class="back-row">
+              <span class="back-icon">🏆</span>
+              <div><p class="back-label">Win condition</p><p class="back-value">People look forward to the newsletter. The alumni network is active and reachable. The board actually likes each other.</p></div>
+            </div>
+            <div class="back-divider"></div>
+            <div class="dog-box">
+              <p class="dog-label">🐶 If this role were a dog...</p>
+              <p class="dog-value">A <strong style="color:#f8f9fa;">Cavalier King Charles Spaniel</strong> — warm, makes everyone feel included, somehow always looks great in photos, and the glue that holds the whole group together.</p>
+            </div>
+            <p class="back-close"><span>Tap</span> to flip back</p>
           </div>
-          <div class="back-divider"></div>
-          <div class="dog-box">
-            <p class="dog-label">🐶 If this role were a dog...</p>
-            <p class="dog-value">A <strong style="color:#f8f9fa;">German Shepherd</strong>. Disciplined, dependable, quietly running the operation, mildly terrifying when something's off budget.</p>
-          </div>
-          <p class="back-close"><span>Tap</span> to flip back</p>
         </div>
       </div>
+
+      <!-- Finance -->
+      <div class="flip-card" >
+        <div class="flip-card-inner">
+          <div class="flip-front">
+            <p class="flip-tag">Finance</p>
+            <h3 class="flip-title">VP of Finance</h3>
+            <p class="flip-reports">Reporting to Logan</p>
+            <p class="flip-desc">Responsible for the financial health of the entire club — the connective tissue between all programming and the budget. Not a back-office role.</p>
+            <div class="flip-stat-row">
+              <div class="flip-stat"><div class="flip-stat-num">6</div><div class="flip-stat-label">Committees</div></div>
+              <div class="flip-stat"><div class="flip-stat-num">$0</div><div class="flip-stat-label">Drama</div></div>
+              <div class="flip-stat"><div class="flip-stat-num">2</div><div class="flip-stat-label">1Y members</div></div>
+            </div>
+            <ul>
+              <li>Own the club's annual budget — build it and maintain it all year</li>
+              <li>Process all reimbursements across every committee</li>
+              <li>Track sponsorship revenue and report on financial position</li>
+              <li>Provide monthly financial updates to the Co-Presidents</li>
+              <li>Flag budget risks proactively and recommend adjustments</li>
+            </ul>
+            <p class="flip-hint"><span>Tap</span> to flip for details</p>
+          </div>
+          <div class="flip-back">
+            <p class="back-header">Inside the role</p>
+            <p class="back-title">VP of Finance</p>
+            <div class="back-row">
+              <span class="back-icon">👥</span>
+              <div><p class="back-label">Team size</p><p class="back-value">You + 2 dedicated 1Y members</p></div>
+            </div>
+            <div class="back-row">
+              <span class="back-icon">🛠️</span>
+              <div><p class="back-label">Skills you'll use</p><p class="back-value">Budgeting, financial reporting, Excel/Sheets, cross-functional coordination, attention to detail</p></div>
+            </div>
+            <div class="back-row">
+              <span class="back-icon">🏆</span>
+              <div><p class="back-label">Win condition</p><p class="back-value">Zero reimbursement drama. Every VP trusts the numbers. Club ends the year in the black.</p></div>
+            </div>
+            <div class="back-divider"></div>
+            <div class="dog-box">
+              <p class="dog-label">🐶 If this role were a dog...</p>
+              <p class="dog-value">A <strong style="color:#f8f9fa;">German Shepherd</strong> — disciplined, dependable, quietly running the whole operation, and mildly terrifying when something's off budget.</p>
+            </div>
+            <p class="back-close"><span>Tap</span> to flip back</p>
+          </div>
+        </div>
+      </div>
+
     </div>
-
-  </div>
-
-  <!-- BOLD STATEMENT -->
-  <div style="margin-top:56px; text-align:center; padding:48px 24px; border:1px solid rgba(231,76,60,0.3); background:linear-gradient(135deg, rgba(231,76,60,0.08), rgba(55,138,221,0.05)); border-radius:2px;">
-    <p style="font-family:'Bebas Neue',sans-serif; font-size:clamp(28px,5vw,52px); line-height:1.15; color:#f8f9fa; letter-spacing:0.01em; margin:0;">
-      You will <span style="color:#e74c3c;">lead</span> and <span style="color:#378ADD;">shape</span><br>the global tech ecosystem at Wharton.
-    </p>
-  </div>
-
+    </div><!-- end collapse body -->
   </div>
 </div>
+
+<!-- VALUE -->
+<div class="divider"></div>
+<div style="background:#0a0e1a;" class="section-grid pat-rings">
+  <div class="section-inner fade-in section-collapsible" id="value-section">
+    <div id="value-anchor"></div>
+    <div class="section-collapse-header" onclick="toggleSection('value-section')">
+      <div class="section-collapse-left">
+        <p class="section-label" style="margin:0;">Why it matters</p>
+        <h2 class="section-title" style="margin:0;">The network you build<br>here is permanent.</h2>
+      </div>
+      <span class="collapse-toggle"><em class="collapse-icon">▾</em> Collapse</span>
+    </div>
+    <div class="section-collapse-body">
+    <p class="section-body">The Wharton brand opens doors. The Tech Club board blows them off the hinges. You're not just attending events — you're the person who brought the speaker, planned the trek, and built the relationship.</p>
+
+    <style>
+      .val-card {
+        background: #0a0e1a;
+        padding: 36px;
+        position: relative;
+        overflow: hidden;
+        transition: background 0.25s ease, transform 0.25s ease;
+        cursor: default;
+      }
+      .val-card::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(135deg, rgba(231,76,60,0.06) 0%, rgba(55,138,221,0.06) 100%);
+        opacity: 0;
+        transition: opacity 0.3s ease;
+      }
+      .val-card:hover, .val-card.tapped {
+        background: #111827;
+        transform: translateY(-4px);
+      }
+      .val-card:hover::before, .val-card.tapped::before {
+        opacity: 1;
+      }
+      .val-num {
+        font-family: 'Syne', sans-serif;
+        font-size: 42px;
+        font-weight: 800;
+        color: #e74c3c;
+        line-height: 1;
+        margin-bottom: 12px;
+        transition: color 0.3s ease, transform 0.3s ease;
+        display: inline-block;
+        position: relative;
+        z-index: 1;
+      }
+      .val-card:hover .val-num, .val-card.tapped .val-num {
+        color: #378ADD;
+        transform: scale(1.12);
+      }
+      .val-title {
+        font-family: 'Syne', sans-serif;
+        font-size: 15px;
+        font-weight: 700;
+        margin-bottom: 10px;
+        color: #f8f9fa;
+        position: relative;
+        z-index: 1;
+        transition: color 0.25s ease;
+      }
+      .val-card:hover .val-title, .val-card.tapped .val-title {
+        color: #f8f9fa;
+      }
+      .val-body {
+        font-size: 14px;
+        color: #8892a4;
+        font-weight: 300;
+        line-height: 1.65;
+        position: relative;
+        z-index: 1;
+        transition: color 0.25s ease;
+      }
+      .val-card:hover .val-body, .val-card.tapped .val-body {
+        color: #d1d5db;
+      }
+    </style>
+
+    <div class="value-grid" style="display:grid; grid-template-columns: repeat(3,1fr); gap:1px; background:rgba(255,255,255,0.07); border:1px solid rgba(255,255,255,0.07); margin-top:52px;">
+
+      <div class="val-card">
+        <div class="val-num">400+</div>
+        <div class="val-title">Members in your corner</div>
+        <p class="val-body">As a VP you're not a member of the club — you're the person members come to. Every event, trek, and talk you run deepens your presence in the Wharton tech community.</p>
+      </div>
+
+      <div class="val-card">
+        <div class="val-num">1:1</div>
+        <div class="val-title">Access to industry leaders</div>
+        <p class="val-body">Booking a speaker, leading a trek, running a sponsor call — these aren't networking events. They're direct relationships you build by being the person in the room with a reason to be there.</p>
+      </div>
+
+      <div class="val-card">
+        <div class="val-num">19</div>
+        <div class="val-title">People who have your back</div>
+        <p class="val-body">A board this size means everyone knows each other. The relationships you build with your co-board members — across industries, backgrounds, and career paths — will outlast Wharton by decades.</p>
+      </div>
+
+    </div>
+  </div>
+  </div><!-- end collapse body -->
 </div>
 
 <!-- APPLICATION -->
@@ -1747,14 +1778,12 @@
     <div class="fade-in">
       <p class="section-label">Apply</p>
       <h2 class="section-title">Make your case.</h2>
-      <p class="section-body">This is a board of <strong style="color:#e74c3c;">under 25 people</strong>: 6 VPs, and a Director for every role. <strong style="color:#f8f9fa;">Spots are limited. The bar is high.</strong></p>
-      <p class="section-body" style="margin-top:14px;">Rank your top 3 roles and upload your resume. We're reviewing on a rolling basis, so interviews start before the deadline. The earlier you apply, the earlier you hear back. Due <strong style="color:#e74c3c;">September 2nd at 11:59PM EST.</strong></p>
-      <p style="font-size:12.5px; color:#8892a4; margin-top:10px;">Not ready for the board? You can also write for the Substack, join a conference committee, or co-host the podcast, no application required.</p>
+      <p class="section-body">This is a <strong style="color:#e74c3c;">~20 person board</strong> — ~10 second-year VPs and ~10 first-year members recruited in the fall. <strong style="color:#f8f9fa;">Spots are limited. The bar is high.</strong><br><br>Rank your top 3 roles, upload your resume, and answer two questions. Due <strong style="color:#e74c3c;">April 17th at 11:59PM.</strong></p>
 
       <!-- Callout box -->
       <div style="margin-top:32px; border:1px solid #e74c3c; border-left:4px solid #e74c3c; background:rgba(231,76,60,0.06); border-radius:2px; padding:20px 24px; display:flex; gap:16px; align-items:flex-start;">
         <span style="font-size:20px; flex-shrink:0;">⚡</span>
-        <p style="font-size:14px; color:#d1d5db; line-height:1.65; margin:0;"><strong style="color:#f8f9fa;">Read every role description before you rank.</strong> The best applications come from people who picked their role because they actually want it, not because it sounded good. Your #1 should be the role you'd be most excited to build.</p>
+        <p style="font-size:14px; color:#d1d5db; line-height:1.65; margin:0;"><strong style="color:#f8f9fa;">Read every role description before you rank.</strong> The best applications come from people who chose their role because they genuinely want to own it — not because it sounded good. Your #1 should be the role you'd be most excited to build.</p>
       </div>
     </div>
 
@@ -1792,12 +1821,12 @@
             <label>Role Preference Ranking</label>
             <p class="field-note">Drag to rank all 6. We'll use your <strong style="color:#d1d5db;">top 3</strong>. On mobile, use the ▲▼ buttons. Your #1 should be the role you'd fight for.</p>
             <div class="rank-options" id="rankList">
-              <div class="rank-row" draggable="true" data-role="Content & Events Director"><span class="rank-num">1</span><span class="rank-name">Content & Events Director</span><span class="rank-handle">⠿</span><div class="rank-move-btns"><button type="button" class="rank-up" aria-label="Move up">▲</button><button type="button" class="rank-dn" aria-label="Move down">▼</button></div></div>
-              <div class="rank-row" draggable="true" data-role="Tech Conference Director"><span class="rank-num">2</span><span class="rank-name">Tech Conference Director</span><span class="rank-handle">⠿</span><div class="rank-move-btns"><button type="button" class="rank-up" aria-label="Move up">▲</button><button type="button" class="rank-dn" aria-label="Move down">▼</button></div></div>
-              <div class="rank-row" draggable="true" data-role="Treks Director"><span class="rank-num">3</span><span class="rank-name">Treks Director</span><span class="rank-handle">⠿</span><div class="rank-move-btns"><button type="button" class="rank-up" aria-label="Move up">▲</button><button type="button" class="rank-dn" aria-label="Move down">▼</button></div></div>
-              <div class="rank-row" draggable="true" data-role="Careers & Sponsorships Director"><span class="rank-num">4</span><span class="rank-name">Careers & Sponsorships Director</span><span class="rank-handle">⠿</span><div class="rank-move-btns"><button type="button" class="rank-up" aria-label="Move up">▲</button><button type="button" class="rank-dn" aria-label="Move down">▼</button></div></div>
-              <div class="rank-row" draggable="true" data-role="Community & Marketing Director"><span class="rank-num">5</span><span class="rank-name">Community & Marketing Director</span><span class="rank-handle">⠿</span><div class="rank-move-btns"><button type="button" class="rank-up" aria-label="Move up">▲</button><button type="button" class="rank-dn" aria-label="Move down">▼</button></div></div>
-              <div class="rank-row" draggable="true" data-role="Finance Director"><span class="rank-num">6</span><span class="rank-name">Finance Director</span><span class="rank-handle">⠿</span><div class="rank-move-btns"><button type="button" class="rank-up" aria-label="Move up">▲</button><button type="button" class="rank-dn" aria-label="Move down">▼</button></div></div>
+              <div class="rank-row" draggable="true" data-role="VP of Content & Events"><span class="rank-num">1</span><span class="rank-name">VP of Content & Events</span><span class="rank-handle">⠿</span><div class="rank-move-btns"><button type="button" class="rank-up" aria-label="Move up">▲</button><button type="button" class="rank-dn" aria-label="Move down">▼</button></div></div>
+              <div class="rank-row" draggable="true" data-role="VP of Tech Conference"><span class="rank-num">2</span><span class="rank-name">VP of Tech Conference</span><span class="rank-handle">⠿</span><div class="rank-move-btns"><button type="button" class="rank-up" aria-label="Move up">▲</button><button type="button" class="rank-dn" aria-label="Move down">▼</button></div></div>
+              <div class="rank-row" draggable="true" data-role="VP of Treks"><span class="rank-num">3</span><span class="rank-name">VP of Treks</span><span class="rank-handle">⠿</span><div class="rank-move-btns"><button type="button" class="rank-up" aria-label="Move up">▲</button><button type="button" class="rank-dn" aria-label="Move down">▼</button></div></div>
+              <div class="rank-row" draggable="true" data-role="VP of Careers & Sponsorships"><span class="rank-num">4</span><span class="rank-name">VP of Careers & Sponsorships</span><span class="rank-handle">⠿</span><div class="rank-move-btns"><button type="button" class="rank-up" aria-label="Move up">▲</button><button type="button" class="rank-dn" aria-label="Move down">▼</button></div></div>
+              <div class="rank-row" draggable="true" data-role="VP of Community & Marketing"><span class="rank-num">5</span><span class="rank-name">VP of Community & Marketing</span><span class="rank-handle">⠿</span><div class="rank-move-btns"><button type="button" class="rank-up" aria-label="Move up">▲</button><button type="button" class="rank-dn" aria-label="Move down">▼</button></div></div>
+              <div class="rank-row" draggable="true" data-role="VP of Finance"><span class="rank-num">6</span><span class="rank-name">VP of Finance</span><span class="rank-handle">⠿</span><div class="rank-move-btns"><button type="button" class="rank-up" aria-label="Move up">▲</button><button type="button" class="rank-dn" aria-label="Move down">▼</button></div></div>
             </div>
           </div>
         </div>
@@ -1812,7 +1841,7 @@
 
           <div class="form-group">
             <label>Resume</label>
-            <p class="field-note">Required · PDF or Word · Max 5MB. This is doing most of the work here, so make sure it's current.</p>
+            <p class="field-note">Required · PDF or Word · Max 5MB</p>
             <div class="resume-upload">
               <div class="resume-drop" id="resumeDrop">
                 <input type="file" id="resumeFile" accept=".pdf,.doc,.docx" required>
@@ -1833,58 +1862,73 @@
           <div style="display:flex; align-items:center; gap:12px; margin-bottom:24px;">
             <span style="font-family:'Syne',sans-serif; font-size:11px; font-weight:700; letter-spacing:0.15em; color:#e74c3c; text-transform:uppercase;">Step 04</span>
             <div style="flex:1; height:1px; background:rgba(255,255,255,0.07);"></div>
-            <span style="font-family:'Syne',sans-serif; font-size:11px; color:#8892a4; letter-spacing:0.1em; text-transform:uppercase;">One question</span>
+            <span style="font-family:'Syne',sans-serif; font-size:11px; color:#8892a4; letter-spacing:0.1em; text-transform:uppercase;">Two questions</span>
           </div>
 
-          <!-- Ecosystem question -->
+          <!-- Q1 callout -->
           <div style="border:1px solid rgba(255,255,255,0.1); border-left:3px solid #378ADD; background:rgba(55,138,221,0.05); border-radius:2px; padding:16px 20px; margin-bottom:16px;">
-            <p style="font-size:15px; font-weight:500; color:#f8f9fa; line-height:1.5; margin:0;">Why do you want to help <em style="font-style:normal; color:#e74c3c;">shape the tech ecosystem</em> at Wharton?</p>
-            <p style="font-size:12px; color:#8892a4; margin-top:8px; margin-bottom:0;">Be specific. This is the one thing we're asking you to actually write.</p>
+            <p style="font-family:'Syne',sans-serif; font-size:10px; font-weight:700; letter-spacing:0.15em; text-transform:uppercase; color:#378ADD; margin-bottom:6px;">Question 01</p>
+            <p style="font-size:15px; font-weight:500; color:#f8f9fa; line-height:1.5; margin:0;">What do you want your <em style="font-style:normal; color:#e74c3c;">legacy</em> to be, and how are you going to change things in this role?</p>
+            <p style="font-size:12px; color:#8892a4; margin-top:8px; margin-bottom:0;">Be specific. We want to know what you'll build — not just that you're excited about tech.</p>
           </div>
           <div class="form-group">
-            <textarea id="ecosystem" placeholder="Write your answer here..." required></textarea>
+            <textarea id="legacy" placeholder="Write your answer here..." required></textarea>
+          </div>
+
+          <!-- Q2 callout -->
+          <div style="border:1px solid rgba(255,255,255,0.1); border-left:3px solid #378ADD; background:rgba(55,138,221,0.05); border-radius:2px; padding:16px 20px; margin-bottom:16px; margin-top:8px;">
+            <p style="font-family:'Syne',sans-serif; font-size:10px; font-weight:700; letter-spacing:0.15em; text-transform:uppercase; color:#378ADD; margin-bottom:6px;">Question 02</p>
+            <p style="font-size:15px; font-weight:500; color:#f8f9fa; line-height:1.5; margin:0;">What have you <em style="font-style:normal; color:#e74c3c;">delivered</em> in the past that's relevant to your top 3 roles?</p>
+            <p style="font-size:12px; color:#8892a4; margin-top:8px; margin-bottom:0;">Work, other clubs, personal projects — we want to see skills and competencies, not just résumé lines. People probably won't update their resume for this app, so tell us directly.</p>
+          </div>
+          <div class="form-group">
+            <textarea id="experience" placeholder="Tell us what you've built, run, or shipped that makes you right for your top 3 roles..." required></textarea>
           </div>
         </div>
 
         <!-- STEP 5 -->
         <div style="margin-bottom:40px;">
           <div style="display:flex; align-items:center; gap:12px; margin-bottom:24px;">
-            <span style="font-family:'Syne',sans-serif; font-size:11px; font-weight:700; letter-spacing:0.15em; color:#8892a4; text-transform:uppercase;">Step 05</span>
+            <span style="font-family:'Syne',sans-serif; font-size:11px; font-weight:700; letter-spacing:0.15em; color:#e74c3c; text-transform:uppercase;">Step 05</span>
             <div style="flex:1; height:1px; background:rgba(255,255,255,0.07);"></div>
-            <span style="font-family:'Syne',sans-serif; font-size:11px; color:#8892a4; letter-spacing:0.1em; text-transform:uppercase;">Optional</span>
+            <span style="font-family:'Syne',sans-serif; font-size:11px; color:#8892a4; letter-spacing:0.1em; text-transform:uppercase;">Final details</span>
+          </div>
+
+          <!-- Board last year callout -->
+          <div style="border:1px solid rgba(255,255,255,0.1); border-left:3px solid #e74c3c; background:rgba(231,76,60,0.04); border-radius:2px; padding:16px 20px; margin-bottom:20px;">
+            <p style="font-family:'Syne',sans-serif; font-size:10px; font-weight:700; letter-spacing:0.15em; text-transform:uppercase; color:#e74c3c; margin-bottom:10px;">Were you on the board last year?</p>
+            <label style="display:flex; align-items:center; gap:12px; cursor:pointer; margin:0;">
+              <input type="checkbox" id="boardLastYear" style="width:18px; height:18px; accent-color:#e74c3c; flex-shrink:0; cursor:pointer;">
+              <span style="font-size:14px; color:#d1d5db; font-weight:400; line-height:1.5;">Yes — I was on the Wharton Tech Club board in 2025-26</span>
+            </label>
+            <p style="font-size:12px; color:#8892a4; margin-top:10px; margin-bottom:0;">We ask because returning board members bring context. It doesn't help or hurt your application — we just want to know.</p>
           </div>
 
           <!-- Anything else -->
           <div style="border:1px solid rgba(255,255,255,0.1); border-left:3px solid #8892a4; background:rgba(136,146,164,0.04); border-radius:2px; padding:16px 20px; margin-bottom:12px;">
-            <div style="display:flex; align-items:center; gap:10px; margin-bottom:6px;">
-              <p style="font-family:'Syne',sans-serif; font-size:10px; font-weight:700; letter-spacing:0.15em; text-transform:uppercase; color:#8892a4; margin:0;">Anything else?</p>
-              <span style="font-family:'Syne',sans-serif; font-size:9px; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; color:#8892a4; border:1px solid rgba(136,146,164,0.4); border-radius:10px; padding:2px 9px;">Optional</span>
-            </div>
+            <p style="font-family:'Syne',sans-serif; font-size:10px; font-weight:700; letter-spacing:0.15em; text-transform:uppercase; color:#8892a4; margin-bottom:6px;">Anything else? <span style="font-weight:400; color:#8892a4; letter-spacing:0;">(optional)</span></p>
             <p style="font-size:15px; font-weight:500; color:#f8f9fa; line-height:1.5; margin:0;">Is there something about you we'd never see from a resume or application?</p>
-            <p style="font-size:12px; color:#8892a4; margin-top:8px; margin-bottom:0;">A side project, a weird obsession, a story. Not required, but if something is burning to be said, say it here.</p>
+            <p style="font-size:12px; color:#8892a4; margin-top:8px; margin-bottom:0;">A side project, a weird obsession, a story. Not required — but if something is burning to be said, say it here.</p>
           </div>
           <div class="form-group" style="margin-bottom:32px;">
-            <textarea id="anything" placeholder="Optional, feel free to skip this one..." style="min-height:100px;"></textarea>
+            <textarea id="anything" placeholder="Optional..." style="min-height:100px;"></textarea>
           </div>
 
           <!-- Fun question -->
           <div style="border:1px solid rgba(255,255,255,0.1); border-left:3px solid #e74c3c; background:rgba(231,76,60,0.04); border-radius:2px; padding:16px 20px; margin-bottom:12px;">
-            <div style="display:flex; align-items:center; gap:10px; margin-bottom:6px;">
-              <p style="font-family:'Syne',sans-serif; font-size:10px; font-weight:700; letter-spacing:0.15em; text-transform:uppercase; color:#e74c3c; margin:0;">One last thing 🎉</p>
-              <span style="font-family:'Syne',sans-serif; font-size:9px; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; color:#e74c3c; border:1px solid rgba(231,76,60,0.4); border-radius:10px; padding:2px 9px;">Optional</span>
-            </div>
+            <p style="font-family:'Syne',sans-serif; font-size:10px; font-weight:700; letter-spacing:0.15em; text-transform:uppercase; color:#e74c3c; margin-bottom:6px;">One last thing 🎉</p>
             <p id="funQuestionText" style="font-size:15px; font-weight:500; color:#f8f9fa; line-height:1.5; margin:0;"></p>
             <p style="font-size:12px; color:#8892a4; margin-top:6px; margin-bottom:0;">This doesn't affect your application. We're just curious.</p>
           </div>
           <div class="form-group">
-            <textarea id="funAnswer" placeholder="Optional, feel free to skip this one..." style="min-height:80px;"></textarea>
+            <textarea id="funAnswer" placeholder="Your answer..." style="min-height:80px;"></textarea>
           </div>
 
         </div>
 
         <!-- SUBMIT -->
         <div style="border-top:1px solid rgba(255,255,255,0.07); padding-top:32px;">
-          <p style="font-size:13px; color:#8892a4; margin-bottom:20px; line-height:1.6;">By submitting, you confirm this is your own work and you actually want to join the board as a Director. <strong style="color:#d1d5db;">Deadline: September 2nd at 11:59PM EST.</strong></p>
+          <p style="font-size:13px; color:#8892a4; margin-bottom:20px; line-height:1.6;">By submitting, you confirm this is your own work and you're genuinely interested in joining the board. <strong style="color:#d1d5db;">Deadline: April 17th at 11:59PM.</strong></p>
           <div class="submit-row">
             <button type="submit" id="submitBtn">Submit Application →</button>
           </div>
@@ -1904,8 +1948,8 @@
   <div style="position:relative; z-index:1; max-width:560px;">
     <div id="celebTerminal" style="font-family:'DM Sans',monospace; font-size:13px; color:#378ADD; background:rgba(55,138,221,0.06); border:1px solid rgba(55,138,221,0.2); border-radius:4px; padding:20px 24px; margin-bottom:36px; text-align:left; min-height:80px;"></div>
     <h2 style="font-family:'Bebas Neue',sans-serif; font-size:clamp(52px,10vw,96px); color:#f8f9fa; line-height:0.95; margin-bottom:16px;">You're<br><span style="color:#e74c3c;">in the mix.</span></h2>
-    <p style="font-size:17px; color:#d1d5db; font-weight:300; line-height:1.7; margin-bottom:8px;">Application received. We're reviewing on a rolling basis, so keep an eye on your inbox. Interviews start before the <strong style="color:#f8f9fa;">September 2nd at 11:59PM EST</strong> deadline.</p>
-    <p style="font-size:14px; color:#8892a4; margin-bottom:40px;">In the meantime, watch an episode of Tech Toks. Follow us on Instagram. Get excited.</p>
+    <p style="font-size:17px; color:#d1d5db; font-weight:300; line-height:1.7; margin-bottom:8px;">Application received. We'll review every submission after <strong style="color:#f8f9fa;">April 17th at 11:59PM</strong> and be in touch with next steps.</p>
+    <p style="font-size:14px; color:#8892a4; margin-bottom:40px;">In the meantime — watch an episode of Tech Toks. Follow us on Instagram. Get excited.</p>
     <div style="display:flex; gap:16px; justify-content:center; flex-wrap:wrap;">
       <a href="https://www.youtube.com/watch?v=p2w8N-HcjZA&t=2849s" target="_blank" style="font-family:'Syne',sans-serif; font-size:12px; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; color:#e74c3c; text-decoration:none; border:1px solid rgba(231,76,60,0.4); padding:12px 24px; border-radius:2px; transition:background 0.2s;" onmouseover="this.style.background='rgba(231,76,60,0.1)'" onmouseout="this.style.background='transparent'">▶ Watch Tech Toks</a>
       <a href="https://www.instagram.com/whartontech/" target="_blank" style="font-family:'Syne',sans-serif; font-size:12px; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; color:#8892a4; text-decoration:none; border:1px solid rgba(255,255,255,0.1); padding:12px 24px; border-radius:2px; transition:background 0.2s;" onmouseover="this.style.background='rgba(255,255,255,0.05)'" onmouseout="this.style.background='transparent'">Instagram →</a>
@@ -1929,20 +1973,22 @@
     @media(max-width:1100px){ #sectionNav { display:none !important; } }
   </style>
   <div class="snav-dot" data-target="hero-anchor" data-label="Home"></div>
+  <div class="snav-dot" data-target="about-anchor" data-label="About"></div>
   <div class="snav-dot" data-target="commitment-anchor" data-label="Commitment"></div>
   <div class="snav-dot" data-target="presidents-anchor" data-label="Presidents"></div>
   <div class="snav-dot" data-target="roles-anchor" data-label="Roles"></div>
+  <div class="snav-dot" data-target="value-anchor" data-label="Network"></div>
   <div class="snav-dot" data-target="apply" data-label="Apply"></div>
 </div>
 
 <script>
-  // Fun random questions, wholesome and personality-revealing
+  // Fun random questions — wholesome and personality-revealing
   const funQuestions = [
     "What's a skill you have that would genuinely surprise most people?",
     "What's the best piece of advice you've ever received, and who gave it to you?",
     "You're stranded on a deserted island and can only bring three things. What are they?",
     "What's a book, show, or movie that completely changed how you think about something?",
-    "If you could have dinner with anyone, living or dead, real or fictional, who and why?",
+    "If you could have dinner with anyone — living or dead, real or fictional — who and why?",
     "What's something you were terrible at when you started but got really good at through practice?",
     "What's your go-to order at a coffee shop, and what does it say about you?",
     "What's the most random rabbit hole you've gone down recently?",
@@ -1951,11 +1997,11 @@
     "You have one free Saturday with no obligations. What does the perfect version look like?",
     "What's something you believe that most people around you disagree with?",
     "What's the best meal you've ever eaten, and where was it?",
-    "If you had to teach a class on anything, literally anything, what would it be?",
+    "If you had to teach a class on anything — literally anything — what would it be?",
     "What's a place you've been to that genuinely changed something in you?",
     "What's a hobby or interest you've picked up in the last two years?",
     "What's the most useful thing you learned that you didn't expect to need?",
-    "Morning person or night owl, and has that ever gotten you into trouble?",
+    "Morning person or night owl — and has that ever gotten you into trouble?",
     "What's a podcast, newsletter, or corner of the internet you think is genuinely underrated?",
     "What's one thing about Wharton that's exceeded your expectations?",
   ];
@@ -1965,9 +2011,8 @@
 
 <!-- FOOTER -->
 <footer>
-  <p>Wharton Tech Club · 2026-27 Director Applications</p>
+  <p>Wharton Tech Club · 2026-27 Board Applications</p>
   <p>Questions? Reach out to Gorav, Melody, or Logan.</p>
-  <p style="margin-top:32px;"><a href="archive.html" style="color:#3a4353; font-size:10px; text-decoration:none; letter-spacing:0.05em;">2025–26</a></p>
 </footer>
 
 <script>
@@ -1975,7 +2020,7 @@
   const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbw_1O6jPJU8QpqPTaj0qHQctcdieDRAZEJfG5_QP_dczSc-dARVb1YSaq5bbpjTXdYNYA/exec";
 
   // Mobile tap animations for commitment, president, and value cards
-  document.querySelectorAll('.commitment-card, .pres-card, .vp-mini-card').forEach(card => {
+  document.querySelectorAll('.commitment-card, .pres-card, .val-card').forEach(card => {
     card.addEventListener('click', () => {
       card.classList.toggle('tapped');
       setTimeout(() => card.classList.remove('tapped'), 600);
@@ -2224,7 +2269,9 @@
       name: document.getElementById('name').value,
       email: document.getElementById('email').value,
       ranks: ranks,
-      ecosystem: document.getElementById('ecosystem').value,
+      legacy: document.getElementById('legacy').value,
+      experience: document.getElementById('experience').value,
+      boardLastYear: document.getElementById('boardLastYear').checked,
       anything: document.getElementById('anything').value,
       funQuestion: document.getElementById('funQuestionText').textContent,
       funAnswer: document.getElementById('funAnswer').value,
@@ -2243,7 +2290,7 @@
         redirect: 'follow'
       });
       document.getElementById('submittingMsg').style.display = 'none';
-      // Apps Script may return non-JSON on redirect, treat any 2xx as success
+      // Apps Script may return non-JSON on redirect — treat any 2xx as success
       let ok = res.ok;
       try {
         const json = await res.json();
@@ -2396,7 +2443,7 @@
     ], terminal);
   }
 
-  // Patch success handler, find it and override
+  // Patch success handler — find it and override
   const _origSuccess = window._onAppSuccess;
   window._onAppSuccess = function(name) {
     showCelebration(name);
