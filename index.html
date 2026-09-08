@@ -1,0 +1,2416 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Wharton Tech Club: Join the Board</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #0a0e1a;
+    --navy-mid: #111827;
+    --navy-light: #1e2a3a;
+    --red: #c0392b;
+    --red-bright: #e74c3c;
+    --white: #f8f9fa;
+    --gray: #8892a4;
+    --gray-light: #d1d5db;
+    --border: rgba(255,255,255,0.07);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: #0a0e1a;
+    color: #f8f9fa;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 16px;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 48px;
+    background: rgba(10,14,26,0.9);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(255,255,255,0.07);
+  }
+
+  .nav-logo {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: 15px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #f8f9fa;
+    cursor: default;
+  }
+
+  .nav-logo span { color: #e74c3c; }
+
+  nav a.nav-cta {
+    font-family: 'Syne', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #f8f9fa;
+    text-decoration: none;
+    border: 1px solid #e74c3c;
+    padding: 8px 20px;
+    border-radius: 2px;
+    transition: background 0.2s;
+  }
+
+  nav a.nav-cta:hover { background: #e74c3c; }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    padding: 120px 80px 80px;
+    position: relative;
+    overflow: hidden;
+    background: #0a0e1a;
+    gap: 60px;
+  }
+
+  .hero-left { display: flex; flex-direction: column; justify-content: center; }
+  .hero-right {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 16px;
+    border-left: 1px solid rgba(255,255,255,0.07);
+    padding-left: 60px;
+  }
+
+  /* Stat card in right column */
+  .hero-right-stat {
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.07);
+    border-left: 3px solid #c0392b;
+    padding: 16px 20px;
+    border-radius: 2px;
+    transition: background 0.2s, border-left-color 0.2s;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+  .hero-right-stat:hover { background: rgba(255,255,255,0.05); border-left-color: #e74c3c; }
+  .hero-right-stat-num {
+    font-family: 'Syne', sans-serif;
+    font-size: 32px;
+    font-weight: 800;
+    color: #f8f9fa;
+    line-height: 1;
+    flex-shrink: 0;
+    min-width: 72px;
+  }
+  .hero-right-stat-label {
+    font-size: 13px;
+    color: #8892a4;
+    font-weight: 300;
+    line-height: 1.4;
+  }
+  .hero-right-cta {
+    margin-top: 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 60% 50% at 80% 50%, rgba(192,57,43,0.08) 0%, transparent 70%),
+      radial-gradient(ellipse 40% 60% at 10% 80%, rgba(192,57,43,0.04) 0%, transparent 60%);
+    pointer-events: none;
+  }
+
+  .hero-grid {
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(255,255,255,0.05) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.05) 1px, transparent 1px);
+    background-size: 60px 60px;
+    pointer-events: none;
+  }
+
+  /* Base for all patterned sections */
+  .section-grid { position: relative; overflow: hidden; }
+  .section-grid::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+  }
+  .section-grid > * { position: relative; z-index: 1; }
+
+  /* Reboot banner: diagonal lines */
+  .section-grid.pat-diag::before {
+    background-image: repeating-linear-gradient(
+      45deg,
+      rgba(255,255,255,0.08) 0px,
+      rgba(255,255,255,0.08) 1px,
+      transparent 1px,
+      transparent 20px
+    );
+  }
+
+  /* About: dots */
+  .section-grid.pat-dots::before {
+    background-image: radial-gradient(rgba(255,255,255,0.12) 1px, transparent 1px);
+    background-size: 28px 28px;
+  }
+
+  /* Commitment: horizontal lines */
+  .section-grid.pat-lines::before {
+    background-image: repeating-linear-gradient(
+      0deg,
+      rgba(255,255,255,0.06) 0px,
+      rgba(255,255,255,0.06) 1px,
+      transparent 1px,
+      transparent 32px
+    );
+  }
+
+  /* Presidents: cross/plus marks */
+  .section-grid.pat-cross::before {
+    background-image:
+      linear-gradient(rgba(255,255,255,0.07) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.07) 1px, transparent 1px);
+    background-size: 40px 40px;
+    background-position: 20px 20px;
+  }
+
+  /* Roles: zigzag */
+  .section-grid.pat-zig::before {
+    background-image: repeating-linear-gradient(
+      -45deg,
+      rgba(255,255,255,0.05) 0px,
+      rgba(255,255,255,0.05) 1px,
+      transparent 1px,
+      transparent 14px
+    ),
+    repeating-linear-gradient(
+      45deg,
+      rgba(255,255,255,0.05) 0px,
+      rgba(255,255,255,0.025) 1px,
+      transparent 1px,
+      transparent 14px
+    );
+  }
+
+  /* Value/Network: large concentric rings from corner */
+  .section-grid.pat-rings::before {
+    background-image:
+      radial-gradient(ellipse at 0% 100%, rgba(255,255,255,0.07) 1px, transparent 1px),
+      radial-gradient(ellipse at 0% 100%, rgba(255,255,255,0.055) 1px, transparent 1px);
+    background-size: 60px 60px, 30px 30px;
+  }
+
+  .hero-tag {
+    font-family: 'Syne', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: #e74c3c;
+    margin-bottom: 28px;
+    opacity: 0;
+    animation: fadeUp 0.6s ease forwards 0.1s;
+  }
+
+  .hero h1 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(64px, 10vw, 130px);
+    font-weight: 400;
+    line-height: 0.95;
+    letter-spacing: 0.02em;
+    max-width: 900px;
+    color: #f8f9fa;
+    opacity: 0;
+    animation: fadeUp 0.7s ease forwards 0.25s;
+  }
+
+  .hero h1 em { font-style: normal; color: #e74c3c; position: relative; display: inline-block; }
+
+  .hero-sub {
+    margin-top: 28px;
+    font-size: 18px;
+    font-weight: 300;
+    color: #d1d5db;
+    max-width: 580px;
+    line-height: 1.7;
+    opacity: 0;
+    animation: fadeUp 0.7s ease forwards 0.4s;
+  }
+
+  .hero-stats {
+    margin-top: 48px;
+    display: flex;
+    gap: 48px;
+    opacity: 0;
+    animation: fadeUp 0.7s ease forwards 0.5s;
+  }
+
+  .hero-stat {
+    border-left: 2px solid #c0392b;
+    padding-left: 20px;
+  }
+
+  .hero-stat-num {
+    font-family: 'Syne', sans-serif;
+    font-size: 32px;
+    font-weight: 800;
+    color: #f8f9fa;
+    line-height: 1;
+  }
+
+  .hero-stat-label {
+    font-size: 12px;
+    color: #8892a4;
+    font-weight: 300;
+    margin-top: 4px;
+    letter-spacing: 0.05em;
+  }
+
+  .hero-actions {
+    margin-top: 52px;
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    opacity: 0;
+    animation: fadeUp 0.7s ease forwards 0.6s;
+  }
+
+  .btn-primary {
+    font-family: 'Syne', sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #f8f9fa;
+    background: #c0392b;
+    text-decoration: none;
+    padding: 16px 40px;
+    border-radius: 2px;
+    transition: background 0.2s, transform 0.15s;
+    display: inline-block;
+  }
+
+  .btn-primary:hover { background: #e74c3c; transform: translateY(-1px); }
+
+  .hero-deadline {
+    font-size: 13px;
+    color: #8892a4;
+    font-weight: 300;
+  }
+
+  .hero-deadline strong { color: #d1d5db; font-weight: 500; }
+
+  /* REBOOT BANNER */
+  .reboot-banner {
+    background: #c0392b;
+    padding: 20px 48px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .reboot-banner-label {
+    font-family: 'Syne', sans-serif;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.7);
+    white-space: nowrap;
+  }
+
+  .reboot-banner-text {
+    font-family: 'Syne', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    color: #f8f9fa;
+  }
+
+  /* DIVIDER */
+  .divider {
+    width: 100%;
+    height: 1px;
+    background: rgba(255,255,255,0.07);
+  }
+
+  /* SECTIONS */
+  .section-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 100px 48px;
+    background: #0a0e1a;
+    transition: padding 0.4s cubic-bezier(0.4,0,0.2,1);
+  }
+
+  .section-label {
+    font-family: 'Syne', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: #e74c3c;
+    margin-bottom: 16px;
+  }
+
+  .section-title {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(28px, 4vw, 44px);
+    font-weight: 800;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    margin-bottom: 20px;
+    color: #f8f9fa;
+  }
+
+  .section-body {
+    font-size: 17px;
+    font-weight: 300;
+    color: #d1d5db;
+    max-width: 640px;
+    line-height: 1.8;
+  }
+
+  /* COMMITMENT CARDS */
+  .commitment-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: rgba(255,255,255,0.07);
+    border: 1px solid rgba(255,255,255,0.07);
+    margin-top: 52px;
+    overflow: hidden;
+    align-items: stretch;
+  }
+
+  .commitment-card {
+    background: #0a0e1a;
+    padding: 36px;
+    cursor: default;
+    transition: background 0.25s ease, transform 0.25s ease, border-color 0.25s ease;
+    border-left: 2px solid transparent;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
+
+  .commitment-card::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, #e74c3c, #378ADD);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.35s ease;
+  }
+
+  .commitment-card:hover, .commitment-card.tapped {
+    background: #111827;
+    transform: translateY(-3px);
+    border-left-color: #e74c3c;
+  }
+
+  .commitment-card:hover::after, .commitment-card.tapped::after {
+    transform: scaleX(1);
+  }
+
+  .commitment-card:hover .commitment-num, .commitment-card.tapped .commitment-num {
+    transform: scale(1.08);
+    display: inline-block;
+  }
+
+  .commitment-num {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(28px, 4vw, 48px);
+    font-weight: 800;
+    color: #e74c3c;
+    line-height: 1;
+    margin-bottom: 12px;
+    transition: transform 0.25s ease;
+    display: inline-block;
+    white-space: nowrap;
+  }
+
+  .commitment-title {
+    font-family: 'Syne', sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    margin-bottom: 10px;
+    color: #f8f9fa;
+  }
+
+  .commitment-body {
+    font-size: 14px;
+    color: #8892a4;
+    font-weight: 300;
+    line-height: 1.65;
+  }
+
+  /* ROLES GRID */
+  .roles-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+    gap: 1px;
+    background: rgba(255,255,255,0.07);
+    border: 1px solid rgba(255,255,255,0.07);
+    margin-top: 52px;
+  }
+
+  .role-card {
+    background: #0a0e1a;
+    padding: 36px;
+    transition: background 0.2s;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .role-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: #c0392b;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s ease;
+  }
+
+  .role-card:hover { background: #1e2a3a; }
+  .role-card:hover::before { transform: scaleX(1); }
+
+  .role-card-tag {
+    font-family: 'Syne', sans-serif;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: #8892a4;
+    margin-bottom: 10px;
+  }
+
+  .role-card h3 {
+    font-family: 'Syne', sans-serif;
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 6px;
+    line-height: 1.2;
+    color: #f8f9fa;
+  }
+
+  .role-card-reports {
+    font-size: 12px;
+    color: #e74c3c;
+    font-weight: 400;
+    margin-bottom: 16px;
+    font-family: 'Syne', sans-serif;
+    letter-spacing: 0.05em;
+  }
+
+  .role-card-desc {
+    font-size: 14px;
+    color: #d1d5db;
+    font-weight: 300;
+    line-height: 1.65;
+    margin-bottom: 20px;
+  }
+
+  .role-card ul { list-style: none; padding: 0; }
+
+  .role-card ul li {
+    font-size: 13px;
+    color: #8892a4;
+    font-weight: 300;
+    padding: 7px 0 7px 16px;
+    border-top: 1px solid rgba(255,255,255,0.07);
+    position: relative;
+    line-height: 1.5;
+  }
+
+  .role-card ul li::before {
+    content: '→';
+    position: absolute;
+    left: 0;
+    color: #c0392b;
+    font-size: 11px;
+  }
+
+  /* APPLICATION */
+  .apply-section {
+    background: #111827;
+    border-top: 1px solid rgba(255,255,255,0.07);
+    border-bottom: 1px solid rgba(255,255,255,0.07);
+  }
+  .apply-section .section-inner { text-align: center; }
+  .apply-section .section-inner .fade-in:first-child { max-width: 680px; margin: 0 auto; text-align: center; }
+
+  .form-wrap { margin-top: 52px; max-width: 680px; margin-left: auto; margin-right: auto; }
+
+  .form-group { margin-bottom: 32px; }
+
+  label {
+    display: block;
+    font-family: 'Syne', sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #d1d5db;
+    margin-bottom: 10px;
+  }
+
+  .field-note {
+    font-size: 13px;
+    color: #8892a4;
+    font-weight: 300;
+    margin-bottom: 12px;
+    line-height: 1.5;
+  }
+
+  input[type="text"],
+  input[type="email"],
+  textarea {
+    width: 100%;
+    background: #0a0e1a;
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 2px;
+    padding: 14px 18px;
+    color: #f8f9fa;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 15px;
+    font-weight: 300;
+    outline: none;
+    transition: border-color 0.2s;
+  }
+
+  input:focus, textarea:focus { border-color: #e74c3c; }
+  textarea { min-height: 180px; resize: vertical; line-height: 1.6; }
+
+  /* Resume upload */
+  .resume-upload {
+    position: relative;
+  }
+
+  .resume-drop {
+    border: 1px dashed rgba(255,255,255,0.2);
+    border-radius: 2px;
+    padding: 36px;
+    text-align: center;
+    cursor: pointer;
+    transition: border-color 0.2s, background 0.2s;
+  }
+
+  .resume-drop:hover, .resume-drop.drag-active {
+    border-color: #e74c3c;
+    background: rgba(231,76,60,0.05);
+  }
+
+  .resume-drop-icon {
+    font-size: 28px;
+    margin-bottom: 12px;
+    display: block;
+  }
+
+  .resume-drop-text {
+    font-size: 14px;
+    color: #d1d5db;
+    font-weight: 300;
+    margin-bottom: 6px;
+  }
+
+  .resume-drop-sub {
+    font-size: 12px;
+    color: #8892a4;
+    font-weight: 300;
+  }
+
+  .resume-drop input[type="file"] {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    cursor: pointer;
+    width: 100%;
+    height: 100%;
+  }
+
+  .resume-selected {
+    display: none;
+    align-items: center;
+    gap: 12px;
+    background: rgba(231,76,60,0.08);
+    border: 1px solid rgba(231,76,60,0.3);
+    border-radius: 2px;
+    padding: 14px 18px;
+    margin-top: 10px;
+  }
+
+  .resume-selected-name {
+    font-size: 14px;
+    color: #d1d5db;
+    flex: 1;
+  }
+
+  .resume-remove {
+    font-size: 12px;
+    color: #e74c3c;
+    cursor: pointer;
+    font-family: 'Syne', sans-serif;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    background: none;
+    border: none;
+    padding: 0;
+  }
+
+  /* Ranking */
+  .rank-options { display: flex; flex-direction: column; gap: 8px; }
+
+  .rank-row {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    background: #0a0e1a;
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 2px;
+    padding: 13px 16px;
+    cursor: grab;
+    transition: border-color 0.2s, background 0.2s;
+    user-select: none;
+  }
+
+  .rank-row:hover { border-color: rgba(231,76,60,0.4); background: #1e2a3a; }
+  .rank-row.dragging { opacity: 0.35; }
+  .rank-row.drag-over { border-color: #e74c3c; background: #1e2a3a; }
+  .rank-row.selected-for-move { border-color: #e74c3c; background: #1e2a3a; box-shadow: 0 0 0 2px rgba(231,76,60,0.3); }
+
+  .rank-move-btns {
+    display: none;
+    flex-direction: column;
+    gap: 2px;
+    margin-left: auto;
+    flex-shrink: 0;
+  }
+  .rank-move-btns button {
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 2px;
+    color: #8892a4;
+    font-size: 12px;
+    width: 28px;
+    height: 24px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    transition: background 0.15s, color 0.15s;
+  }
+  .rank-move-btns button:hover { background: #e74c3c; color: #fff; border-color: #e74c3c; }
+  .rank-move-btns button:disabled { opacity: 0.2; cursor: default; }
+
+  .rank-handle { color: #8892a4; font-size: 14px; flex-shrink: 0; }
+
+  @media (hover: none) and (pointer: coarse) {
+    .rank-row { cursor: default; }
+    .rank-handle { display: none; }
+    .rank-move-btns { display: flex; }
+  }
+
+  .rank-num {
+    font-family: 'Syne', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    color: #e74c3c;
+    width: 20px;
+    flex-shrink: 0;
+  }
+
+  .rank-name { font-size: 14px; font-weight: 400; flex: 1; }
+  .rank-handle { color: #8892a4; font-size: 14px; flex-shrink: 0; }
+
+  /* Submit */
+  .submit-row {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    margin-top: 44px;
+  }
+
+  button[type="submit"] {
+    font-family: 'Syne', sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #f8f9fa;
+    background: #c0392b;
+    border: none;
+    padding: 16px 44px;
+    border-radius: 2px;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.15s;
+  }
+
+  button[type="submit"]:hover { background: #e74c3c; transform: translateY(-1px); }
+  button[type="submit"]:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
+
+  .submit-note { font-size: 13px; color: #8892a4; font-weight: 300; }
+
+  /* States */
+  .submitting-msg, .success-msg, .error-msg { display: none; margin-top: 28px; border-radius: 2px; padding: 24px 28px; font-size: 15px; }
+  .submitting-msg { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.07); color: #d1d5db; }
+  .success-msg { background: rgba(192,57,43,0.08); border: 1px solid #c0392b; color: #d1d5db; }
+  .success-msg strong, .error-msg strong { color: #f8f9fa; font-weight: 500; }
+  .error-msg { background: rgba(231,76,60,0.08); border: 1px solid #e74c3c; color: #d1d5db; }
+
+  /* FOOTER */
+  footer {
+    padding: 48px;
+    text-align: center;
+    border-top: 1px solid rgba(255,255,255,0.07);
+  }
+
+  footer p { font-size: 13px; color: #8892a4; font-weight: 300; }
+  footer p + p { margin-top: 6px; }
+
+  /* ANIMATIONS */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .fade-in {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.65s ease, transform 0.65s ease;
+  }
+
+  .fade-in.visible { opacity: 1; transform: translateY(0); }
+
+  /* RESPONSIVE: TABLET */
+  @media (max-width: 1024px) {
+    .commitment-grid { grid-template-columns: 1fr; }
+    .roles-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+
+  /* RESPONSIVE: MOBILE */
+  @media (max-width: 768px) {
+    /* Nav */
+    nav { padding: 14px 20px; }
+    .nav-logo { font-size: 13px; }
+    nav a.nav-cta { font-size: 11px; padding: 7px 14px; }
+
+    /* Hero */
+    .hero { grid-template-columns: 1fr; padding: 96px 20px 60px; min-height: auto; gap: 40px; }
+    .hero-right { border-left: none; padding-left: 0; border-top: 1px solid rgba(255,255,255,0.07); padding-top: 32px; }
+    .hero-right-stat { padding: 12px 16px; }
+    .hero-right-stat-num { font-size: 24px; min-width: 56px; }
+    .hero-right-stat-label { font-size: 12px; }
+    .hero h1 { font-size: clamp(52px, 14vw, 80px); line-height: 0.92; }
+    .hero-tag { font-size: 10px; margin-bottom: 20px; }
+    .hero-sub { font-size: 15px; margin-top: 20px; }
+    .btn-primary { padding: 14px 32px; font-size: 13px; width: 100%; text-align: center; }
+
+    /* Reboot banner */
+    .reboot-banner { padding: 14px 20px; flex-direction: column; align-items: flex-start; gap: 6px; }
+    .reboot-banner-label { display: none; }
+    .reboot-banner-text { font-size: 13px; }
+
+    /* Sections */
+    .section-inner { padding: 52px 20px; }
+    .section-title { font-size: clamp(24px, 6vw, 36px); }
+    .section-body { font-size: 15px; }
+
+    /* Commitment */
+    .commitment-grid { grid-template-columns: 1fr; }
+    .commitment-num { font-size: 36px; }
+
+    /* Roles */
+    .roles-grid { grid-template-columns: 1fr; }
+    .role-card { padding: 24px; }
+
+    /* Presidents */
+    .presidents-grid { grid-template-columns: 1fr !important; }
+    .presidents-grid > div { padding: 28px 20px !important; border-left: none !important; border-right: none !important; border-top: 1px solid rgba(255,255,255,0.07); }
+
+    /* Form */
+    .form-wrap { margin-top: 36px; }
+    .resume-drop { padding: 24px 16px; }
+    .submit-row { flex-direction: column; align-items: flex-start; gap: 12px; }
+    button[type="submit"] { width: 100%; }
+
+    /* Footer */
+    footer { padding: 36px 20px; }
+  }
+
+  /* RESPONSIVE: SMALL MOBILE */
+  @media (max-width: 420px) {
+    .hero h1 { font-size: 48px; }
+    .nav-cta { display: none; }
+  }
+
+  /* COLLAPSIBLE SECTIONS */
+  .section-collapse-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    cursor: pointer;
+    padding-bottom: 20px;
+    border-bottom: 1px solid rgba(255,255,255,0.07);
+    margin-bottom: 36px;
+    user-select: none;
+  }
+  .section-collapse-header:hover .collapse-toggle { color: #f8f9fa; }
+  .section-collapse-left { display: flex; flex-direction: column; gap: 4px; }
+  .collapse-toggle {
+    font-family: 'Syne', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #8892a4;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-shrink: 0;
+    transition: color 0.2s;
+  }
+  .collapse-icon {
+    display: inline-block;
+    transition: transform 0.35s cubic-bezier(0.4,0,0.2,1);
+    font-style: normal;
+    font-size: 14px;
+    line-height: 1;
+  }
+  .section-collapsible.collapsed .collapse-icon { transform: rotate(-90deg); }
+  .section-collapse-body {
+    overflow: hidden;
+    transition: max-height 0.45s cubic-bezier(0.4,0,0.2,1), opacity 0.35s ease;
+    max-height: 4000px;
+    opacity: 1;
+  }
+  .section-collapsible.collapsed .section-collapse-body {
+    max-height: 0;
+    opacity: 0;
+  }
+  /* Shrink the section padding when collapsed */
+  .section-collapsible.collapsed {
+    padding-top: 24px;
+    padding-bottom: 24px;
+  }
+  .section-collapsible.collapsed .section-collapse-header {
+    padding-bottom: 0;
+    border-bottom: none;
+    margin-bottom: 0;
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <span class="nav-logo">Wharton <span>Tech</span> Club</span>
+  <a href="javascript:void(0)" class="nav-cta" onclick="document.getElementById('apply').scrollIntoView({behavior:'smooth'});">Apply Now</a>
+</nav>
+
+<!-- HERO -->
+<div class="hero" id="hero-anchor">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+
+  <!-- LEFT: headline + sub -->
+  <div class="hero-left">
+    <p class="hero-tag">2026–2027 Director Applications · Your time to lead</p>
+    <h1>Don't just<br>show up.<br><em>Build it.</em></h1>
+    <p class="hero-sub">Wharton Tech Club is the umbrella tech organization at Wharton. Every part of tech runs through us.</p>
+    <p class="hero-sub" style="margin-top:14px;">We're not looking for people who want to attend. We're looking for Directors who want real responsibility on the org that sits at the center of it all.</p>
+  </div>
+
+  <!-- RIGHT: stats + CTA -->
+  <div class="hero-right">
+    <div class="hero-right-stat">
+      <div class="hero-right-stat-num">#1</div>
+      <div class="hero-right-stat-label">The largest, most central tech organization at Wharton</div>
+    </div>
+    <div class="hero-right-stat">
+      <div class="hero-right-stat-num">12</div>
+      <div class="hero-right-stat-label">Director seats across 6 roles</div>
+    </div>
+    <div class="hero-right-stat">
+      <div class="hero-right-stat-num">400+</div>
+      <div class="hero-right-stat-label">Club members whose tech experience you help shape</div>
+    </div>
+    <div class="hero-right-cta">
+      <a href="javascript:void(0)" class="btn-primary" onclick="document.getElementById('apply').scrollIntoView({behavior:'smooth'});">Apply Now</a>
+      <p class="hero-deadline">Due <strong>September 12th at 11:59PM EST</strong></p>
+    </div>
+  </div>
+</div>
+
+<!-- REBOOT BANNER -->
+<div class="reboot-banner section-grid pat-diag">
+  <span class="reboot-banner-label">Why this matters</span>
+  <span class="reboot-banner-text">If tech touches where you want to go, this is where you build the access, the network, and the experience to get there. We're the organization everyone else in tech at Wharton eventually finds their way to.</span>
+</div>
+
+<!-- COMMITMENT -->
+<div class="divider"></div>
+<div style="background:#0a0e1a;" class="section-grid pat-lines">
+<div class="section-inner fade-in section-collapsible collapsed" id="commitment-section">
+  <div id="commitment-anchor"></div>
+  <div class="section-collapse-header" onclick="toggleSection('commitment-section')">
+    <div class="section-collapse-left">
+      <p class="section-label" style="margin:0;">What we expect</p>
+      <h2 class="section-title" style="margin:0;">Real work.<br>Real stakes.</h2>
+    </div>
+    <span class="collapse-toggle"><em class="collapse-icon" style="transform:rotate(-90deg)">▾</em> Expand</span>
+  </div>
+  <div class="section-collapse-body">
+  <p class="section-body">This isn't a passive role. You're a Director from day one, with a real team that's yours to run. Here's what that means:</p>
+  <div class="commitment-grid">
+    <div class="commitment-card">
+      <div class="commitment-num">Own</div>
+      <div class="commitment-title">Lead your team</div>
+      <p class="commitment-body">Every Director reports to a VP and leads their own team below them. You're running people, not just executing tasks, on things that actually ship this year.</p>
+    </div>
+    <div class="commitment-card">
+      <div class="commitment-num">Do</div>
+      <div class="commitment-title">Real deliverables, real deadlines</div>
+      <p class="commitment-body">Speaker outreach, event ops, trek logistics, content, finance, sponsorships. The club runs on work Directors actually did.</p>
+    </div>
+    <div class="commitment-card">
+      <div class="commitment-num">Build</div>
+      <div class="commitment-title">Build your portfolio</div>
+      <p class="commitment-body">Whether you're going into consulting, VC, product, or starting something of your own, a year of actually running things in tech is the kind of experience that shows up in every room you walk into.</p>
+    </div>
+  </div>
+  </div><!-- end collapse body -->
+</div>
+</div>
+
+<!-- PRESIDENTS -->
+<div class="divider"></div>
+<div style="background:#111827;" class="section-grid pat-cross">
+  <div class="section-inner fade-in section-collapsible collapsed" id="presidents-section">
+    <div id="presidents-anchor"></div>
+    <div class="section-collapse-header" onclick="toggleSection('presidents-section')">
+      <div class="section-collapse-left">
+        <p class="section-label" style="margin:0;">Leadership</p>
+        <h2 class="section-title" style="margin:0;">Meet your leadership.</h2>
+      </div>
+      <span class="collapse-toggle"><em class="collapse-icon" style="transform:rotate(-90deg)">▾</em> Expand</span>
+    </div>
+    <div class="section-collapse-body">
+    <p class="section-body">Three operators with real industry experience, building the club they wish had existed when they arrived at Wharton.</p>
+
+    <style>
+      .pres-card {
+        background: #0a0e1a;
+        padding: 32px 30px;
+        transition: background 0.25s ease, transform 0.25s ease;
+        cursor: default;
+        position: relative;
+        overflow: hidden;
+      }
+      .pres-card::before {
+        content: '';
+        position: absolute;
+        top: 0; left: 0; right: 0;
+        height: 2px;
+        background: linear-gradient(90deg, #e74c3c, #378ADD);
+        transform: scaleX(0);
+        transform-origin: left;
+        transition: transform 0.4s ease;
+      }
+      .pres-card:hover, .pres-card.tapped {
+        background: #111827;
+        transform: translateY(-4px);
+      }
+      .pres-card:hover::before, .pres-card.tapped::before {
+        transform: scaleX(1);
+      }
+      .pres-avatar {
+        width: 64px; height: 64px; border-radius: 50%;
+        display: flex; align-items: center; justify-content: center;
+        margin-bottom: 20px;
+        font-family: 'Syne', sans-serif; font-size: 22px; font-weight: 800; color: white;
+        flex-shrink: 0;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+      .pres-card:hover .pres-avatar, .pres-card.tapped .pres-avatar {
+        transform: scale(1.08);
+        box-shadow: 0 0 0 3px rgba(231,76,60,0.35);
+      }
+      .pres-linkedin {
+        display: inline-block; margin-top: 24px;
+        font-family: 'Syne', sans-serif; font-size: 11px; font-weight: 600;
+        letter-spacing: 0.1em; text-transform: uppercase;
+        color: #e74c3c; text-decoration: none;
+        border-bottom: 1px solid rgba(231,76,60,0.3); padding-bottom: 2px;
+        transition: color 0.2s, border-color 0.2s, letter-spacing 0.2s;
+      }
+      .pres-linkedin:hover { color: #f8f9fa; border-color: #f8f9fa; letter-spacing: 0.15em; }
+    </style>
+
+    <div class="presidents-grid" style="display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:rgba(255,255,255,0.07); border:1px solid rgba(255,255,255,0.07); margin-top:52px;">
+
+      <!-- Gorav -->
+      <div class="pres-card">
+        <div class="pres-avatar" style="background:#c0392b;">G</div>
+        <div style="font-family:'Syne',sans-serif; font-size:20px; font-weight:700; margin-bottom:4px; color:#f8f9fa;">Gorav Menon</div>
+        <div style="font-size:12px; color:#e74c3c; font-family:'Syne',sans-serif; font-weight:600; letter-spacing:0.08em; text-transform:uppercase; margin-bottom:20px;">Co-President</div>
+        <div style="font-size:14px; color:#d1d5db; font-weight:300; line-height:1.7; margin-bottom:20px;">Ads strategy and storytelling across consumer tech. Built Netflix's ads business from scratch, led SMB strategy at Snapchat. Podcast co-host with 85+ episodes and guests from NYT to Marvel Games.</div>
+        <div style="display:flex; flex-direction:column; gap:6px;">
+          <div style="font-size:12px; color:#8892a4; font-weight:300;">📺 Ads Business Operations & Strategy · Netflix</div>
+          <div style="font-size:12px; color:#8892a4; font-weight:300;">👻 Revenue Strategy & Operations · Snap</div>
+          <div style="font-size:12px; color:#8892a4; font-weight:300;">🎓 UCLA · Wharton MBA '27</div>
+        </div>
+        <a href="https://www.linkedin.com/in/goravmenon/" target="_blank" class="pres-linkedin">LinkedIn →</a>
+      </div>
+
+      <!-- Melody -->
+      <div class="pres-card" style="border-left:1px solid rgba(255,255,255,0.07); border-right:1px solid rgba(255,255,255,0.07);">
+        <div class="pres-avatar" style="background:#1e2a3a; border:1px solid rgba(255,255,255,0.07);">M</div>
+        <div style="font-family:'Syne',sans-serif; font-size:20px; font-weight:700; margin-bottom:4px; color:#f8f9fa;">Melody Zhang</div>
+        <div style="font-size:12px; color:#e74c3c; font-family:'Syne',sans-serif; font-weight:600; letter-spacing:0.08em; text-transform:uppercase; margin-bottom:20px;">Co-President</div>
+        <div style="font-size:14px; color:#d1d5db; font-weight:300; line-height:1.7; margin-bottom:20px;">Senior Analyst at Analysis Group. AI, Product and Platform Strategy. Deep experience in analytics and technical leadership across some of the most data-driven companies in tech.</div>
+        <div style="display:flex; flex-direction:column; gap:6px;">
+          <div style="font-size:12px; color:#8892a4; font-weight:300;">📊 Senior Analyst · Analysis Group</div>
+          <div style="font-size:12px; color:#8892a4; font-weight:300;">🤖 AI, Product and Platform Strategy</div>
+          <div style="font-size:12px; color:#8892a4; font-weight:300;">🎓 Wharton MBA '27</div>
+        </div>
+        <a href="https://www.linkedin.com/in/melody-mingfang-zhang/" target="_blank" class="pres-linkedin">LinkedIn →</a>
+      </div>
+
+      <!-- Logan -->
+      <div class="pres-card">
+        <div class="pres-avatar" style="background:#1e2a3a; border:1px solid rgba(255,255,255,0.07);">L</div>
+        <div style="font-family:'Syne',sans-serif; font-size:20px; font-weight:700; margin-bottom:4px; color:#f8f9fa;">Logan Hageman</div>
+        <div style="font-size:12px; color:#e74c3c; font-family:'Syne',sans-serif; font-weight:600; letter-spacing:0.08em; text-transform:uppercase; margin-bottom:20px;">Co-President</div>
+        <div style="font-size:14px; color:#d1d5db; font-weight:300; line-height:1.7; margin-bottom:20px;">Strategy and operations in Tech, Media & Telecom. Four years at Deloitte advising high-tech companies on complex global transformations: product management, GTM strategy, M&A integration, and more.</div>
+        <div style="display:flex; flex-direction:column; gap:6px;">
+          <div style="font-size:12px; color:#8892a4; font-weight:300;">📱 Senior Consultant, TMT · Deloitte</div>
+          <div style="font-size:12px; color:#8892a4; font-weight:300;">⚗️ Materials R&D · HP</div>
+          <div style="font-size:12px; color:#8892a4; font-weight:300;">🎓 UT Austin · Wharton MBA '27</div>
+        </div>
+        <a href="https://www.linkedin.com/in/hagemanlogan/" target="_blank" class="pres-linkedin">LinkedIn →</a>
+      </div>
+
+    </div>
+
+    <!-- VP GRID -->
+    <p style="font-family:'Syne',sans-serif; font-size:11px; font-weight:700; letter-spacing:0.15em; text-transform:uppercase; color:#8892a4; margin-top:52px; margin-bottom:20px;">The leadership you'll work with</p>
+    <style>
+      .vp-mini-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+        gap: 12px;
+      }
+      .vp-mini-card {
+        background: #0a0e1a;
+        border: 1px solid rgba(255,255,255,0.07);
+        border-radius: 2px;
+        padding: 24px 22px;
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        transition: background 0.25s ease, transform 0.25s ease, border-color 0.25s ease;
+        position: relative;
+        overflow: hidden;
+      }
+      .vp-mini-card::before {
+        content: '';
+        position: absolute;
+        top: 0; left: 0; right: 0;
+        height: 2px;
+        background: linear-gradient(90deg, #e74c3c, #378ADD);
+        transform: scaleX(0);
+        transform-origin: left;
+        transition: transform 0.4s ease;
+      }
+      .vp-mini-card:hover, .vp-mini-card.tapped {
+        background: #111827;
+        border-color: rgba(255,255,255,0.14);
+        transform: translateY(-3px);
+      }
+      .vp-mini-card:hover::before, .vp-mini-card.tapped::before {
+        transform: scaleX(1);
+      }
+      .vp-mini-avatar {
+        width: 52px; height: 52px; border-radius: 50%;
+        background: #1e2a3a; border: 1px solid rgba(255,255,255,0.1);
+        display: flex; align-items: center; justify-content: center;
+        font-family: 'Syne', sans-serif; font-size: 17px; font-weight: 800; color: #f8f9fa;
+        flex-shrink: 0;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+      .vp-mini-card:hover .vp-mini-avatar, .vp-mini-card.tapped .vp-mini-avatar {
+        transform: scale(1.08);
+        box-shadow: 0 0 0 3px rgba(231,76,60,0.3);
+      }
+      .vp-mini-name { font-family: 'Syne', sans-serif; font-size: 15px; font-weight: 700; color: #f8f9fa; }
+      .vp-mini-role { font-size: 11.5px; color: #8892a4; margin-top: 3px; }
+      .vp-mini-linkedin {
+        display: inline-block; margin-top: 8px;
+        font-family: 'Syne', sans-serif; font-size: 10px; font-weight: 600;
+        letter-spacing: 0.08em; text-transform: uppercase;
+        color: #e74c3c; text-decoration: none;
+        border-bottom: 1px solid rgba(231,76,60,0.3); padding-bottom: 1px;
+        transition: color 0.2s, border-color 0.2s;
+      }
+      .vp-mini-linkedin:hover { color: #f8f9fa; border-color: #f8f9fa; }
+    </style>
+    <div class="vp-mini-grid">
+      <div class="vp-mini-card">
+        <div class="vp-mini-avatar">G</div>
+        <div>
+          <div class="vp-mini-name">Grace Li</div>
+          <div class="vp-mini-role">VP Content & Events</div>
+          <a href="https://www.linkedin.com/in/grace-li/" target="_blank" class="vp-mini-linkedin">LinkedIn →</a>
+        </div>
+      </div>
+      <div class="vp-mini-card">
+        <div class="vp-mini-avatar">H</div>
+        <div>
+          <div class="vp-mini-name">Hetvee Marviya</div>
+          <div class="vp-mini-role">VP Tech Conference</div>
+          <a href="https://www.linkedin.com/in/hetvee-marviya/" target="_blank" class="vp-mini-linkedin">LinkedIn →</a>
+        </div>
+      </div>
+      <div class="vp-mini-card">
+        <div class="vp-mini-avatar">M</div>
+        <div>
+          <div class="vp-mini-name">Michael Yedibalian</div>
+          <div class="vp-mini-role">VP Treks</div>
+          <a href="https://www.linkedin.com/in/michael-yedibalian-862562191/" target="_blank" class="vp-mini-linkedin">LinkedIn →</a>
+        </div>
+      </div>
+      <div class="vp-mini-card">
+        <div class="vp-mini-avatar">L</div>
+        <div>
+          <div class="vp-mini-name">Lu Lu</div>
+          <div class="vp-mini-role">Board Member, Treks</div>
+          <a href="https://www.linkedin.com/in/lulu1016/" target="_blank" class="vp-mini-linkedin">LinkedIn →</a>
+        </div>
+      </div>
+      <div class="vp-mini-card">
+        <div class="vp-mini-avatar">J</div>
+        <div>
+          <div class="vp-mini-name">Jasper Wang</div>
+          <div class="vp-mini-role">VP Careers & Sponsorship</div>
+          <a href="https://www.linkedin.com/in/wenjie-jasper-wang-b63b301b7/" target="_blank" class="vp-mini-linkedin">LinkedIn →</a>
+        </div>
+      </div>
+      <div class="vp-mini-card">
+        <div class="vp-mini-avatar">M</div>
+        <div>
+          <div class="vp-mini-name">Matthew Simons</div>
+          <div class="vp-mini-role">VP Community & Marketing</div>
+          <a href="https://www.linkedin.com/in/matthew-isaac-simons/" target="_blank" class="vp-mini-linkedin">LinkedIn →</a>
+        </div>
+      </div>
+      <div class="vp-mini-card">
+        <div class="vp-mini-avatar">M</div>
+        <div>
+          <div class="vp-mini-name">Mindy Li</div>
+          <div class="vp-mini-role">VP Events & Marketing</div>
+          <a href="https://www.linkedin.com/in/shuyao-mindy-li/" target="_blank" class="vp-mini-linkedin">LinkedIn →</a>
+        </div>
+      </div>
+      <div class="vp-mini-card">
+        <div class="vp-mini-avatar">A</div>
+        <div>
+          <div class="vp-mini-name">Abdullah Noaman</div>
+          <div class="vp-mini-role">VP Finance</div>
+          <a href="https://www.linkedin.com/in/a-noaman/" target="_blank" class="vp-mini-linkedin">LinkedIn →</a>
+        </div>
+      </div>
+    </div>
+
+    </div><!-- end collapse body -->
+  </div>
+</div>
+
+<!-- PILLARS / ROLES -->
+<div class="divider"></div>
+<div style="background:#111827;" class="section-grid pat-diag">
+<div class="section-inner fade-in section-collapsible collapsed" id="roles-section">
+  <div id="pillars-anchor"></div>
+  <div id="roles-anchor"></div>
+  <div class="section-collapse-header" onclick="toggleSection('roles-section')">
+    <div class="section-collapse-left">
+      <p class="section-label" style="margin:0;">Scope & Roles</p>
+      <h2 class="section-title" style="margin:0;">Six pillars.<br>Twelve Directors.</h2>
+    </div>
+    <span class="collapse-toggle"><em class="collapse-icon" style="transform:rotate(-90deg)">▾</em> Expand</span>
+  </div>
+  <div class="section-collapse-body">
+  <p class="section-body">Media, events, industry access, capital relationships, community, and the money that funds all of it. Each pillar is a real Director role. <strong style="color:#e74c3c;">Tap any card to see it.</strong></p>
+
+  <style>
+    .flip-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      grid-auto-rows: 1fr;
+      gap: 16px;
+      margin-top: 44px;
+      align-items: stretch;
+    }
+    .flip-card {
+      perspective: 1200px;
+      cursor: pointer;
+    }
+    .flip-card-inner {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      transition: transform 0.6s cubic-bezier(0.4,0.2,0.2,1);
+      transform-style: preserve-3d;
+    }
+    .flip-card.flipped .flip-card-inner {
+      transform: rotateY(180deg);
+    }
+    .flip-front, .flip-back {
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      backface-visibility: hidden;
+      -webkit-backface-visibility: hidden;
+      border-radius: 2px;
+      padding: 28px;
+      display: flex;
+      flex-direction: column;
+      box-sizing: border-box;
+    }
+    .flip-front {
+      background: #0a0e1a;
+      border: 1px solid rgba(255,255,255,0.07);
+      border-top: 2px solid #c0392b;
+      justify-content: flex-start;
+    }
+    .flip-back {
+      background: #1e2a3a;
+      border: 1px solid rgba(55,138,221,0.3);
+      border-top: 2px solid #378ADD;
+      transform: rotateY(180deg);
+    }
+    .pillar-num {
+      font-family: 'Syne', sans-serif;
+      font-size: 11px;
+      font-weight: 700;
+      color: #8892a4;
+      letter-spacing: 0.1em;
+      margin-bottom: 12px;
+    }
+    .pillar-title {
+      font-family: 'Syne', sans-serif;
+      font-size: 19px;
+      font-weight: 700;
+      color: #f8f9fa;
+      margin-bottom: 10px;
+      line-height: 1.25;
+    }
+    .pillar-desc {
+      font-size: 13px;
+      color: #8892a4;
+      font-weight: 300;
+      line-height: 1.6;
+      margin-bottom: 16px;
+    }
+    .flip-stat-row {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 16px;
+    }
+    .flip-stat {
+      flex: 1;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 2px;
+      padding: 0;
+      text-align: center;
+      min-height: 60px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 4px;
+    }
+    .flip-stat-num {
+      font-family: 'Syne', sans-serif;
+      font-size: 17px;
+      font-weight: 800;
+      color: #e74c3c;
+      line-height: 1;
+    }
+    .flip-stat-label {
+      font-size: 8.5px;
+      color: #8892a4;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      font-family: 'Syne', sans-serif;
+      font-weight: 600;
+      line-height: 1.3;
+    }
+    .pillar-row {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 8px;
+      align-items: flex-start;
+    }
+    .pillar-row-label {
+      font-family: 'Syne', sans-serif;
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      flex-shrink: 0;
+      width: 58px;
+      margin-top: 1px;
+    }
+    .pillar-row-benefit .pillar-row-label { color: #378ADD; }
+    .pillar-row-duty .pillar-row-label { color: #e74c3c; }
+    .pillar-row-text {
+      font-size: 12px;
+      color: #d1d5db;
+      font-weight: 300;
+      line-height: 1.5;
+    }
+    .flip-hint {
+      margin-top: auto;
+      padding-top: 16px;
+      font-size: 11px;
+      color: #8892a4;
+      font-family: 'Syne', sans-serif;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      text-align: center;
+      border-top: 1px solid rgba(255,255,255,0.05);
+    }
+    .flip-hint span { color: #e74c3c; }
+
+    /* Back face */
+    .back-header {
+      font-family: 'Syne', sans-serif;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: #378ADD;
+      margin-bottom: 4px;
+    }
+    .back-title {
+      font-family: 'Syne', sans-serif;
+      font-size: 18px;
+      font-weight: 700;
+      color: #f8f9fa;
+      margin-bottom: 4px;
+      line-height: 1.2;
+    }
+    .back-reports {
+      font-size: 12px;
+      color: #e74c3c;
+      font-family: 'Syne', sans-serif;
+      letter-spacing: 0.05em;
+      margin-bottom: 16px;
+    }
+    .flip-card ul { list-style: none; padding: 0; margin: 0 0 12px; }
+    .flip-card ul li {
+      font-size: 12.5px;
+      color: #8892a4;
+      padding: 5px 0 5px 16px;
+      border-top: 1px solid rgba(255,255,255,0.05);
+      position: relative;
+      line-height: 1.45;
+    }
+    .flip-card ul li::before { content: '→'; position: absolute; left: 0; color: #378ADD; font-size: 11px; }
+    .back-row {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 10px;
+      align-items: flex-start;
+    }
+    .back-icon { font-size: 15px; flex-shrink: 0; margin-top: 1px; }
+    .back-label {
+      font-family: 'Syne', sans-serif;
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #8892a4;
+      margin-bottom: 2px;
+    }
+    .back-value { font-size: 12.5px; color: #d1d5db; font-weight: 300; line-height: 1.5; }
+    .back-divider { height: 1px; background: rgba(255,255,255,0.07); margin: 10px 0; }
+    .dog-box {
+      background: rgba(231,76,60,0.08);
+      border: 1px solid rgba(231,76,60,0.2);
+      border-radius: 2px;
+      padding: 12px 14px;
+      margin-top: auto;
+    }
+    .dog-label {
+      font-family: 'Syne', sans-serif;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #e74c3c;
+      margin-bottom: 4px;
+    }
+    .dog-value { font-size: 12.5px; color: #d1d5db; line-height: 1.5; }
+    .back-close {
+      margin-top: 12px;
+      font-size: 11px;
+      color: #8892a4;
+      font-family: 'Syne', sans-serif;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      text-align: center;
+      border-top: 1px solid rgba(255,255,255,0.05);
+      padding-top: 10px;
+    }
+    .back-close span { color: #378ADD; }
+    @media (max-width: 768px) {
+      .flip-grid { grid-template-columns: 1fr; gap: 12px; }
+      .flip-front, .flip-back { padding: 22px 20px; }
+    }
+  </style>
+
+  <div class="flip-grid">
+
+    <!-- 01 Content & Storytelling -->
+    <div class="flip-card">
+      <div class="flip-card-inner">
+        <div class="flip-front">
+          <p class="pillar-num">01 · Media</p>
+          <p class="pillar-title">Content & Storytelling</p>
+          <p class="pillar-desc">A podcast, a Substack, and a media presence that reaches every corner of tech at Wharton and beyond.</p>
+          <div class="flip-stat-row">
+            <div class="flip-stat"><div class="flip-stat-num">2</div><div class="flip-stat-label">Seats open</div></div>
+            <div class="flip-stat"><div class="flip-stat-num">3</div><div class="flip-stat-label">Cities</div></div>
+          </div>
+          <div class="pillar-row pillar-row-benefit"><span class="pillar-row-label">You get</span><span class="pillar-row-text">Direct access to founders, operators, and investors most students never talk to.</span></div>
+          <div class="pillar-row pillar-row-duty"><span class="pillar-row-label">You own</span><span class="pillar-row-text">Who gets a platform and what the club's voice sounds like.</span></div>
+          <p class="flip-hint"><span>Tap</span> to see the Director role</p>
+        </div>
+        <div class="flip-back">
+          <p class="back-header">The role</p>
+          <p class="back-title">Content & Events Director</p>
+          <p class="back-reports">Reports to VP Grace</p>
+          <ul>
+            <li>Co-host Tech Toks episodes alongside the Co-President</li>
+            <li>Source and book speakers: founders, operators, investors</li>
+            <li>Build and run events in SF, NYC, and Philly</li>
+            <li>Coordinate the Substack writing team (non-board contributors)</li>
+          </ul>
+          <div class="back-row">
+            <span class="back-icon">🏆</span>
+            <div><p class="back-label">Win condition</p><p class="back-value">Tech Toks becomes the go-to MBA tech podcast. Substack hits 500+ subscribers.</p></div>
+          </div>
+          <div class="back-divider"></div>
+          <div class="dog-box">
+            <p class="dog-label">🐶 If this role were a dog...</p>
+            <p class="dog-value">A <strong style="color:#f8f9fa;">Golden Retriever</strong>. Endlessly social, always bringing people together, everyone's favorite at the party.</p>
+          </div>
+          <p class="back-close"><span>Tap</span> to flip back</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 02 The Annual Conference -->
+    <div class="flip-card">
+      <div class="flip-card-inner">
+        <div class="flip-front">
+          <p class="pillar-num">02 · Flagship Event</p>
+          <p class="pillar-title">The Annual Conference</p>
+          <p class="pillar-desc">Wharton's single biggest conference for everything tech, bringing the industry's real names together for a full day. In NYC for the first time.</p>
+          <div class="flip-stat-row">
+            <div class="flip-stat"><div class="flip-stat-num">3</div><div class="flip-stat-label">Seats open</div></div>
+            <div class="flip-stat"><div class="flip-stat-num">200+</div><div class="flip-stat-label">Attendees</div></div>
+          </div>
+          <div class="pillar-row pillar-row-benefit"><span class="pillar-row-label">You get</span><span class="pillar-row-text">Real leadership experience, relationships with leading tech companies and VCs, and the opportunity to manage the club's largest budget.</span></div>
+          <div class="pillar-row pillar-row-duty"><span class="pillar-row-label">You own</span><span class="pillar-row-text">The stage, the sponsors, and the run-of-show.</span></div>
+          <p class="flip-hint"><span>Tap</span> to see the Director role</p>
+        </div>
+        <div class="flip-back">
+          <p class="back-header">The role</p>
+          <p class="back-title">Tech Conference Director</p>
+          <p class="back-reports">Reports to VP Hetvee</p>
+          <ul>
+            <li>Develop the conference theme, agenda, and speaker lineup</li>
+            <li>Recruit and manage keynote speakers and panelists</li>
+            <li>Coordinate budget and sponsors with other Directors</li>
+            <li>Manage logistics: venue, AV, catering, run-of-show</li>
+          </ul>
+          <div class="back-row">
+            <span class="back-icon">🏆</span>
+            <div><p class="back-label">Win condition</p><p class="back-value">200+ attendees, three keynotes people actually remember, zero day-of disasters.</p></div>
+          </div>
+          <div class="back-divider"></div>
+          <div class="dog-box">
+            <p class="dog-label">🐶 If this role were a dog...</p>
+            <p class="dog-value">A <strong style="color:#f8f9fa;">Border Collie</strong>. Obsessively organized, herding everyone toward the goal, happiest when it all runs perfectly.</p>
+          </div>
+          <p class="back-close"><span>Tap</span> to flip back</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 03 Treks -->
+    <div class="flip-card">
+      <div class="flip-card-inner">
+        <div class="flip-front">
+          <p class="pillar-num">03 · Industry Access</p>
+          <p class="pillar-title">Treks</p>
+          <p class="pillar-desc">In-person company visits across the Bay Area and NYC that put members inside the rooms where tech actually happens.</p>
+          <div class="flip-stat-row">
+            <div class="flip-stat"><div class="flip-stat-num">2</div><div class="flip-stat-label">Seats open</div></div>
+            <div class="flip-stat"><div class="flip-stat-num">2</div><div class="flip-stat-label">Treks/yr</div></div>
+          </div>
+          <div class="pillar-row pillar-row-benefit"><span class="pillar-row-label">You get</span><span class="pillar-row-text">Office visits and relationships most alumni took years to build.</span></div>
+          <div class="pillar-row pillar-row-duty"><span class="pillar-row-label">You own</span><span class="pillar-row-text">Getting people in the room, and making sure it was worth it.</span></div>
+          <p class="flip-hint"><span>Tap</span> to see the Director role</p>
+        </div>
+        <div class="flip-back">
+          <p class="back-header">The role</p>
+          <p class="back-title">Treks Director</p>
+          <p class="back-reports">Reports to VP Michael · works with Lu Lu</p>
+          <ul>
+            <li>Plan and lead two treks per year in the Bay Area and NYC</li>
+            <li>Source and manage company and alumni contacts</li>
+            <li>Schedule office visits, panels, and networking sessions</li>
+            <li>Run the trek application process and attendee comms</li>
+          </ul>
+          <div class="back-row">
+            <span class="back-icon">🏆</span>
+            <div><p class="back-label">Win condition</p><p class="back-value">Two treks that feel like insider access. Members leave with real relationships.</p></div>
+          </div>
+          <div class="back-divider"></div>
+          <div class="dog-box">
+            <p class="dog-label">🐶 If this role were a dog...</p>
+            <p class="dog-value">A <strong style="color:#f8f9fa;">Siberian Husky</strong>. Built to travel, thrives in new environments, always leading the pack somewhere exciting.</p>
+          </div>
+          <p class="back-close"><span>Tap</span> to flip back</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 04 Sponsorships & Recruiting -->
+    <div class="flip-card">
+      <div class="flip-card-inner">
+        <div class="flip-front">
+          <p class="pillar-num">04 · Capital & Careers</p>
+          <p class="pillar-title">Sponsorships & Recruiting</p>
+          <p class="pillar-desc">The corporate relationships that fund the club and open real recruiting doors for members.</p>
+          <div class="flip-stat-row">
+            <div class="flip-stat"><div class="flip-stat-num">1</div><div class="flip-stat-label">Seat open</div></div>
+            <div class="flip-stat"><div class="flip-stat-num">2+</div><div class="flip-stat-label">Sponsors/yr</div></div>
+          </div>
+          <div class="pillar-row pillar-row-benefit"><span class="pillar-row-label">You get</span><span class="pillar-row-text">Direct relationships with sponsors and recruiters, not a cold application.</span></div>
+          <div class="pillar-row pillar-row-duty"><span class="pillar-row-label">You own</span><span class="pillar-row-text">Every dollar and every door depends on the trust you build.</span></div>
+          <p class="flip-hint"><span>Tap</span> to see the Director role</p>
+        </div>
+        <div class="flip-back">
+          <p class="back-header">The role</p>
+          <p class="back-title">Careers & Sponsorships Director</p>
+          <p class="back-reports">Reports to VP Jasper</p>
+          <ul>
+            <li>Organize recruiting prep: workshops, mock interviews, resume reviews</li>
+            <li>Identify, pitch, and secure corporate sponsors</li>
+            <li>Maintain relationships with existing sponsor companies</li>
+            <li>Host alumni and company panels on career readiness</li>
+          </ul>
+          <div class="back-row">
+            <span class="back-icon">🏆</span>
+            <div><p class="back-label">Win condition</p><p class="back-value">Two new sponsors signed. Members feel meaningfully more prepared to recruit in tech.</p></div>
+          </div>
+          <div class="back-divider"></div>
+          <div class="dog-box">
+            <p class="dog-label">🐶 If this role were a dog...</p>
+            <p class="dog-value">A <strong style="color:#f8f9fa;">Labrador Retriever</strong>. Everyone wants one, brings things back reliably, connects with every person in the room.</p>
+          </div>
+          <p class="back-close"><span>Tap</span> to flip back</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 05 Community & Alumni -->
+    <div class="flip-card">
+      <div class="flip-card-inner">
+        <div class="flip-front">
+          <p class="pillar-num">05 · Network</p>
+          <p class="pillar-title">Community & Alumni</p>
+          <p class="pillar-desc">The Wharton Tech Alumni Network, spanning graduating classes and companies across the industry.</p>
+          <div class="flip-stat-row">
+            <div class="flip-stat"><div class="flip-stat-num">2</div><div class="flip-stat-label">Seats open</div></div>
+            <div class="flip-stat"><div class="flip-stat-num">~1/wk</div><div class="flip-stat-label">Newsletter</div></div>
+          </div>
+          <div class="pillar-row pillar-row-benefit"><span class="pillar-row-label">You get</span><span class="pillar-row-text">A network that compounds for decades, not just for a semester.</span></div>
+          <div class="pillar-row pillar-row-duty"><span class="pillar-row-label">You own</span><span class="pillar-row-text">Keeping it alive and useful, not a static list nobody opens.</span></div>
+          <p class="flip-hint"><span>Tap</span> to see the Director role</p>
+        </div>
+        <div class="flip-back">
+          <p class="back-header">The role</p>
+          <p class="back-title">Community & Marketing Director</p>
+          <p class="back-reports">Reports to VP Matthew</p>
+          <ul>
+            <li>Build, maintain, and leverage the Wharton Tech Alumni Network</li>
+            <li>Plan and execute happy hours, community dinners, board bonding</li>
+            <li>Own the weekly club newsletter: curate, write, distribute</li>
+            <li>Manage the club's social media and marketing assets</li>
+          </ul>
+          <div class="back-row">
+            <span class="back-icon">🏆</span>
+            <div><p class="back-label">Win condition</p><p class="back-value">People look forward to the newsletter. The alumni network is active and reachable.</p></div>
+          </div>
+          <div class="back-divider"></div>
+          <div class="dog-box">
+            <p class="dog-label">🐶 If this role were a dog...</p>
+            <p class="dog-value">A <strong style="color:#f8f9fa;">Cavalier King Charles Spaniel</strong>. Warm, makes everyone feel included, the glue that holds the group together.</p>
+          </div>
+          <p class="back-close"><span>Tap</span> to flip back</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 06 Finance & Infrastructure -->
+    <div class="flip-card">
+      <div class="flip-card-inner">
+        <div class="flip-front">
+          <p class="pillar-num">06 · Operations</p>
+          <p class="pillar-title">Finance & Infrastructure</p>
+          <p class="pillar-desc">The financial backbone that keeps every other pillar funded, running, and accountable.</p>
+          <div class="flip-stat-row">
+            <div class="flip-stat"><div class="flip-stat-num">2</div><div class="flip-stat-label">Seats open</div></div>
+            <div class="flip-stat"><div class="flip-stat-num">$0</div><div class="flip-stat-label">Drama</div></div>
+          </div>
+          <div class="pillar-row pillar-row-benefit"><span class="pillar-row-label">You get</span><span class="pillar-row-text">Real budget ownership experience most first-years never touch.</span></div>
+          <div class="pillar-row pillar-row-duty"><span class="pillar-row-label">You own</span><span class="pillar-row-text">Every other pillar depends on you getting this right.</span></div>
+          <p class="flip-hint"><span>Tap</span> to see the Director role</p>
+        </div>
+        <div class="flip-back">
+          <p class="back-header">The role</p>
+          <p class="back-title">Finance Director</p>
+          <p class="back-reports">Reports to VP Abdullah</p>
+          <ul>
+            <li>Own the club's annual budget: build it and maintain it all year</li>
+            <li>Process all reimbursements across every role</li>
+            <li>Track sponsorship revenue and report on financial position</li>
+            <li>Flag budget risks proactively and recommend adjustments</li>
+          </ul>
+          <div class="back-row">
+            <span class="back-icon">🏆</span>
+            <div><p class="back-label">Win condition</p><p class="back-value">Zero reimbursement drama. Every VP trusts the numbers. Club ends the year in the black.</p></div>
+          </div>
+          <div class="back-divider"></div>
+          <div class="dog-box">
+            <p class="dog-label">🐶 If this role were a dog...</p>
+            <p class="dog-value">A <strong style="color:#f8f9fa;">German Shepherd</strong>. Disciplined, dependable, quietly running the operation, mildly terrifying when something's off budget.</p>
+          </div>
+          <p class="back-close"><span>Tap</span> to flip back</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- BOLD STATEMENT -->
+  <div style="margin-top:56px; text-align:center; padding:48px 24px; border:1px solid rgba(231,76,60,0.3); background:linear-gradient(135deg, rgba(231,76,60,0.08), rgba(55,138,221,0.05)); border-radius:2px;">
+    <p style="font-family:'Bebas Neue',sans-serif; font-size:clamp(28px,5vw,52px); line-height:1.15; color:#f8f9fa; letter-spacing:0.01em; margin:0;">
+      You will <span style="color:#e74c3c;">lead</span> and <span style="color:#378ADD;">shape</span><br>the global tech ecosystem at Wharton.
+    </p>
+  </div>
+
+  </div>
+</div>
+</div>
+
+<!-- APPLICATION -->
+<div class="divider"></div>
+<div class="apply-section" id="apply">
+  <div class="section-inner">
+    <div class="fade-in">
+      <p class="section-label">Apply</p>
+      <h2 class="section-title">Make your case.</h2>
+      <p class="section-body">This is a board of <strong style="color:#e74c3c;">under 25 people</strong>: 6 VPs and 12 Director seats across 6 roles. <strong style="color:#f8f9fa;">Spots are limited. The bar is high.</strong></p>
+      <p class="section-body" style="margin-top:14px;">Rank your top 3 roles and upload your resume. We're reviewing on a rolling basis, so interviews start before the deadline. The earlier you apply, the earlier you hear back. Due <strong style="color:#e74c3c;">September 12th at 11:59PM EST.</strong></p>
+      <p style="font-size:12.5px; color:#8892a4; margin-top:10px;">Not ready for the board? There are other ways to get involved. Details on those will come later. For now, just join Wharton Tech Club.</p>
+
+      <!-- Callout box -->
+      <div style="margin-top:32px; border:1px solid #e74c3c; border-left:4px solid #e74c3c; background:rgba(231,76,60,0.06); border-radius:2px; padding:20px 24px; display:flex; gap:16px; align-items:flex-start;">
+        <span style="font-size:20px; flex-shrink:0;">⚡</span>
+        <p style="font-size:14px; color:#d1d5db; line-height:1.65; margin:0;"><strong style="color:#f8f9fa;">Read every role description before you rank.</strong> The best applications come from people who picked their role because they actually want it, not because it sounded good. Your #1 should be the role you'd be most excited to build.</p>
+      </div>
+    </div>
+
+    <div class="form-wrap fade-in">
+      <form id="appForm">
+
+        <!-- STEP 1 -->
+        <div style="margin-bottom:40px;">
+          <div style="display:flex; align-items:center; gap:12px; margin-bottom:24px;">
+            <span style="font-family:'Syne',sans-serif; font-size:11px; font-weight:700; letter-spacing:0.15em; color:#e74c3c; text-transform:uppercase;">Step 01</span>
+            <div style="flex:1; height:1px; background:rgba(255,255,255,0.07);"></div>
+            <span style="font-family:'Syne',sans-serif; font-size:11px; color:#8892a4; letter-spacing:0.1em; text-transform:uppercase;">The basics</span>
+          </div>
+
+          <div class="form-group">
+            <label for="name">Full Name</label>
+            <input type="text" id="name" placeholder="Your name" required>
+          </div>
+
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" placeholder="your@wharton.upenn.edu" required>
+          </div>
+        </div>
+
+        <!-- STEP 2 -->
+        <div style="margin-bottom:40px;">
+          <div style="display:flex; align-items:center; gap:12px; margin-bottom:24px;">
+            <span style="font-family:'Syne',sans-serif; font-size:11px; font-weight:700; letter-spacing:0.15em; color:#e74c3c; text-transform:uppercase;">Step 02</span>
+            <div style="flex:1; height:1px; background:rgba(255,255,255,0.07);"></div>
+            <span style="font-family:'Syne',sans-serif; font-size:11px; color:#8892a4; letter-spacing:0.1em; text-transform:uppercase;">Rank your roles</span>
+          </div>
+
+          <div class="form-group">
+            <label>Role Preference Ranking</label>
+            <p class="field-note">Drag to rank all 6. We'll use your <strong style="color:#d1d5db;">top 3</strong>. On mobile, use the ▲▼ buttons. Your #1 should be the role you'd fight for.</p>
+            <div class="rank-options" id="rankList">
+              <div class="rank-row" draggable="true" data-role="Content & Events Director"><span class="rank-num">1</span><span class="rank-name">Content & Events Director</span><span class="rank-handle">⠿</span><div class="rank-move-btns"><button type="button" class="rank-up" aria-label="Move up">▲</button><button type="button" class="rank-dn" aria-label="Move down">▼</button></div></div>
+              <div class="rank-row" draggable="true" data-role="Tech Conference Director"><span class="rank-num">2</span><span class="rank-name">Tech Conference Director</span><span class="rank-handle">⠿</span><div class="rank-move-btns"><button type="button" class="rank-up" aria-label="Move up">▲</button><button type="button" class="rank-dn" aria-label="Move down">▼</button></div></div>
+              <div class="rank-row" draggable="true" data-role="Treks Director"><span class="rank-num">3</span><span class="rank-name">Treks Director</span><span class="rank-handle">⠿</span><div class="rank-move-btns"><button type="button" class="rank-up" aria-label="Move up">▲</button><button type="button" class="rank-dn" aria-label="Move down">▼</button></div></div>
+              <div class="rank-row" draggable="true" data-role="Careers & Sponsorships Director"><span class="rank-num">4</span><span class="rank-name">Careers & Sponsorships Director</span><span class="rank-handle">⠿</span><div class="rank-move-btns"><button type="button" class="rank-up" aria-label="Move up">▲</button><button type="button" class="rank-dn" aria-label="Move down">▼</button></div></div>
+              <div class="rank-row" draggable="true" data-role="Community & Marketing Director"><span class="rank-num">5</span><span class="rank-name">Community & Marketing Director</span><span class="rank-handle">⠿</span><div class="rank-move-btns"><button type="button" class="rank-up" aria-label="Move up">▲</button><button type="button" class="rank-dn" aria-label="Move down">▼</button></div></div>
+              <div class="rank-row" draggable="true" data-role="Finance Director"><span class="rank-num">6</span><span class="rank-name">Finance Director</span><span class="rank-handle">⠿</span><div class="rank-move-btns"><button type="button" class="rank-up" aria-label="Move up">▲</button><button type="button" class="rank-dn" aria-label="Move down">▼</button></div></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- STEP 3 -->
+        <div style="margin-bottom:40px;">
+          <div style="display:flex; align-items:center; gap:12px; margin-bottom:24px;">
+            <span style="font-family:'Syne',sans-serif; font-size:11px; font-weight:700; letter-spacing:0.15em; color:#e74c3c; text-transform:uppercase;">Step 03</span>
+            <div style="flex:1; height:1px; background:rgba(255,255,255,0.07);"></div>
+            <span style="font-family:'Syne',sans-serif; font-size:11px; color:#8892a4; letter-spacing:0.1em; text-transform:uppercase;">Upload resume</span>
+          </div>
+
+          <div class="form-group">
+            <label>Resume</label>
+            <p class="field-note">Required · PDF or Word · Max 5MB. This is doing most of the work here, so make sure it's current.</p>
+            <div class="resume-upload">
+              <div class="resume-drop" id="resumeDrop">
+                <input type="file" id="resumeFile" accept=".pdf,.doc,.docx" required>
+                <span class="resume-drop-icon">📄</span>
+                <p class="resume-drop-text">Drop here or tap to browse</p>
+                <p class="resume-drop-sub">PDF or Word · Max 5MB</p>
+              </div>
+              <div class="resume-selected" id="resumeSelected">
+                <span class="resume-selected-name" id="resumeName"></span>
+                <button type="button" class="resume-remove" id="resumeRemove">Remove</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- STEP 4 -->
+        <div style="margin-bottom:40px;">
+          <div style="display:flex; align-items:center; gap:12px; margin-bottom:24px;">
+            <span style="font-family:'Syne',sans-serif; font-size:11px; font-weight:700; letter-spacing:0.15em; color:#e74c3c; text-transform:uppercase;">Step 04</span>
+            <div style="flex:1; height:1px; background:rgba(255,255,255,0.07);"></div>
+            <span style="font-family:'Syne',sans-serif; font-size:11px; color:#8892a4; letter-spacing:0.1em; text-transform:uppercase;">One question</span>
+          </div>
+
+          <!-- Ecosystem question -->
+          <div style="border:1px solid rgba(255,255,255,0.1); border-left:3px solid #378ADD; background:rgba(55,138,221,0.05); border-radius:2px; padding:16px 20px; margin-bottom:16px;">
+            <p style="font-size:15px; font-weight:500; color:#f8f9fa; line-height:1.5; margin:0;">Why do you want to help <em style="font-style:normal; color:#e74c3c;">shape the tech ecosystem</em> at Wharton?</p>
+            <p style="font-size:12px; color:#8892a4; margin-top:8px; margin-bottom:0;">Be specific. This is the one thing we're asking you to actually write.</p>
+          </div>
+          <div class="form-group">
+            <textarea id="ecosystem" placeholder="Write your answer here..." required></textarea>
+          </div>
+        </div>
+
+        <!-- STEP 5 -->
+        <div style="margin-bottom:40px;">
+          <div style="display:flex; align-items:center; gap:12px; margin-bottom:24px;">
+            <span style="font-family:'Syne',sans-serif; font-size:11px; font-weight:700; letter-spacing:0.15em; color:#8892a4; text-transform:uppercase;">Step 05</span>
+            <div style="flex:1; height:1px; background:rgba(255,255,255,0.07);"></div>
+            <span style="font-family:'Syne',sans-serif; font-size:11px; color:#8892a4; letter-spacing:0.1em; text-transform:uppercase;">Optional</span>
+          </div>
+
+          <!-- Anything else -->
+          <div style="border:1px solid rgba(255,255,255,0.1); border-left:3px solid #8892a4; background:rgba(136,146,164,0.04); border-radius:2px; padding:16px 20px; margin-bottom:12px;">
+            <div style="display:flex; align-items:center; gap:10px; margin-bottom:6px;">
+              <p style="font-family:'Syne',sans-serif; font-size:10px; font-weight:700; letter-spacing:0.15em; text-transform:uppercase; color:#8892a4; margin:0;">Anything else?</p>
+              <span style="font-family:'Syne',sans-serif; font-size:9px; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; color:#8892a4; border:1px solid rgba(136,146,164,0.4); border-radius:10px; padding:2px 9px;">Optional</span>
+            </div>
+            <p style="font-size:15px; font-weight:500; color:#f8f9fa; line-height:1.5; margin:0;">Is there something about you we'd never see from a resume or application?</p>
+            <p style="font-size:12px; color:#8892a4; margin-top:8px; margin-bottom:0;">A side project, a weird obsession, a story. Not required, but if something is burning to be said, say it here.</p>
+          </div>
+          <div class="form-group" style="margin-bottom:32px;">
+            <textarea id="anything" placeholder="Optional, feel free to skip this one..." style="min-height:100px;"></textarea>
+          </div>
+
+          <!-- Fun question -->
+          <div style="border:1px solid rgba(255,255,255,0.1); border-left:3px solid #e74c3c; background:rgba(231,76,60,0.04); border-radius:2px; padding:16px 20px; margin-bottom:12px;">
+            <div style="display:flex; align-items:center; gap:10px; margin-bottom:6px;">
+              <p style="font-family:'Syne',sans-serif; font-size:10px; font-weight:700; letter-spacing:0.15em; text-transform:uppercase; color:#e74c3c; margin:0;">One last thing 🎉</p>
+              <span style="font-family:'Syne',sans-serif; font-size:9px; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; color:#e74c3c; border:1px solid rgba(231,76,60,0.4); border-radius:10px; padding:2px 9px;">Optional</span>
+            </div>
+            <p id="funQuestionText" style="font-size:15px; font-weight:500; color:#f8f9fa; line-height:1.5; margin:0;"></p>
+            <p style="font-size:12px; color:#8892a4; margin-top:6px; margin-bottom:0;">This doesn't affect your application. We're just curious.</p>
+          </div>
+          <div class="form-group">
+            <textarea id="funAnswer" placeholder="Optional, feel free to skip this one..." style="min-height:80px;"></textarea>
+          </div>
+
+        </div>
+
+        <!-- SUBMIT -->
+        <div style="border-top:1px solid rgba(255,255,255,0.07); padding-top:32px;">
+          <p style="font-size:13px; color:#8892a4; margin-bottom:20px; line-height:1.6;">By submitting, you confirm this is your own work and you actually want to join the board as a Director. <strong style="color:#d1d5db;">Deadline: September 12th at 11:59PM EST.</strong></p>
+          <div class="submit-row">
+            <button type="submit" id="submitBtn">Submit Application →</button>
+          </div>
+        </div>
+
+      </form>
+
+      <div class="submitting-msg" id="submittingMsg">⚡ Submitting your application...</div>
+      <div class="error-msg" id="errorMsg"><strong>Something went wrong.</strong> Please try again or email the Co-Presidents directly.</div>
+    </div>
+  </div>
+</div>
+
+<!-- CELEBRATION OVERLAY -->
+<div id="celebrationOverlay" style="display:none; position:fixed; inset:0; background:#0a0e1a; z-index:9999; flex-direction:column; align-items:center; justify-content:center; text-align:center; padding:40px;">
+  <canvas id="confettiCanvas" style="position:absolute; inset:0; pointer-events:none;"></canvas>
+  <div style="position:relative; z-index:1; max-width:560px;">
+    <div id="celebTerminal" style="font-family:'DM Sans',monospace; font-size:13px; color:#378ADD; background:rgba(55,138,221,0.06); border:1px solid rgba(55,138,221,0.2); border-radius:4px; padding:20px 24px; margin-bottom:36px; text-align:left; min-height:80px;"></div>
+    <h2 style="font-family:'Bebas Neue',sans-serif; font-size:clamp(52px,10vw,96px); color:#f8f9fa; line-height:0.95; margin-bottom:16px;">You're<br><span style="color:#e74c3c;">in the mix.</span></h2>
+    <p style="font-size:17px; color:#d1d5db; font-weight:300; line-height:1.7; margin-bottom:8px;">Application received. We're reviewing on a rolling basis, so keep an eye on your inbox. Interviews start before the <strong style="color:#f8f9fa;">September 12th at 11:59PM EST</strong> deadline.</p>
+    <p style="font-size:14px; color:#8892a4; margin-bottom:40px;">In the meantime, watch an episode of Tech Toks. Follow us on Instagram. Get excited.</p>
+    <div style="display:flex; gap:16px; justify-content:center; flex-wrap:wrap;">
+      <a href="https://www.youtube.com/watch?v=p2w8N-HcjZA&t=2849s" target="_blank" style="font-family:'Syne',sans-serif; font-size:12px; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; color:#e74c3c; text-decoration:none; border:1px solid rgba(231,76,60,0.4); padding:12px 24px; border-radius:2px; transition:background 0.2s;" onmouseover="this.style.background='rgba(231,76,60,0.1)'" onmouseout="this.style.background='transparent'">▶ Watch Tech Toks</a>
+      <a href="https://www.instagram.com/whartontech/" target="_blank" style="font-family:'Syne',sans-serif; font-size:12px; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; color:#8892a4; text-decoration:none; border:1px solid rgba(255,255,255,0.1); padding:12px 24px; border-radius:2px; transition:background 0.2s;" onmouseover="this.style.background='rgba(255,255,255,0.05)'" onmouseout="this.style.background='transparent'">Instagram →</a>
+      <a href="https://www.linkedin.com/company/wharton-tech-club/" target="_blank" style="font-family:'Syne',sans-serif; font-size:12px; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; color:#8892a4; text-decoration:none; border:1px solid rgba(255,255,255,0.1); padding:12px 24px; border-radius:2px; transition:background 0.2s;" onmouseover="this.style.background='rgba(255,255,255,0.05)'" onmouseout="this.style.background='transparent'">LinkedIn →</a>
+    </div>
+  </div>
+</div>
+
+<!-- FLOATING APPLY BTN -->
+<div id="floatingApply" style="position:fixed; bottom:28px; right:28px; z-index:500; opacity:0; transform:translateY(12px); transition:opacity 0.3s,transform 0.3s; pointer-events:none;">
+  <button onclick="document.getElementById('apply').scrollIntoView({behavior:'smooth'})" style="font-family:'Syne',sans-serif; font-size:13px; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; color:#f8f9fa; background:#c0392b; border:none; padding:14px 28px; border-radius:2px; cursor:pointer; box-shadow:0 4px 24px rgba(192,57,43,0.45); transition:background 0.2s,transform 0.15s;" onmouseover="this.style.background='#e74c3c';this.style.transform='translateY(-2px)'" onmouseout="this.style.background='#c0392b';this.style.transform='translateY(0)'">Apply Now ↑</button>
+</div>
+
+<!-- SECTION NAV (desktop only) -->
+<div id="sectionNav" style="position:fixed; left:20px; top:50%; transform:translateY(-50%); z-index:400; display:flex; flex-direction:column; gap:10px; opacity:0; transition:opacity 0.4s;">
+  <style>
+    .snav-dot { width:8px; height:8px; border-radius:50%; background:rgba(255,255,255,0.2); cursor:pointer; transition:background 0.2s,transform 0.2s; position:relative; }
+    .snav-dot:hover, .snav-dot.active { background:#e74c3c; transform:scale(1.4); }
+    .snav-dot::after { content:attr(data-label); position:absolute; left:18px; top:50%; transform:translateY(-50%); white-space:nowrap; font-family:'Syne',sans-serif; font-size:10px; font-weight:600; letter-spacing:0.1em; text-transform:uppercase; color:#8892a4; opacity:0; transition:opacity 0.2s; pointer-events:none; }
+    .snav-dot:hover::after { opacity:1; color:#f8f9fa; }
+    @media(max-width:1100px){ #sectionNav { display:none !important; } }
+  </style>
+  <div class="snav-dot" data-target="hero-anchor" data-label="Home"></div>
+  <div class="snav-dot" data-target="commitment-anchor" data-label="Commitment"></div>
+  <div class="snav-dot" data-target="presidents-anchor" data-label="Presidents"></div>
+  <div class="snav-dot" data-target="roles-anchor" data-label="Roles"></div>
+  <div class="snav-dot" data-target="apply" data-label="Apply"></div>
+</div>
+
+<script>
+  // Fun random questions, wholesome and personality-revealing
+  const funQuestions = [
+    "What's a skill you have that would genuinely surprise most people?",
+    "What's the best piece of advice you've ever received, and who gave it to you?",
+    "You're stranded on a deserted island and can only bring three things. What are they?",
+    "What's a book, show, or movie that completely changed how you think about something?",
+    "If you could have dinner with anyone, living or dead, real or fictional, who and why?",
+    "What's something you were terrible at when you started but got really good at through practice?",
+    "What's your go-to order at a coffee shop, and what does it say about you?",
+    "What's the most random rabbit hole you've gone down recently?",
+    "If your college self could see you now, what would surprise them most?",
+    "What's a small, underrated thing that consistently makes your day better?",
+    "You have one free Saturday with no obligations. What does the perfect version look like?",
+    "What's something you believe that most people around you disagree with?",
+    "What's the best meal you've ever eaten, and where was it?",
+    "If you had to teach a class on anything, literally anything, what would it be?",
+    "What's a place you've been to that genuinely changed something in you?",
+    "What's a hobby or interest you've picked up in the last two years?",
+    "What's the most useful thing you learned that you didn't expect to need?",
+    "Morning person or night owl, and has that ever gotten you into trouble?",
+    "What's a podcast, newsletter, or corner of the internet you think is genuinely underrated?",
+    "What's one thing about Wharton that's exceeded your expectations?",
+  ];
+  const q = funQuestions[Math.floor(Math.random() * funQuestions.length)];
+  document.getElementById('funQuestionText').textContent = q;
+</script>
+
+<!-- FOOTER -->
+<footer>
+  <p>Wharton Tech Club · 2026-27 Director Applications</p>
+  <p>Questions? Reach out to Gorav, Melody, or Logan.</p>
+  <p style="margin-top:32px;"><a href="archive.html" style="color:#3a4353; font-size:10px; text-decoration:none; letter-spacing:0.05em;">2025–26</a></p>
+</footer>
+
+<script>
+  // ⚠️ PASTE YOUR APPS SCRIPT WEB APP URL HERE after deploying
+  const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbw_1O6jPJU8QpqPTaj0qHQctcdieDRAZEJfG5_QP_dczSc-dARVb1YSaq5bbpjTXdYNYA/exec";
+
+  // Mobile tap animations for commitment, president, and value cards
+  document.querySelectorAll('.commitment-card, .pres-card, .vp-mini-card').forEach(card => {
+    card.addEventListener('click', () => {
+      card.classList.toggle('tapped');
+      setTimeout(() => card.classList.remove('tapped'), 600);
+    });
+  });
+
+  // Flip card height equalisation - simple and reliable
+  // Temporarily stack all faces as block elements, measure, set explicit heights
+  function initFlipCards() {
+    const cards = Array.from(document.querySelectorAll('.flip-card'));
+    if (!cards.length) return;
+
+    // Step 1: reset all explicit heights
+    cards.forEach(card => {
+      card.style.height = '';
+      card.querySelector('.flip-card-inner').style.height = '';
+      card.querySelector('.flip-front').style.position = 'static';
+      card.querySelector('.flip-front').style.visibility = 'visible';
+      card.querySelector('.flip-back').style.position = 'static';
+      card.querySelector('.flip-back').style.transform = 'none';
+      card.querySelector('.flip-back').style.visibility = 'visible';
+    });
+
+    // Step 2: measure all faces in-place (both now in document flow)
+    let tallest = 0;
+    cards.forEach(card => {
+      const fH = card.querySelector('.flip-front').offsetHeight;
+      const bH = card.querySelector('.flip-back').offsetHeight;
+      const h = Math.max(fH, bH);
+      if (h > tallest) tallest = h;
+    });
+
+    // Step 3: restore absolute positioning and set uniform height
+    cards.forEach(card => {
+      const front = card.querySelector('.flip-front');
+      const back = card.querySelector('.flip-back');
+      front.style.position = '';
+      front.style.visibility = '';
+      back.style.position = '';
+      back.style.transform = '';
+      back.style.visibility = '';
+      card.style.height = tallest + 'px';
+      card.querySelector('.flip-card-inner').style.height = tallest + 'px';
+    });
+  }
+
+  // Flip card click toggle
+  document.querySelectorAll('.flip-card').forEach(card => {
+    card.addEventListener('click', () => card.classList.toggle('flipped'));
+  });
+
+  // Run after fonts load - use FontFaceObserver pattern via document.fonts
+  const runInit = () => {
+    initFlipCards();
+    let resizeTimer;
+    window.addEventListener('resize', () => {
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(initFlipCards, 100);
+    });
+  };
+
+  if (document.fonts && document.fonts.ready) {
+    document.fonts.ready.then(runInit);
+  } else {
+    window.addEventListener('load', runInit);
+  }
+
+  // ---- "Rebuild it." animated text ----
+  (function() {
+    const em = document.querySelector('.hero h1 em');
+    if (!em) return;
+
+    const text = 'Rebuild it.';
+    // Each char gets its own span with staggered delay
+    em.innerHTML = text.split('').map((ch, i) =>
+      `<span class="rb-char" style="animation-delay:${0.6 + 0.07 * i}s">${ch === ' ' ? '&nbsp;' : ch}</span>`
+    ).join('');
+
+    const style = document.createElement('style');
+    style.textContent = `
+      /* Each character animates in from below with a flicker */
+      .rb-char {
+        display: inline-block;
+        opacity: 0;
+        transform: translateY(40px) skewX(-8deg);
+        animation: rbCharIn 0.45s cubic-bezier(0.22,1,0.36,1) forwards;
+        color: #e74c3c;
+      }
+      @keyframes rbCharIn {
+        0%   { opacity: 0; transform: translateY(40px) skewX(-8deg); filter: blur(6px); }
+        60%  { opacity: 1; filter: blur(0); }
+        80%  { transform: translateY(-6px) skewX(2deg); }
+        100% { opacity: 1; transform: translateY(0) skewX(0); filter: blur(0); }
+      }
+
+      /* After all chars in, the whole word does a repeating glitch */
+      .hero h1 em {
+        animation: rebuildGlitch 4s 2.5s infinite;
+        position: relative;
+      }
+      @keyframes rebuildGlitch {
+        0%,82%,100%  { text-shadow: none; color: #e74c3c; letter-spacing: inherit; }
+        83%  {
+          text-shadow: -4px 0 #378ADD, 4px 0 rgba(231,76,60,0.8);
+          color: #ffffff;
+          letter-spacing: 0.04em;
+        }
+        84%  {
+          text-shadow: 4px 0 #e74c3c, -3px 0 #378ADD;
+          color: #e74c3c;
+          letter-spacing: -0.02em;
+        }
+        85%  { text-shadow: none; color: #f8f9fa; letter-spacing: inherit; }
+        86%  {
+          text-shadow: -6px 0 #378ADD, 5px 0 #e74c3c;
+          color: #e74c3c;
+          letter-spacing: 0.06em;
+        }
+        87%,100% { text-shadow: none; color: #e74c3c; letter-spacing: inherit; }
+      }
+
+      /* Scanline sweep across the em text on each glitch */
+      .hero h1 em::after {
+        content: '';
+        position: absolute;
+        left: -4px; right: -4px;
+        height: 3px;
+        background: rgba(55,138,221,0.7);
+        top: 50%;
+        opacity: 0;
+        animation: scanSweep 4s 2.5s infinite;
+        pointer-events: none;
+      }
+      @keyframes scanSweep {
+        0%,82%,88%,100% { opacity: 0; top: 50%; }
+        83% { opacity: 1; top: 0%; }
+        86% { opacity: 0.6; top: 100%; }
+        87% { opacity: 0; }
+      }
+    `;
+    document.head.appendChild(style);
+  })();
+
+  // Scroll fade-in
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.08 });
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+  // Drag to rank (desktop)
+  const list = document.getElementById('rankList');
+  let dragged = null;
+
+  list.querySelectorAll('.rank-row').forEach(row => {
+    row.addEventListener('dragstart', () => { dragged = row; setTimeout(() => row.classList.add('dragging'), 0); });
+    row.addEventListener('dragend', () => { row.classList.remove('dragging'); updateNums(); });
+    row.addEventListener('dragover', e => { e.preventDefault(); row.classList.add('drag-over'); });
+    row.addEventListener('dragleave', () => row.classList.remove('drag-over'));
+    row.addEventListener('drop', e => {
+      e.preventDefault();
+      row.classList.remove('drag-over');
+      if (dragged !== row) list.insertBefore(dragged, row);
+    });
+  });
+
+  function updateNums() {
+    const rows = list.querySelectorAll('.rank-row');
+    rows.forEach((row, i) => {
+      row.querySelector('.rank-num').textContent = i + 1;
+      const up = row.querySelector('.rank-up');
+      const dn = row.querySelector('.rank-dn');
+      if (up) up.disabled = i === 0;
+      if (dn) dn.disabled = i === rows.length - 1;
+    });
+  }
+
+  // Mobile up/down buttons
+  list.addEventListener('click', e => {
+    const btn = e.target.closest('.rank-up, .rank-dn');
+    if (!btn) return;
+    const row = btn.closest('.rank-row');
+    if (btn.classList.contains('rank-up')) {
+      const prev = row.previousElementSibling;
+      if (prev) list.insertBefore(row, prev);
+    } else {
+      const next = row.nextElementSibling;
+      if (next) list.insertBefore(next, row);
+    }
+    updateNums();
+  });
+
+  updateNums();
+
+  // Resume file handling
+  const fileInput = document.getElementById('resumeFile');
+  const resumeDrop = document.getElementById('resumeDrop');
+  const resumeSelected = document.getElementById('resumeSelected');
+  const resumeName = document.getElementById('resumeName');
+  const resumeRemove = document.getElementById('resumeRemove');
+  let resumeFile = null;
+
+  fileInput.addEventListener('change', () => handleFile(fileInput.files[0]));
+
+  resumeDrop.addEventListener('dragover', e => { e.preventDefault(); resumeDrop.classList.add('drag-active'); });
+  resumeDrop.addEventListener('dragleave', () => resumeDrop.classList.remove('drag-active'));
+  resumeDrop.addEventListener('drop', e => {
+    e.preventDefault();
+    resumeDrop.classList.remove('drag-active');
+    if (e.dataTransfer.files[0]) handleFile(e.dataTransfer.files[0]);
+  });
+
+  function handleFile(file) {
+    if (!file) return;
+    if (file.size > 5 * 1024 * 1024) { alert('File is too large. Max 5MB.'); return; }
+    resumeFile = file;
+    resumeName.textContent = file.name;
+    resumeDrop.style.display = 'none';
+    resumeSelected.style.display = 'flex';
+  }
+
+  resumeRemove.addEventListener('click', () => {
+    resumeFile = null;
+    fileInput.value = '';
+    resumeDrop.style.display = 'block';
+    resumeSelected.style.display = 'none';
+  });
+
+  // Form submit
+  document.getElementById('appForm').addEventListener('submit', async function(e) {
+    e.preventDefault();
+
+    if (!resumeFile) { alert('Please upload your resume.'); return; }
+
+    const submitBtn = document.getElementById('submitBtn');
+    submitBtn.disabled = true;
+    document.getElementById('submittingMsg').style.display = 'block';
+    document.getElementById('submittingMsg').innerHTML = '⚡ Submitting your application...';
+
+    // Get rankings
+    const ranks = [...list.querySelectorAll('.rank-row')].map(r => r.dataset.role);
+
+    // Convert file to base64
+    const base64 = await fileToBase64(resumeFile);
+
+    const payload = {
+      name: document.getElementById('name').value,
+      email: document.getElementById('email').value,
+      ranks: ranks,
+      ecosystem: document.getElementById('ecosystem').value,
+      anything: document.getElementById('anything').value,
+      funQuestion: document.getElementById('funQuestionText').textContent,
+      funAnswer: document.getElementById('funAnswer').value,
+      resume: {
+        name: resumeFile.name,
+        mimeType: resumeFile.type,
+        data: base64
+      }
+    };
+
+    try {
+      const res = await fetch(SCRIPT_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'text/plain' },
+        body: JSON.stringify(payload),
+        redirect: 'follow'
+      });
+      document.getElementById('submittingMsg').style.display = 'none';
+      // Apps Script may return non-JSON on redirect, treat any 2xx as success
+      let ok = res.ok;
+      try {
+        const json = await res.json();
+        ok = json.success !== false;
+      } catch(_) { ok = true; }
+      if (ok) {
+        showCelebration(document.getElementById('name').value);
+      } else {
+        throw new Error('Server returned failure');
+      }
+    } catch (err) {
+      document.getElementById('submittingMsg').style.display = 'none';
+      document.getElementById('errorMsg').style.display = 'block';
+      document.getElementById('errorMsg').innerHTML = '<strong>Something went wrong.</strong> Please try again or email the Co-Presidents directly.<br><small style="color:#8892a4;margin-top:6px;display:block;">Error: ' + err.message + '</small>';
+      submitBtn.disabled = false;
+    }
+  });
+
+  function fileToBase64(file) {
+    return new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.onload = () => resolve(reader.result.split(',')[1]);
+      reader.onerror = reject;
+      reader.readAsDataURL(file);
+    });
+  }
+
+  // ── COLLAPSIBLE SECTIONS ──────────────────────────────
+  function toggleSection(id) {
+    const section = document.getElementById(id);
+    if (!section) return;
+    const isCollapsed = section.classList.toggle('collapsed');
+    const toggle = section.querySelector('.collapse-toggle');
+    if (toggle) toggle.innerHTML = isCollapsed
+      ? '<em class="collapse-icon" style="transform:rotate(-90deg)">▾</em> Expand'
+      : '<em class="collapse-icon">▾</em> Collapse';
+  }
+
+  // ── FLOATING APPLY BUTTON ──────────────────────────────
+  const floatingApply = document.getElementById('floatingApply');
+  const applySection  = document.getElementById('apply');
+  const heroApplyBtn  = document.querySelector('.hero-actions .btn-primary');
+
+  const applyObserver = new IntersectionObserver(entries => {
+    // Show when hero Apply Now is out of view AND apply section not visible
+    const heroVisible  = heroApplyBtn && heroApplyBtn.getBoundingClientRect().top > 0 && heroApplyBtn.getBoundingClientRect().top < window.innerHeight;
+    const applyVisible = applySection  && applySection.getBoundingClientRect().top < window.innerHeight && applySection.getBoundingClientRect().bottom > 0;
+    const show = !heroVisible && !applyVisible;
+    floatingApply.style.opacity        = show ? '1' : '0';
+    floatingApply.style.transform      = show ? 'translateY(0)' : 'translateY(12px)';
+    floatingApply.style.pointerEvents  = show ? 'auto' : 'none';
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.hero-actions, #apply').forEach(el => applyObserver.observe(el));
+
+  // ── SECTION NAV DOTS ──────────────────────────────────
+  const sectionNav  = document.getElementById('sectionNav');
+  const navDots     = Array.from(document.querySelectorAll('.snav-dot'));
+  const navTargets  = navDots.map(d => document.getElementById(d.dataset.target)).filter(Boolean);
+
+  // Show nav after scrolling past hero
+  window.addEventListener('scroll', () => {
+    const scrolled = window.scrollY > 300;
+    sectionNav.style.opacity = scrolled ? '1' : '0';
+
+    // Highlight active dot
+    let activeIdx = 0;
+    navTargets.forEach((el, i) => {
+      if (el && el.getBoundingClientRect().top <= window.innerHeight * 0.5) activeIdx = i;
+    });
+    navDots.forEach((d, i) => d.classList.toggle('active', i === activeIdx));
+  }, { passive: true });
+
+  navDots.forEach((dot, i) => {
+    dot.addEventListener('click', () => {
+      const target = document.getElementById(dot.dataset.target);
+      if (target) target.scrollIntoView({ behavior: 'smooth' });
+    });
+  });
+
+  // ── CONFETTI ──────────────────────────────────────────
+  function launchConfetti() {
+    const canvas = document.getElementById('confettiCanvas');
+    const ctx    = canvas.getContext('2d');
+    canvas.width  = window.innerWidth;
+    canvas.height = window.innerHeight;
+
+    const colors  = ['#e74c3c','#378ADD','#f8f9fa','#c0392b','#d1d5db'];
+    const pieces  = Array.from({ length: 120 }, () => ({
+      x: Math.random() * canvas.width,
+      y: Math.random() * -canvas.height,
+      w: Math.random() * 10 + 5,
+      h: Math.random() * 5 + 3,
+      color: colors[Math.floor(Math.random() * colors.length)],
+      rot: Math.random() * 360,
+      vx: (Math.random() - 0.5) * 3,
+      vy: Math.random() * 4 + 2,
+      vr: (Math.random() - 0.5) * 6,
+    }));
+
+    let frame;
+    function draw() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      pieces.forEach(p => {
+        p.x  += p.vx; p.y += p.vy; p.rot += p.vr;
+        if (p.y > canvas.height) { p.y = -20; p.x = Math.random() * canvas.width; }
+        ctx.save();
+        ctx.translate(p.x + p.w / 2, p.y + p.h / 2);
+        ctx.rotate(p.rot * Math.PI / 180);
+        ctx.fillStyle = p.color;
+        ctx.globalAlpha = 0.85;
+        ctx.fillRect(-p.w / 2, -p.h / 2, p.w, p.h);
+        ctx.restore();
+      });
+      frame = requestAnimationFrame(draw);
+    }
+    draw();
+    setTimeout(() => cancelAnimationFrame(frame), 5000);
+  }
+
+  // ── TERMINAL TYPEWRITER ───────────────────────────────
+  function typeTerminal(lines, el, cb) {
+    el.textContent = '';
+    let li = 0, ci = 0;
+    function tick() {
+      if (li >= lines.length) { if (cb) cb(); return; }
+      const line = lines[li];
+      if (ci === 0 && li > 0) el.textContent += '\n';
+      el.textContent += line[ci];
+      ci++;
+      if (ci >= line.length) { li++; ci = 0; setTimeout(tick, 300); }
+      else setTimeout(tick, line[ci - 1] === ' ' ? 40 : 28);
+    }
+    tick();
+  }
+
+  // ── CELEBRATION TRIGGER ───────────────────────────────
+  function showCelebration(name) {
+    const overlay  = document.getElementById('celebrationOverlay');
+    const terminal = document.getElementById('celebTerminal');
+    overlay.style.display = 'flex';
+    document.body.style.overflow = 'hidden';
+    launchConfetti();
+    const firstName = (name || 'Applicant').split(' ')[0];
+    typeTerminal([
+      `> application.submit("${firstName}")`,
+      `> status: 200 OK`,
+      `> payload: received ✓`,
+      `> next_step: "We'll be in touch."`,
+    ], terminal);
+  }
+
+  // Patch success handler, find it and override
+  const _origSuccess = window._onAppSuccess;
+  window._onAppSuccess = function(name) {
+    showCelebration(name);
+  };
+
+</script>
+</body>
+</html>
